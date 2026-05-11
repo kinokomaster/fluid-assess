@@ -209,7 +209,7 @@
     var btn = document.getElementById('btn-next');
     btn.disabled = true;
     btn.textContent = 'Saving…';
-    document.getElementById('nav-hint').textContent = 'Sending your responses — please keep this page open for a moment…';
+    document.getElementById('nav-hint').textContent = 'Sending your responses — feel free to switch tabs, but please don\'t close this window yet.';
 
     answers.forEach(function (val, i) {
       tracker.queueEvent({
