@@ -211,10 +211,13 @@
   }
 
   function submitSurvey() {
-    document.getElementById('btn-next').disabled = true;
+    var btn = document.getElementById('btn-next');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    document.getElementById('nav-hint').textContent = 'Sending your responses — feel free to switch tabs, but please don\'t close this window yet.';
 
     answers.forEach(function (val, i) {
-      tracker.logEvent({
+      tracker.queueEvent({
         event_type:     'survey_response',
         module_id:      'confidence_pre',
         question_id:    QUESTION_IDS[i],
@@ -225,7 +228,9 @@
       });
     });
 
-    window.location.href = 'pre-test.html';
+    tracker.flushQueue(function () {
+      window.location.href = 'pre-test.html';
+    });
   }
 </script>
 </body>
