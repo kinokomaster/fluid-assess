@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volume Assessment — IVC & VExUS Learning Module</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  .landing-wrap {
+    width: 100%;
+    max-width: 640px;
+    padding: 64px 24px 48px;
+    margin: 0 auto;
+  }
+
+  .landing-logo {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+
+  .landing-kicker {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .landing-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px; line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .landing-subtitle {
+    font-size: 16px; color: var(--muted);
+    line-height: 1.7; margin-bottom: 40px;
+  }
+
+  .consent-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+
+  .consent-box-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 8px;
+  }
+
+  .consent-box p {
+    font-size: 13.5px; color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .begin-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--teal);
+    border: none; color: white;
+    padding: 14px 32px; border-radius: 8px;
+    cursor: pointer; font-size: 16px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .begin-btn:hover { background: var(--teal-light); }
+
+  .meta-row {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .meta-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--muted);
+  }
+
+  .meta-item strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 IVC & VExUS Learning Module</div>
+  <div></div>
+  <div></div>
+</div>
+
+<div class="landing-wrap">
+
+  <div class="landing-logo">🫀</div>
+  <div class="landing-kicker">Bedside Ultrasound · Volume Assessment</div>
+  <h1 class="landing-title">IVC & VExUS:<br>A Practical Guide</h1>
+  <p class="landing-subtitle">
+    An interactive learning module for internal medicine learners on assessing
+    volume status at the bedside — using IVC collapsibility and the VExUS protocol.
+  </p>
+
+  <div class="meta-row">
+    <div class="meta-item">⏱ <span>Approx. <strong>20–30 min</strong></span></div>
+    <div class="meta-item">📋 <span><strong>Pre & post</strong> knowledge check</span></div>
+    <div class="meta-item">🔒 <span><strong>Anonymous</strong> — no login required</span></div>
+  </div>
+
+  <div class="consent-box">
+    <div class="consent-box-label">📄 Participation Notice</div>
+    <p>
+      This module collects <strong>anonymous</strong> responses to measure learning outcomes.
+      No personal identifying information is collected. Your responses will be used
+      solely to evaluate and improve this educational program. By clicking
+      <em>Begin</em>, you agree to participate on these terms.
+    </p>
+  </div>
+
+  <button class="begin-btn" onclick="begin()">
+    Begin Module →
+  </button>
+
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  function begin() {
+    tracker.logEvent({
+      event_type:     'consent',
+      module_id:      'landing',
+      question_id:    null,
+      answer:         'agreed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'confidence-pre.html';
+  }
+</script>
+</body>
+</html>

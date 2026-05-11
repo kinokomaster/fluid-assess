@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confidence Survey — Pre</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  .survey-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .survey-q-number {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 10px;
+  }
+
+  .survey-q-text {
+    font-size: 16px; font-weight: 500;
+    color: var(--text); line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .likert-row {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .likert-btn {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 6px;
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 4px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+  }
+
+  .likert-btn:hover {
+    border-color: var(--teal);
+    background: rgba(13,148,136,0.06);
+  }
+
+  .likert-btn.selected {
+    background: rgba(13,148,136,0.12);
+    border-color: var(--teal);
+  }
+
+  .likert-num {
+    font-size: 16px; font-weight: 700;
+    color: var(--text);
+  }
+
+  .likert-btn.selected .likert-num { color: var(--teal); }
+
+  .likert-label {
+    font-size: 10px; color: var(--muted);
+    text-align: center; line-height: 1.3;
+  }
+
+  .likert-ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px; color: var(--muted);
+    margin-top: 6px;
+    padding: 0 2px;
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 IVC & VExUS Learning Module</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter">Survey 1 of 2</div>
+</div>
+
+<div class="slide-wrapper">
+
+  <div class="slide-tag">📋 Confidence Survey</div>
+  <h1 class="slide-title">How confident are you right now?</h1>
+  <p class="slide-subtitle">
+    Rate your confidence on each statement before starting the module.
+    There are no right or wrong answers.
+  </p>
+
+  <!-- Q1 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 1 of 7</div>
+    <div class="survey-q-text">I understand the limitations of IVC in assessing volume status.</div>
+    <div class="likert-row" id="likert-0"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 2 of 7</div>
+    <div class="survey-q-text">I understand how to perform and interpret VExUS grading.</div>
+    <div class="likert-row" id="likert-1"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 3 of 7</div>
+    <div class="survey-q-text">I can distinguish between fluid responsiveness and fluid tolerance.</div>
+    <div class="likert-row" id="likert-2"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 4 of 7</div>
+    <div class="survey-q-text">I feel confident incorporating IVC into clinical decisions.</div>
+    <div class="likert-row" id="likert-3"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 5 of 7</div>
+    <div class="survey-q-text">I feel confident incorporating VExUS into clinical decisions.</div>
+    <div class="likert-row" id="likert-4"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 6 of 7</div>
+    <div class="survey-q-text">I am likely to use IVC in future patient care.</div>
+    <div class="likert-row" id="likert-5"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="survey-card">
+    <div class="survey-q-number">Question 7 of 7</div>
+    <div class="survey-q-text">I am likely to use VExUS in future patient care.</div>
+    <div class="likert-row" id="likert-6"></div>
+    <div class="likert-ends"><span>Strongly disagree</span><span>Strongly agree</span></div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" onclick="window.location.href='index.html'">← Back</button>
+  <span class="nav-hint" id="nav-hint">Answer all questions to continue</span>
+  <button class="nav-btn" id="btn-next" onclick="submitSurvey()" disabled>Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  var QUESTION_IDS = [
+    'conf_q1', 'conf_q2', 'conf_q3', 'conf_q4',
+    'conf_q5', 'conf_q6', 'conf_q7',
+  ];
+  var answers = new Array(7).fill(null);
+
+  // Build all Likert rows
+  for (var i = 0; i < 7; i++) {
+    buildLikert(i);
+  }
+
+  function buildLikert(qIdx) {
+    var container = document.getElementById('likert-' + qIdx);
+    for (var val = 1; val <= 5; val++) {
+      var btn = document.createElement('button');
+      btn.className = 'likert-btn';
+      btn.dataset.qIdx = qIdx;
+      btn.dataset.val  = val;
+      btn.innerHTML =
+        '<span class="likert-num">' + val + '</span>';
+      btn.onclick = (function (q, v, b) {
+        return function () { selectLikert(q, v, b); };
+      })(qIdx, val, btn);
+      container.appendChild(btn);
+    }
+  }
+
+  function selectLikert(qIdx, val, clickedBtn) {
+    // Deselect siblings
+    var row = document.getElementById('likert-' + qIdx);
+    row.querySelectorAll('.likert-btn').forEach(function (b) {
+      b.classList.remove('selected');
+    });
+    clickedBtn.classList.add('selected');
+    answers[qIdx] = val;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    var filled = answers.filter(function (a) { return a !== null; }).length;
+    var allDone = filled === 7;
+    document.getElementById('btn-next').disabled = !allDone;
+    document.getElementById('nav-hint').textContent = allDone
+      ? ''
+      : (7 - filled) + ' question' + (7 - filled === 1 ? '' : 's') + ' remaining';
+  }
+
+  function submitSurvey() {
+    document.getElementById('btn-next').disabled = true;
+
+    answers.forEach(function (val, i) {
+      tracker.logEvent({
+        event_type:     'survey_response',
+        module_id:      'confidence_pre',
+        question_id:    QUESTION_IDS[i],
+        answer:         String(val),
+        is_correct:     null,
+        score:          null,
+        attempt_number: 1,
+      });
+    });
+
+    window.location.href = 'pre-test.html';
+  }
+</script>
+</body>
+</html>

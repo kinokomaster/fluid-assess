@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nav + Quiz Verify — FluidAssess</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Redo choice overlay */
+  .redo-panel {
+    display: none;
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+  .redo-panel h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .redo-panel p {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+  .redo-actions {
+    display: flex; gap: 12px; justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">🧪 Nav + Quiz Verify</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<!-- SLIDES -->
+<div class="slide-wrapper">
+
+  <!-- ── SLIDE 0 — Content 1 ── -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-tag">📖 Content</div>
+    <h1 class="slide-title">Slide 1 — Content</h1>
+    <p class="slide-subtitle">This is a regular content slide. Back and Next both work freely here.</p>
+    <div class="note-box" style="margin-top:32px;">
+      <div class="note-box-label">🧪 Verify</div>
+      <p>Back button should be <strong>disabled</strong> (first slide). Next should navigate to Slide 2.</p>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 1 — Content 2 ── -->
+  <div class="slide" id="slide-1">
+    <div class="slide-tag">📖 Content</div>
+    <h1 class="slide-title">Slide 2 — Content</h1>
+    <p class="slide-subtitle">Back works here (returns to Slide 1). Next button will say "Start Quiz →".</p>
+    <div class="note-box" style="margin-top:32px;">
+      <div class="note-box-label">🧪 Verify</div>
+      <p>Clicking <strong>Back</strong> should return to Slide 1. Clicking <strong>Start Quiz →</strong> enters the quiz and locks back-navigation.</p>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 2 — Quiz Q1 ── -->
+  <div class="slide" id="slide-2">
+    <div class="slide-tag quiz-tag">❓ Knowledge Check</div>
+    <h2 class="slide-title">Quiz — Question 1 of 2</h2>
+
+    <div class="quiz-progress">
+      <div class="qpip active" id="qpip-0"></div>
+      <div class="qpip" id="qpip-1"></div>
+    </div>
+
+    <div class="question-card" id="q-card-0">
+      <div class="q-number">Question 1 of 2</div>
+      <div class="q-text">Which concept asks: "Will a fluid bolus increase cardiac output?"</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true"
+          onclick="quiz.answerQ(0, this, true, 'vfy_q1', 'Fluid responsiveness')">
+          <span class="opt-letter">A</span>Fluid responsiveness
+        </button>
+        <button class="opt-btn"
+          onclick="quiz.answerQ(0, this, false, 'vfy_q1', 'Fluid tolerance')">
+          <span class="opt-letter">B</span>Fluid tolerance
+        </button>
+        <button class="opt-btn"
+          onclick="quiz.answerQ(0, this, false, 'vfy_q1', 'Venous congestion')">
+          <span class="opt-letter">C</span>Venous congestion
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-0">
+      ✅ <strong>Fluid responsiveness</strong> — assessed by IVC collapsibility or passive leg raise — tells you whether the heart will pump more with extra volume.
+    </div>
+
+    <div class="note-box" style="margin-top:24px;">
+      <div class="note-box-label">🧪 Verify</div>
+      <p><strong>Back button must be disabled.</strong> Next button must be disabled until you pick an answer. After answering, Next should say "Next Question →".</p>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 3 — Quiz Q2 ── -->
+  <div class="slide" id="slide-3">
+    <div class="slide-tag quiz-tag">❓ Knowledge Check</div>
+    <h2 class="slide-title">Quiz — Question 2 of 2</h2>
+
+    <div class="quiz-progress">
+      <div class="qpip done" id="qpip-0b"></div>
+      <div class="qpip active" id="qpip-1b"></div>
+    </div>
+
+    <div class="question-card" id="q-card-1">
+      <div class="q-number">Question 2 of 2</div>
+      <div class="q-text">A patient is fluid responsive. You should automatically give them a fluid bolus.</div>
+      <div class="options">
+        <button class="opt-btn"
+          onclick="quiz.answerQ(1, this, false, 'vfy_q2', 'True')">
+          <span class="opt-letter">A</span>True
+        </button>
+        <button class="opt-btn" data-correct="true"
+          onclick="quiz.answerQ(1, this, true, 'vfy_q2', 'False')">
+          <span class="opt-letter">B</span>False — you must also assess fluid tolerance
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-1">
+      ✅ <strong>False.</strong> Fluid responsiveness ≠ "give fluid." You must also confirm the patient can tolerate it (no harmful venous congestion) before acting.
+    </div>
+
+    <!-- Redo choice panel — shown if score ≤ 50% -->
+    <div class="redo-panel" id="redo-panel">
+      <div style="font-size:40px;margin-bottom:12px;">📉</div>
+      <h3>Score: <span id="redo-score"></span></h3>
+      <p>You scored ≤ 50%. Would you like to review the content slides first, or retake the quiz now?</p>
+      <div class="redo-actions">
+        <button class="nav-btn ghost" id="btn-review">← Review Content</button>
+        <button class="nav-btn" id="btn-retake">Retake Quiz →</button>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:24px;">
+      <div class="note-box-label">🧪 Verify</div>
+      <p>After answering: if score ≤ 50% the redo panel above should appear. If 2/2 correct, Next should say "See Summary →" and proceed.</p>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 4 — Summary ── -->
+  <div class="slide" id="slide-4">
+    <div class="slide-tag summary-tag">✅ Summary</div>
+    <div class="complete-screen">
+      <div class="complete-icon">🎉</div>
+      <h2>Nav + Quiz Verified!</h2>
+      <p>All navigation and quiz behaviours confirmed.</p>
+      <div class="score-badge" id="final-score">— / 2</div>
+      <p>Back-lock ✓ &nbsp; Next-lock ✓ &nbsp; ≤50% redo ✓</p>
+    </div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" id="btn-next" onclick="nav.next()">Next →</button>
+</div>
+
+<!-- JS — order matters: tracker → nav → quiz → init -->
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/quiz.js"></script>
+<script>
+  var STORAGE_KEY = 'fa_navtest_progress';
+
+  quiz.init({
+    questionCount: 2,
+    moduleId:      'nav_test',
+    storageKey:    STORAGE_KEY,
+    quizStart:     2,
+    onComplete: function (score, total) {
+      // Update summary badge immediately
+      document.getElementById('final-score').textContent = score + ' / ' + total;
+
+      if (score / total <= 0.5) {
+        // Lock Next until they choose
+        nav.disableNext();
+        document.getElementById('redo-score').textContent = score + ' / ' + total;
+        quiz.showRedoChoice(
+          'redo-panel',
+          function reviewFn() {
+            quiz.resetQuiz();
+            nav.goTo(0);
+          },
+          function retakeFn() {
+            nav.goTo(2);
+          }
+        );
+      }
+    },
+  });
+
+  nav.init({
+    slides:     5,
+    quizStart:  2,
+    quizEnd:    3,
+    summaryIdx: 4,
+    storageKey: STORAGE_KEY,
+    onEnter: function (slideIdx) {
+      if (slideIdx === 2 && !quiz.isAnswered(0)) nav.disableNext();
+      if (slideIdx === 3 && !quiz.isAnswered(1)) nav.disableNext();
+    },
+  });
+</script>
+</body>
+</html>

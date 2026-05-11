@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tracker Test</title>
+<style>
+  body { font-family: monospace; padding: 32px; background: #0b1929; color: #e2e8f0; }
+  button { background: #0d9488; color: white; border: none; padding: 12px 24px;
+           border-radius: 8px; cursor: pointer; font-size: 14px; margin: 8px 4px; }
+  button:hover { background: #2dd4bf; color: #0b1929; }
+  #log { margin-top: 24px; background: #112240; padding: 16px; border-radius: 8px;
+         font-size: 13px; line-height: 1.8; white-space: pre-wrap; min-height: 100px; }
+</style>
+</head>
+<body>
+
+<h2 style="color:#2dd4bf;">FluidAssess — Tracker Test (Task 1.3 / 1.4)</h2>
+<p style="color:#8ba3c0;">Uses the real tracker.js. Check your Google Sheet for new rows after each button click.</p>
+
+<button onclick="testSingleEvent()">Task 1.3 — Send one event</button>
+<button onclick="testQueueRetry()">Task 1.4 — Simulate offline queue</button>
+
+<div id="log">Learner ID: <strong id="lid"></strong></div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  document.getElementById('lid').textContent = tracker.getLearnerId();
+  tracker.flushQueue();
+
+  function log(msg) {
+    document.getElementById('log').textContent += '\n' + msg;
+  }
+
+  // Task 1.3 verify: one event → row in Sheet
+  function testSingleEvent() {
+    log('\n[1.3] Sending quiz_answer event…');
+    tracker.logEvent({
+      event_type:     'quiz_answer',
+      module_id:      'module_1',
+      question_id:    'm1_q1',
+      answer:         'Fluid responsiveness and fluid tolerance',
+      is_correct:     true,
+      score:          null,
+      attempt_number: 1,
+    });
+    log('→ Sent (no-cors — no response). Check Sheet for learner_id=' + tracker.getLearnerId());
+  }
+
+  // Task 1.4 verify: simulate queued event surviving offline
+  // Step: click this button while DevTools → Network → Offline, then re-enable, then click "Send one event"
+  function testQueueRetry() {
+    log('\n[1.4] Writing an event directly to the queue (simulates offline failure)…');
+    var fakeQueued = {
+      learner_id:     tracker.getLearnerId(),
+      event_type:     'quiz_answer',
+      module_id:      'module_1',
+      question_id:    'm1_q2',
+      answer:         'Queued event — was offline',
+      is_correct:     false,
+      score:          null,
+      attempt_number: 1,
+      timestamp:      new Date().toISOString(),
+      user_agent:     'queue-retry-test',
+    };
+    var q = JSON.parse(localStorage.getItem('fluidassess_event_queue') || '[]');
+    q.push(fakeQueued);
+    localStorage.setItem('fluidassess_event_queue', JSON.stringify(q));
+    log('Event queued. Now click "Send one event" to trigger flushQueue().');
+    log('→ Check Sheet for TWO new rows: the queued one + the new one.');
+  }
+</script>
+</body>
+</html>

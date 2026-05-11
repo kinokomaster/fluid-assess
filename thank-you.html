@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — IVC & VExUS</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 IVC & VExUS Learning Module</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<div class="slide-wrapper">
+  <div class="slide active">
+    <div class="slide-tag summary-tag">✅ Complete</div>
+    <div class="complete-screen">
+      <div class="complete-icon">🎓</div>
+      <h2>Thank You!</h2>
+      <p>You've completed the IVC &amp; VExUS Volume Assessment module.</p>
+      <p style="margin-top:12px; color:var(--muted); font-size:15px;">
+        Your responses have been recorded anonymously and will be used to improve this module.
+      </p>
+      <div style="margin-top:28px;">
+        <p style="font-size:15px; font-weight:600; color:var(--text); margin-bottom:12px;">
+          Take this quick-reference one-pager with you:
+        </p>
+        <img src="assets/img/IVCandVExUS_OnePager.png"
+             alt="IVC and VExUS One-Pager"
+             style="width:100%; max-width:560px; border-radius:10px; border:1px solid var(--border); display:block; margin:0 auto 16px;">
+        <a href="assets/img/IVCandVExUS_OnePager.png"
+           download="IVCandVExUS_OnePager.png"
+           class="nav-btn"
+           style="display:inline-block; text-decoration:none; margin-top:4px;">
+          Download One-Pager
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" style="visibility:hidden;">← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" style="visibility:hidden;">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  tracker.flushQueue();
+  tracker.logEvent({
+    event_type:     'session_end',
+    module_id:      'thank_you',
+    question_id:    null,
+    answer:         null,
+    is_correct:     null,
+    score:          null,
+    attempt_number: 1,
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Verify — FluidAssess</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 Module 1 — Volume Assessment</div>
+  <div class="page-dots">
+    <div class="dot done"></div>
+    <div class="dot done"></div>
+    <div class="dot active"></div>
+    <div class="dot quiz-dot"></div>
+    <div class="dot quiz-dot"></div>
+    <div class="dot summary-dot"></div>
+  </div>
+  <div class="page-counter">Slide 3 of 6</div>
+</div>
+
+<!-- SLIDE WRAPPER -->
+<div class="slide-wrapper">
+
+  <!-- Slide tag variants -->
+  <div class="slide-tag">📊 Introduction</div>
+  <div class="slide-tag quiz-tag" style="margin-left:8px;">❓ Knowledge Check</div>
+  <div class="slide-tag summary-tag" style="margin-left:8px;">✅ Summary</div>
+
+  <h1 class="slide-title" style="margin-top:20px;">What is Volume Assessment?</h1>
+  <p class="slide-subtitle">When a patient is in shock or has borderline urine output, we need to decide: give more fluid, start pressors, or diurese?</p>
+
+  <div class="divider"></div>
+
+  <!-- Definition cards -->
+  <div class="def-card" style="border-color:rgba(13,148,136,0.4);">
+    <div class="def-card-label teal">Question 1</div>
+    <div class="def-card-question">Is this patient fluid <em>responsive</em>?</div>
+    <div class="def-card-note">Will giving fluid actually increase cardiac output?</div>
+  </div>
+
+  <div class="def-card" style="border-color:rgba(217,119,6,0.4);">
+    <div class="def-card-label amber">Question 2</div>
+    <div class="def-card-question">Is this patient fluid <em>tolerant</em>?</div>
+    <div class="def-card-note">Can we give fluid safely, without causing harm or organ congestion?</div>
+  </div>
+
+  <!-- Note box -->
+  <div class="note-box">
+    <div class="note-box-label">💡 Key Insight</div>
+    <p>These are <strong>two independent questions</strong>. A patient can be fluid responsive but NOT fluid tolerant — or vice versa.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Compare cards -->
+  <h2 class="slide-title">IVC vs VExUS</h2>
+  <div class="compare-grid">
+    <div class="compare-card ivc">
+      <div class="compare-icon">📏</div>
+      <div class="compare-tool">IVC</div>
+      <div class="compare-arrow">Answers →</div>
+      <div class="compare-concept">Fluid Responsiveness</div>
+      <div class="compare-question">Will a fluid bolus increase cardiac output?</div>
+    </div>
+    <div class="compare-card vexus">
+      <div class="compare-icon">🔬</div>
+      <div class="compare-tool">VExUS</div>
+      <div class="compare-arrow">Answers →</div>
+      <div class="compare-concept">Fluid Tolerance</div>
+      <div class="compare-question">Is venous congestion already present?</div>
+    </div>
+  </div>
+
+  <div class="compare-connect">
+    Use <strong style="color:var(--teal);margin:0 4px;">IVC</strong> +
+    <strong style="color:var(--amber);margin:0 4px;">VExUS</strong> together to make the final decision
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Quiz section -->
+  <div class="slide-tag quiz-tag">❓ Knowledge Check</div>
+  <h2 class="slide-title">Test Your Understanding</h2>
+
+  <div class="quiz-progress">
+    <div class="qpip done"></div>
+    <div class="qpip active"></div>
+    <div class="qpip"></div>
+    <div class="qpip"></div>
+  </div>
+
+  <div class="question-card">
+    <div class="q-number">Question 2 of 4</div>
+    <div class="q-text">A patient is fluid responsive. What does this mean you should do?</div>
+    <div class="options">
+      <button class="opt-btn correct" disabled>
+        <span class="opt-letter">A</span>
+        Assess fluid tolerance before deciding whether to give fluid
+      </button>
+      <button class="opt-btn incorrect" disabled>
+        <span class="opt-letter">B</span>
+        Give a fluid bolus immediately
+      </button>
+      <button class="opt-btn" disabled>
+        <span class="opt-letter">C</span>
+        Start vasopressors instead
+      </button>
+      <button class="opt-btn" disabled>
+        <span class="opt-letter">D</span>
+        Diurese the patient
+      </button>
+    </div>
+  </div>
+
+  <div class="feedback-box show">
+    ✅ <strong>Correct.</strong> Fluid responsiveness alone does not mean you should give fluid. You must also determine whether the patient can tolerate it — using VExUS or other congestion markers.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Summary section -->
+  <div class="slide-tag summary-tag">✅ Summary</div>
+  <h2 class="slide-title">Module 1 Key Takeaways</h2>
+
+  <div class="summary-grid">
+    <div class="summary-col">
+      <div class="summary-col-header">
+        <div class="summary-col-icon">💧</div>
+        <div class="summary-col-title">Fluid Responsiveness</div>
+      </div>
+      <ul class="summary-list">
+        <li>Heart is preload-dependent</li>
+        <li>Bolus raises cardiac output ≥10–15%</li>
+        <li>Assessed by IVC collapsibility or PLR</li>
+      </ul>
+    </div>
+    <div class="summary-col">
+      <div class="summary-col-header">
+        <div class="summary-col-icon">🛡️</div>
+        <div class="summary-col-title">Fluid Tolerance</div>
+      </div>
+      <ul class="summary-list">
+        <li>No harmful venous congestion present</li>
+        <li>Organs can safely receive more volume</li>
+        <li>Assessed by VExUS grading</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="summary-highlight">
+    Always answer <strong style="color:var(--teal);">both</strong> questions before acting —<br>
+    fluid responsiveness <em>and</em> fluid tolerance.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Complete / score screen -->
+  <div class="complete-screen">
+    <div class="complete-icon">🎉</div>
+    <h2>Module 1 Complete!</h2>
+    <p>You've finished the Volume Assessment concepts section.</p>
+    <div class="score-badge">3 / 4</div>
+    <p>Great work. Proceed to Module 2 to learn IVC measurement.</p>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost">← Back</button>
+  <span class="nav-hint">Slide 3 of 6</span>
+  <button class="nav-btn">Next →</button>
+</div>
+
+</body>
+</html>

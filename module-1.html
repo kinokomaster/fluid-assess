@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 — Volume Assessment</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Redo choice panel */
+  .redo-panel {
+    display: none;
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+  .redo-panel h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .redo-panel p {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+  .redo-actions {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 Module 1 — Volume Assessment</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<!-- SLIDE WRAPPER -->
+<div class="slide-wrapper">
+
+  <!-- ══════════════════ SLIDE 0 — Introduction ══════════════════ -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-tag">📊 Introduction</div>
+    <h1 class="slide-title">What is Volume Assessment?</h1>
+    <p class="slide-subtitle">When a patient is in shock or has borderline urine output, we need to decide: give more fluid, start pressors, or diurese? Volume assessment helps us answer that question — systematically.</p>
+
+    <div class="divider"></div>
+
+    <p style="font-size:15px; color:var(--muted); margin-bottom:20px;">At its core, volume assessment requires answering <strong style="color:var(--text);">two separate questions:</strong></p>
+
+    <div class="def-card" style="border-color:rgba(13,148,136,0.4);">
+      <div class="def-card-label teal">Question 1</div>
+      <div class="def-card-question">Is this patient fluid <em>responsive</em>?</div>
+      <div class="def-card-note">Will giving fluid actually increase cardiac output?</div>
+    </div>
+
+    <div class="def-card" style="border-color:rgba(217,119,6,0.4);">
+      <div class="def-card-label amber">Question 2</div>
+      <div class="def-card-question">Is this patient fluid <em>tolerant</em>?</div>
+      <div class="def-card-note">Can we give fluid safely, without causing harm or organ congestion?</div>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 Key Insight</div>
+      <p>These are <strong>two independent questions</strong>. A patient can be fluid responsive but NOT fluid tolerant — or vice versa. Answering only one is not enough.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 1 — Fluid Responsiveness ══════════════════ -->
+  <div class="slide" id="slide-1">
+    <div class="slide-tag">💧 Fluid Responsiveness</div>
+    <h2 class="slide-title">Will fluid increase cardiac output?</h2>
+    <p class="slide-subtitle">Fluid responsiveness tells us whether the heart is on the steep portion of the Frank-Starling curve — where adding volume translates into more output.</p>
+
+    <div class="def-card" style="border-color:rgba(13,148,136,0.4); margin-bottom:20px;">
+      <div class="def-card-label teal">Definition</div>
+      <div class="def-card-question">Fluid Responsiveness</div>
+      <div class="def-card-note" style="font-size:15px; color:var(--text); margin-top:4px;">
+        The ability of the heart to increase cardiac output in response to a fluid challenge.
+      </div>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">📐 Clinical Definition</div>
+      <p>Fluid responsiveness is defined as a <strong>10–15% increase in cardiac output</strong> following a 250–500 mL fluid bolus, or following passive leg raising (PLR).</p>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px 22px; margin-top:20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">Important to remember</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6;">Being fluid responsive does <strong style="color:var(--teal);">not</strong> automatically mean you should give fluid. You must also assess whether the patient can <em>tolerate</em> it.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 2 — Fluid Tolerance ══════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-tag">🛡️ Fluid Tolerance</div>
+    <h2 class="slide-title">Can fluid be given without harm?</h2>
+    <p class="slide-subtitle">Even if a patient would respond to fluid, congestion may already be present — and adding more could worsen organ injury.</p>
+
+    <div class="def-card" style="border-color:rgba(217,119,6,0.4); margin-bottom:20px;">
+      <div class="def-card-label amber">Definition</div>
+      <div class="def-card-question">Fluid Tolerance</div>
+      <div class="def-card-note" style="font-size:15px; color:var(--text); margin-top:4px;">
+        The ability to receive fluid without developing harmful venous congestion or organ injury.
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px;">
+      <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:10px; padding:18px;">
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#065f46; margin-bottom:8px;">Fluid Tolerant ✓</div>
+        <div style="font-size:13.5px; color:var(--text); line-height:1.6;">No significant venous congestion. Fluid can be given safely with expected benefit.</div>
+      </div>
+      <div style="background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:18px;">
+        <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#991b1b; margin-bottom:8px;">Not Fluid Tolerant ✗</div>
+        <div style="font-size:13.5px; color:var(--text); line-height:1.6;">Venous congestion present. Additional fluid risks worsening AKI, gut edema, or respiratory failure.</div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:20px;">
+      <div class="note-box-label">⚠️ Clinical Pearl</div>
+      <p>Fluid intolerance is especially important to recognize in patients with heart failure, ARDS, or those who have already received large volumes.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 3 — Assessment Framework ══════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-tag">🔬 Assessment Framework</div>
+    <h2 class="slide-title">How Do We Assess Volume Status?</h2>
+    <p class="slide-subtitle">Bedside ultrasound provides multiple windows into volume status. No single view tells the whole story — a systematic approach is key.</p>
+
+    <div class="framework-container">
+      <div class="framework-img-wrap">
+        <img id="framework-img" alt="Frank-Starling Curve — volume assessment framework" style="max-width:100%; max-height:340px; object-fit:contain;">
+      </div>
+      <div class="framework-labels">
+        <div class="fw-label">
+          <div class="fw-label-title" style="color:var(--teal);">① IVC</div>
+          <div class="fw-label-desc">Size & collapsibility</div>
+        </div>
+        <div class="fw-label">
+          <div class="fw-label-title" style="color:var(--blue-accent);">② Extravascular</div>
+          <div class="fw-label-desc">Lung B-lines, ascites</div>
+        </div>
+        <div class="fw-label">
+          <div class="fw-label-title" style="color:var(--blue-accent);">③ Left Heart</div>
+          <div class="fw-label-desc">LV function & filling</div>
+        </div>
+        <div class="fw-label">
+          <div class="fw-label-title" style="color:var(--blue-accent);">④ Right Heart</div>
+          <div class="fw-label-desc">RV function & pressure</div>
+        </div>
+        <div class="fw-label">
+          <div class="fw-label-title" style="color:var(--amber);">⑤ VExUS</div>
+          <div class="fw-label-desc">Venous congestion grading</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 4 — Two Tools, Two Questions ══════════════════ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-tag">⚖️ The Key Takeaway</div>
+    <h2 class="slide-title">Two Tools, Two Questions</h2>
+    <p class="slide-subtitle">IVC and VExUS are complementary — together they give a complete picture of whether to give fluid, hold it, or actively remove it.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card ivc">
+        <div style="font-size:22px; font-weight:800; color:var(--teal); margin-bottom:4px;">IVC</div>
+        <div class="compare-arrow">evaluates ↓</div>
+        <div class="compare-concept">Fluid<br>Responsiveness</div>
+        <div class="compare-question" style="margin-top:10px;">"Will giving fluid increase cardiac output?"</div>
+      </div>
+      <div class="compare-card vexus">
+        <div style="font-size:22px; font-weight:800; color:var(--amber); margin-bottom:4px;">VExUS</div>
+        <div class="compare-arrow">evaluates ↓</div>
+        <div class="compare-concept">Fluid<br>Tolerance</div>
+        <div class="compare-question" style="margin-top:10px;">"Can fluid be given without causing harm?"</div>
+      </div>
+    </div>
+
+    <div class="compare-connect">
+      <span>🎯</span>
+      <span>Use <strong style="color:var(--teal);">both together</strong> to make a complete clinical decision: Give fluid? Start pressors? Diurese?</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 5 — Quiz Q1 ══════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-0">
+      <div class="q-number">Question 1 of 4</div>
+      <div class="q-text">Volume assessment involves two key components. Which pair correctly represents these two components?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m1_q1" data-answer-text="Fluid responsiveness and fluid resuscitation">
+          <span class="opt-letter">A</span>Fluid responsiveness and fluid resuscitation
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="0" data-question-id="m1_q1" data-answer-text="Fluid responsiveness and fluid tolerance">
+          <span class="opt-letter">B</span>Fluid responsiveness and fluid tolerance
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m1_q1" data-answer-text="Fluid balance and fluid restriction">
+          <span class="opt-letter">C</span>Fluid balance and fluid restriction
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m1_q1" data-answer-text="Preload and afterload assessment">
+          <span class="opt-letter">D</span>Preload and afterload assessment
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-0">
+      ✅ <strong>Correct — B.</strong> Volume assessment requires answering two distinct questions: (1) Is the patient fluid <em>responsive</em> — will cardiac output increase? And (2) Is the patient fluid <em>tolerant</em> — can fluid be given without causing congestion or organ harm?
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 6 — Quiz Q2 ══════════════════ -->
+  <div class="slide" id="slide-6">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-1">
+      <div class="q-number">Question 2 of 4</div>
+      <div class="q-text">True or False: IVC evaluation alone is sufficient to guide all fluid management decisions.</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m1_q2" data-answer-text="True — IVC gives us everything we need">
+          <span class="opt-letter">A</span>True — IVC gives us everything we need
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="m1_q2" data-answer-text="False — IVC addresses responsiveness but not tolerance">
+          <span class="opt-letter">B</span>False — IVC addresses responsiveness but not tolerance
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m1_q2" data-answer-text="False — IVC is not useful at all for fluid decisions">
+          <span class="opt-letter">C</span>False — IVC is not useful at all for fluid decisions
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-1">
+      ✅ <strong>Correct — B.</strong> IVC is a valuable tool for assessing fluid <em>responsiveness</em>, but it does not tell us about venous congestion or fluid <em>tolerance</em>. VExUS is needed to complete the picture.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 7 — Quiz Q3 ══════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-2">
+      <div class="q-number">Question 3 of 4</div>
+      <div class="q-text">Match the tool to its primary purpose. IVC evaluation is most useful for assessing fluid ___, while VExUS evaluation is most useful for assessing fluid ___.</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m1_q3" data-answer-text="Tolerance … Responsiveness">
+          <span class="opt-letter">A</span>Tolerance … Responsiveness
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="2" data-question-id="m1_q3" data-answer-text="Responsiveness … Tolerance">
+          <span class="opt-letter">B</span>Responsiveness … Tolerance
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m1_q3" data-answer-text="Responsiveness … Responsiveness">
+          <span class="opt-letter">C</span>Responsiveness … Responsiveness
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m1_q3" data-answer-text="Balance … Distribution">
+          <span class="opt-letter">D</span>Balance … Distribution
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-2">
+      ✅ <strong>Correct — B.</strong> IVC size and collapsibility primarily inform us about fluid <em>responsiveness</em> (will cardiac output increase?). VExUS Doppler patterns in the hepatic, portal, and renal veins inform us about fluid <em>tolerance</em> (is there venous congestion?).
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 8 — Quiz Q4 ══════════════════ -->
+  <div class="slide" id="slide-8">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+    </div>
+
+    <div class="question-card" id="q-card-3">
+      <div class="q-number">Question 4 of 4</div>
+      <div class="q-text">A 68-year-old woman presents with septic shock. You want to know whether a fluid bolus will increase her cardiac output. Which bedside ultrasound assessment should you prioritize first?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m1_q4" data-answer-text="VExUS — assess hepatic and portal vein Doppler">
+          <span class="opt-letter">A</span>VExUS — assess hepatic and portal vein Doppler
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="3" data-question-id="m1_q4" data-answer-text="IVC — assess size and collapsibility">
+          <span class="opt-letter">B</span>IVC — assess size and collapsibility
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m1_q4" data-answer-text="Lung ultrasound — assess for B-lines">
+          <span class="opt-letter">C</span>Lung ultrasound — assess for B-lines
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m1_q4" data-answer-text="Left heart assessment — measure LVEF">
+          <span class="opt-letter">D</span>Left heart assessment — measure LVEF
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-3">
+      ✅ <strong>Correct — B.</strong> The question asks specifically about fluid <em>responsiveness</em> — will a bolus increase cardiac output? IVC evaluation (size and collapsibility) is the primary bedside tool for this. VExUS would be used alongside or after to assess fluid <em>tolerance</em>.
+    </div>
+
+    <!-- Redo panel — shown if score ≤ 50% after Q4 -->
+    <div class="redo-panel" id="redo-panel">
+      <div style="font-size:40px; margin-bottom:12px;">📉</div>
+      <h3>Score: <span id="redo-score"></span></h3>
+      <p>You scored ≤ 50%. Would you like to review the content slides, or retake the quiz now?</p>
+      <div class="redo-actions">
+        <button class="nav-btn ghost" id="btn-review">← Review Content</button>
+        <button class="nav-btn" id="btn-retake">Retake Quiz →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 9 — Summary ══════════════════ -->
+  <div class="slide" id="slide-9">
+    <div class="slide-tag summary-tag">📋 Module Summary</div>
+    <h2 class="slide-title">Key Concepts — Module 1</h2>
+    <p class="slide-subtitle">A quick-reference recap of everything covered in this module.</p>
+
+    <div class="summary-grid">
+      <div class="summary-col">
+        <div class="summary-col-header">
+          <span class="summary-col-icon">💧</span>
+          <span class="summary-col-title">Fluid Responsiveness</span>
+        </div>
+        <ul class="summary-list">
+          <li>Will cardiac output increase with fluid?</li>
+          <li>Defined as ≥10–15% CO increase with bolus or PLR</li>
+          <li>Primary tool: <strong style="color:var(--teal);">IVC</strong> evaluation</li>
+          <li>Responsive ≠ safe to give fluid</li>
+        </ul>
+      </div>
+      <div class="summary-col">
+        <div class="summary-col-header">
+          <span class="summary-col-icon">🛡️</span>
+          <span class="summary-col-title">Fluid Tolerance</span>
+        </div>
+        <ul class="summary-list">
+          <li>Can fluid be given without causing harm?</li>
+          <li>Assessed by looking for venous congestion</li>
+          <li>Primary tool: <strong style="color:var(--amber);">VExUS</strong> grading</li>
+          <li>Intolerance → risk of AKI, pulmonary edema</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="summary-highlight">
+      Use <strong style="color:var(--teal);">IVC</strong> (responsiveness) + <strong style="color:var(--amber);">VExUS</strong> (tolerance) together to decide:<br>
+      <span style="font-size:17px; font-weight:700; color:var(--text); display:block; margin-top:8px;">Give fluid? · Hold? · Start pressors? · Diurese?</span>
+    </div>
+
+    <div style="margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:4px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">Coming up next</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6;">Module 2 will cover <strong>IVC evaluation in depth</strong> — how to measure it, how to interpret collapsibility, and when it can be misleading.</p>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="completeModule()">Continue to Post-Test →</button>
+    </div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" id="btn-next" onclick="nav.next()">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/quiz.js"></script>
+<script>
+  var STORAGE_KEY = 'fa_m1_progress';
+
+  // ── Wire quiz buttons via event delegation ────────────────────────────
+  document.querySelector('.slide-wrapper').addEventListener('click', function (e) {
+    var btn = e.target.closest('.opt-btn');
+    if (!btn) return;
+    var qIdx      = parseInt(btn.dataset.qIdx, 10);
+    var isCorrect = btn.dataset.correct === 'true';
+    var qId       = btn.dataset.questionId;
+    var aText     = btn.dataset.answerText;
+    if (isNaN(qIdx)) return;
+    quiz.answerQ(qIdx, btn, isCorrect, qId, aText);
+  });
+
+  // ── Quiz init ─────────────────────────────────────────────────────────
+  quiz.init({
+    questionCount: 4,
+    moduleId:      'module_1',
+    storageKey:    STORAGE_KEY,
+    quizStart:     5,
+    onComplete: function (score, total) {
+      tracker.logEvent({
+        event_type:     'module_complete',
+        module_id:      'module_1',
+        question_id:    null,
+        answer:         null,
+        is_correct:     null,
+        score:          score,
+        attempt_number: 1,
+      });
+
+      if (score / total <= 0.5) {
+        nav.disableNext();
+        document.getElementById('redo-score').textContent = score + ' / ' + total;
+        quiz.showRedoChoice(
+          'redo-panel',
+          function () { quiz.resetQuiz(); nav.goTo(0); },
+          function () { nav.goTo(5); }
+        );
+      }
+    },
+  });
+
+  // ── Nav init ──────────────────────────────────────────────────────────
+  nav.init({
+    slides:     10,
+    quizStart:  5,
+    quizEnd:    8,
+    summaryIdx: 9,
+    storageKey: STORAGE_KEY,
+    onEnter: function (slideIdx) {
+      var quizSlideToQ = { 5: 0, 6: 1, 7: 2, 8: 3 };
+      if (slideIdx in quizSlideToQ && !quiz.isAnswered(quizSlideToQ[slideIdx])) {
+        nav.disableNext();
+      }
+      if (slideIdx === 9) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('nav-hint').textContent = '';
+      }
+    },
+  });
+
+  // ── Load base64 image for slide 3 ────────────────────────────────────
+  (function () {
+    var img = document.getElementById('framework-img');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'assets/img/frank-starling.png', true);
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        img.src = URL.createObjectURL(xhr.response);
+      }
+    };
+    xhr.onerror = function () { /* image just won't show — slide still works */ };
+    xhr.send();
+  })();
+
+  // ── Module complete handler (summary slide button) ────────────────────
+  function completeModule() {
+    nav.clearProgress();
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'module_1',
+      question_id:    null,
+      answer:         'summary_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'post-test.html';
+  }
+</script>
+</body>
+</html>

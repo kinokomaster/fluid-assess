@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Test — IVC & VExUS</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 IVC & VExUS Learning Module</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<div class="slide-wrapper">
+
+  <!-- Slides injected by JS -->
+
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint">Select an answer to continue</span>
+  <button class="nav-btn" id="btn-next" onclick="goNext()" disabled>Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+
+// ─── Question bank ────────────────────────────────────────────────────────
+
+var QUESTIONS = [
+  {
+    id: 'kc_q1',
+    text: 'Which of the following IVC findings most strongly supports giving IV fluids in a spontaneously breathing patient?',
+    options: [
+      { text: 'IVC diameter 1.5 cm with minimal respiratory variation', correct: false },
+      { text: 'IVC diameter 0.8 cm with 40% respiratory variation',     correct: true  },
+      { text: 'IVC diameter 2.0 cm with 10% respiratory variation',     correct: false },
+      { text: 'IVC diameter 2.3 cm with 20% respiratory variation',     correct: false },
+    ],
+  },
+  {
+    id: 'kc_q2',
+    text: 'Which collapsibility cutoff is most appropriate when assessing IVC in a spontaneously breathing patient?',
+    options: [
+      { text: '10%',   correct: false },
+      { text: '16.5%', correct: false },
+      { text: '35%',   correct: true  },
+      { text: '50%',   correct: false },
+    ],
+  },
+  {
+    id: 'kc_q3',
+    text: 'In a mechanically ventilated patient (PEEP 5 cmH₂O), an IVC distensibility index of 25% suggests:',
+    options: [
+      { text: 'Likely fluid responsive',  correct: true  },
+      { text: 'Not fluid responsive',      correct: false },
+      { text: 'Severe venous congestion',  correct: false },
+      { text: 'Cannot be interpreted',     correct: false },
+    ],
+  },
+  {
+    id: 'kc_q4',
+    text: 'When performing VExUS grading, which of the following vessels is NOT routinely assessed?',
+    options: [
+      { text: 'Hepatic vein',        correct: false },
+      { text: 'Portal vein',         correct: false },
+      { text: 'Inferior vena cava',  correct: false },
+      { text: 'Intra-renal vein',    correct: false },
+      { text: 'Femoral vein',        correct: true  },
+    ],
+  },
+  {
+    id: 'kc_q5',
+    text: 'Severe VExUS (Grade 3) requires:',
+    options: [
+      { text: 'Dilated IVC only',                                                      correct: false },
+      { text: 'Abnormal Doppler in at least one organ',                                correct: false },
+      { text: 'Dilated IVC + severe flow abnormalities in ≥2 venous Doppler sites',   correct: true  },
+      { text: 'Portal vein pulsatility alone',                                         correct: false },
+    ],
+  },
+  {
+    id: 'kc_q6',
+    text: 'A patient is hypotensive with an IVC diameter of 2.2 cm and severe VExUS (Grade 3). The most appropriate next step is:',
+    options: [
+      { text: 'Large fluid bolus',                          correct: false },
+      { text: 'Consider diuresis or decongestion strategy', correct: true  },
+      { text: 'Ignore VExUS findings',                      correct: false },
+      { text: 'Repeat IVC measurement in 24 hours only',   correct: false },
+    ],
+  },
+];
+
+// ─── Shuffle options (Fisher-Yates) ──────────────────────────────────────
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+// ─── State ────────────────────────────────────────────────────────────────
+
+var answered      = new Array(QUESTIONS.length).fill(false);
+var pendingAnswer = new Array(QUESTIONS.length).fill(null); // set on click, committed on Next
+var results       = [];
+var TOTAL         = QUESTIONS.length;
+var LETTERS       = ['A','B','C','D','E'];
+
+// ─── Build slides ─────────────────────────────────────────────────────────
+
+var wrapper = document.querySelector('.slide-wrapper');
+
+QUESTIONS.forEach(function (q, idx) {
+  var slide = document.createElement('div');
+  slide.className = 'slide' + (idx === 0 ? ' active' : '');
+  slide.id = 'slide-' + idx;
+
+  // Shuffle only the options, not the questions
+  var shuffledOpts = shuffle(q.options);
+
+  var optionsContainer = document.createElement('div');
+  optionsContainer.className = 'options';
+
+  shuffledOpts.forEach(function (opt, oi) {
+    var btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.dataset.slideIdx  = idx;
+    btn.dataset.correct   = opt.correct;
+    btn.dataset.questionId = q.id;
+    btn.dataset.answerText = opt.text;
+    btn.innerHTML = '<span class="opt-letter">' + LETTERS[oi] + '</span>' + opt.text;
+    btn.addEventListener('click', function () { answer(this); });
+    optionsContainer.appendChild(btn);
+  });
+
+  var card = document.createElement('div');
+  card.className = 'question-card';
+  card.id = 'q-card-' + idx;
+  card.innerHTML =
+    '<div class="q-number">Question ' + (idx + 1) + ' of ' + TOTAL + '</div>' +
+    '<div class="q-text">' + q.text + '</div>';
+  card.appendChild(optionsContainer);
+
+  var pips = document.createElement('div');
+  pips.className = 'quiz-progress';
+  for (var i = 0; i < TOTAL; i++) {
+    var pip = document.createElement('div');
+    pip.className = 'qpip' + (i === idx ? ' active' : (i < idx ? ' done' : ''));
+    pips.appendChild(pip);
+  }
+
+  slide.innerHTML = '<div class="slide-tag quiz-tag">📝 Pre-Test</div>' +
+    '<h2 class="slide-title">Question ' + (idx + 1) + ' of ' + TOTAL + '</h2>';
+  slide.appendChild(pips);
+  slide.appendChild(card);
+
+  wrapper.appendChild(slide);
+});
+
+// Completion slide
+var doneSlide = document.createElement('div');
+doneSlide.className = 'slide';
+doneSlide.id = 'slide-' + TOTAL;
+doneSlide.innerHTML = [
+  '<div class="slide-tag summary-tag">✅ Pre-Test Complete</div>',
+  '<div class="complete-screen">',
+    '<div class="complete-icon">📋</div>',
+    '<h2>Pre-Test Complete</h2>',
+    '<p>Your responses have been recorded. Now let\'s start the learning module.</p>',
+    '<p style="margin-top:8px;">',
+      '<button class="nav-btn" onclick="window.location.href=\'module-1.html\'">',
+        'Start Module 1 →',
+      '</button>',
+    '</p>',
+  '</div>',
+].join('');
+wrapper.appendChild(doneSlide);
+
+// ─── Answer handler ───────────────────────────────────────────────────────
+
+function answer(btn) {
+  var slideIdx   = parseInt(btn.dataset.slideIdx, 10);
+  if (answered[slideIdx]) return; // already committed on Next
+
+  // Update pending selection — allow switching until Next is clicked
+  var card = btn.closest('.question-card');
+  card.querySelectorAll('.opt-btn').forEach(function (b) { b.classList.remove('chosen'); });
+  btn.classList.add('chosen');
+
+  pendingAnswer[slideIdx] = {
+    isCorrect:  btn.dataset.correct === 'true',
+    questionId: btn.dataset.questionId,
+    answerText: btn.dataset.answerText,
+  };
+
+  nav.enableNext();
+}
+
+// Called by goNext() before advancing — locks the selection and logs the event
+function commitAnswer(slideIdx) {
+  if (answered[slideIdx] || !pendingAnswer[slideIdx]) return;
+  var p = pendingAnswer[slideIdx];
+  answered[slideIdx] = true;
+
+  // Lock buttons visually
+  var card = document.getElementById('q-card-' + slideIdx);
+  card.querySelectorAll('.opt-btn').forEach(function (b) {
+    b.disabled = true;
+    if (!b.classList.contains('chosen')) b.style.opacity = '0.4';
+  });
+
+  results.push({ question_id: p.questionId, answer: p.answerText, is_correct: p.isCorrect });
+
+  tracker.logEvent({
+    event_type:     'quiz_answer',
+    module_id:      'test_pre',
+    question_id:    p.questionId,
+    answer:         p.answerText,
+    is_correct:     p.isCorrect,
+    score:          null,
+    attempt_number: 1,
+  });
+
+  if (results.length === TOTAL) {
+    var score = results.filter(function (r) { return r.is_correct; }).length;
+    tracker.logEvent({
+      event_type:     'test_complete',
+      module_id:      'test_pre',
+      question_id:    null,
+      answer:         null,
+      is_correct:     null,
+      score:          score,
+      attempt_number: 1,
+    });
+  }
+}
+
+function goNext() {
+  commitAnswer(nav.getCurrent());
+  nav.next();
+}
+
+// ─── Nav init ─────────────────────────────────────────────────────────────
+
+nav.init({
+  slides:     TOTAL + 1,   // questions + completion slide
+  quizStart:  0,
+  quizEnd:    TOTAL - 1,
+  summaryIdx: TOTAL,
+  storageKey: 'fa_pretest_progress',
+  onEnter: function (slideIdx) {
+    if (slideIdx < TOTAL && !answered[slideIdx]) {
+      nav.disableNext();
+      document.getElementById('nav-hint').textContent = 'Select an answer to continue';
+    }
+    if (slideIdx === TOTAL) {
+      nav.clearProgress();
+      document.getElementById('btn-next').style.display = 'none';
+      document.getElementById('btn-prev').style.display = 'none';
+      document.getElementById('nav-hint').textContent = '';
+    }
+  },
+});
+
+</script>
+</body>
+</html>

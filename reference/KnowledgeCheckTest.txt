@@ -1,0 +1,48 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+IVC & VExUS Assessment - knowledge check\
+1. Which of the following IVC findings most strongly supports giving IV fluids in spontaneously breathing patient?\
+*\
+IVC diameter 1.5 cm with minimal respiratory variation\
+IVC diameter 0.8 cm with 40% respiratory variation\
+IVC diameter 2.0 cm with 10% respiratory variation\
+IVC diameter 2.3 cm with 20% respiratory variation\
+2. Which collapsibility cutoff is most appropriate when assessing IVC in a spontaneously breathing patient?\
+*\
+10%\
+16.5%\
+35%\
+50%\
+3. In a mechanically ventilated patient (PEEP 5 mmH2O), an IVC variation of 25% suggests:\
+*\
+Likely fluid responsive\
+Not fluid responsive\
+Severe venous congestion\
+Cannot be interpreted\
+4. When performing VExUS grading, which of the following vessels is NOT routinely assessed?\
+*\
+Hepatic vein\
+Portal vein\
+Inferior vena cava\
+Intra-renal vein\
+Femoral vein\
+5. Severe VExUS (Grade 3) requires:\
+*\
+Dilated IVC only\
+Abnormal Doppler in at least one organ\
+Dilated IVC + severe flow abnormalities in \uc0\u8805 2 venous Doppler sites\
+Portal vein pulsatility alone\
+ \
+6. A patient is hypotensive with a IVC diameter 2.2 cm and severe VExUS. The most appropriate next step is:\
+*\
+Large fluid bolus\
+Consider diuresis or decongestion strategy\
+Ignore VExUS findings\
+Repeat IVC in 24 hours only\
+}

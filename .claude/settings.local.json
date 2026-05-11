@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(agent --version)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(pdfinfo /Users/kinokomaster/Documents/AppDevelopment/MedEdModule/FluidAssess/reference/IVCandVExUS.pdf)",
+      "Bash(curl -s -L -X POST https://script.google.com/macros/s/AKfycbwp1gSNorh0TD-n4tHuT019_hENRDXtB7SuDmzIdDEGGX1qZeywi_CAtb8XUCQzenNx/exec -H 'Content-Type: application/json' -d '{ *)",
+      "Bash(curl -s -L -X POST https://script.google.com/macros/s/AKfycbwp1gSNorh0TD-n4tHuT019_hENRDXtB7SuDmzIdDEGGX1qZeywi_CAtb8XUCQzenNx/exec -H 'Content-Type: application/json' -d '{\"learner_id\":\"LRN-TEST02\",\"event_type\":\"quiz_answer\",\"module_id\":\"module_1\",\"question_id\":\"m1_q1\",\"answer\":\"Test\",\"is_correct\":true,\"score\":null,\"attempt_number\":1,\"timestamp\":\"2026-05-10T21:30:00Z\",\"user_agent\":\"curl\"}' -w '\\\\nHTTP Status: %{http_code}\\\\nFinal URL: %{url_effective}\\\\n')",
+      "Bash(curl -s -L --post302 -H 'Content-Type: application/json' -d '{\"learner_id\":\"LRN-TEST02\",\"event_type\":\"quiz_answer\",\"module_id\":\"module_1\",\"question_id\":\"m1_q1\",\"answer\":\"Test\",\"is_correct\":true,\"score\":null,\"attempt_number\":1,\"timestamp\":\"2026-05-10T21:30:00Z\",\"user_agent\":\"curl\"}' https://script.google.com/macros/s/AKfycbwp1gSNorh0TD-n4tHuT019_hENRDXtB7SuDmzIdDEGGX1qZeywi_CAtb8XUCQzenNx/exec -w '\\\\nHTTP Status: %{http_code}\\\\n')",
+      "Bash(python3)",
+      "Bash(sed -n '533,860p' /Users/kinokomaster/Documents/AppDevelopment/MedEdModule/FluidAssess/reference/Module1_VolumeAssessment.html)",
+      "Read(//tmp/**)",
+      "Bash(sed -n '627p' /Users/kinokomaster/Documents/AppDevelopment/MedEdModule/FluidAssess/reference/Module1_VolumeAssessment.html > /tmp/img_line.txt && wc -c /tmp/img_line.txt)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}
