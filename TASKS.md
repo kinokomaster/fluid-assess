@@ -77,11 +77,11 @@ See [SPEC.md](SPEC.md) for what each piece does. See [CLAUDE.md](CLAUDE.md) for 
   - **Verify:** complete one full pass; Sheet contains every expected event in order with a single consistent `learner_id`
 - [x] **4.2** End-to-end click-through on mobile (Safari iOS + Android Chrome, or DevTools mobile emulator at minimum)
   - **Verify:** all pages readable; no layout breaks at 375px width; all events log
-- [ ] **4.3** Deploy to a test Google Sites page via iframe embed
+- [x] **4.3** Deploy to a test Google Sites page via iframe embed
   - **Verify:** complete one full pass while embedded; events log; localStorage persists across page nav within the iframe
-- [ ] **4.4** Test refresh-mid-quiz
+- [x] **4.4** Test refresh-mid-quiz
   - **Verify:** partial quiz progress survives a hard refresh; `learner_id` unchanged
-- [ ] **4.5** Test ≤50% redo path end-to-end
+- [x] **4.5** Test ≤50% redo path end-to-end
   - **Verify:** deliberately fail Module 1 quiz → choice screen appears → both Review and Retake branches work → `attempt_number` increments in the Sheet
 
 ---

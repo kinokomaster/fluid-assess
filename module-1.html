@@ -54,13 +54,13 @@
 
     <div class="def-card" style="border-color:rgba(13,148,136,0.4);">
       <div class="def-card-label teal">Question 1</div>
-      <div class="def-card-question">Is this patient fluid <em>responsive</em>?</div>
+      <div class="def-card-question">Is this patient fluid <em style="color:var(--teal);">responsive</em>?</div>
       <div class="def-card-note">Will giving fluid actually increase cardiac output?</div>
     </div>
 
     <div class="def-card" style="border-color:rgba(217,119,6,0.4);">
       <div class="def-card-label amber">Question 2</div>
-      <div class="def-card-question">Is this patient fluid <em>tolerant</em>?</div>
+      <div class="def-card-question">Is this patient fluid <em style="color:var(--amber);">tolerant</em>?</div>
       <div class="def-card-note">Can we give fluid safely, without causing harm or organ congestion?</div>
     </div>
 
@@ -76,7 +76,7 @@
     <h2 class="slide-title">Will fluid increase cardiac output?</h2>
     <p class="slide-subtitle">Fluid responsiveness tells us whether the heart is on the steep portion of the Frank-Starling curve — where adding volume translates into more output.</p>
 
-    <div class="def-card" style="border-color:rgba(13,148,136,0.4); margin-bottom:20px;">
+    <div class="def-card" style="border-color:rgba(13,148,136,0.7); border-width:2px; background:rgba(13,148,136,0.06); margin-bottom:20px;">
       <div class="def-card-label teal">Definition</div>
       <div class="def-card-question">Fluid Responsiveness</div>
       <div class="def-card-note" style="font-size:15px; color:var(--text); margin-top:4px;">
@@ -101,7 +101,7 @@
     <h2 class="slide-title">Can fluid be given without harm?</h2>
     <p class="slide-subtitle">Even if a patient would respond to fluid, congestion may already be present — and adding more could worsen organ injury.</p>
 
-    <div class="def-card" style="border-color:rgba(217,119,6,0.4); margin-bottom:20px;">
+    <div class="def-card" style="border-color:rgba(217,119,6,0.7); border-width:2px; background:rgba(217,119,6,0.06); margin-bottom:20px;">
       <div class="def-card-label amber">Definition</div>
       <div class="def-card-question">Fluid Tolerance</div>
       <div class="def-card-note" style="font-size:15px; color:var(--text); margin-top:4px;">
@@ -170,7 +170,7 @@
     <div class="compare-grid">
       <div class="compare-card ivc">
         <div style="font-size:22px; font-weight:800; color:var(--teal); margin-bottom:4px;">IVC</div>
-        <div class="compare-arrow">evaluates ↓</div>
+        <div class="compare-arrow">mainly evaluates ↓</div>
         <div class="compare-concept">Fluid<br>Responsiveness</div>
         <div class="compare-question" style="margin-top:10px;">"Will giving fluid increase cardiac output?"</div>
       </div>
@@ -238,8 +238,8 @@
         <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m1_q2" data-answer-text="True — IVC gives us everything we need">
           <span class="opt-letter">A</span>True — IVC gives us everything we need
         </button>
-        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="m1_q2" data-answer-text="False — IVC addresses responsiveness but not tolerance">
-          <span class="opt-letter">B</span>False — IVC addresses responsiveness but not tolerance
+        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="m1_q2" data-answer-text="False — IVC mainly evaluates responsiveness; VExUS is needed to fully assess tolerance">
+          <span class="opt-letter">B</span>False — IVC mainly evaluates responsiveness; VExUS is needed to fully assess tolerance
         </button>
         <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m1_q2" data-answer-text="False — IVC is not useful at all for fluid decisions">
           <span class="opt-letter">C</span>False — IVC is not useful at all for fluid decisions
@@ -247,7 +247,7 @@
       </div>
     </div>
     <div class="feedback-box" id="fb-1">
-      ✅ <strong>Correct — B.</strong> IVC is a valuable tool for assessing fluid <em>responsiveness</em>, but it does not tell us about venous congestion or fluid <em>tolerance</em>. VExUS is needed to complete the picture.
+      ✅ <strong>Correct — B.</strong> IVC primarily evaluates fluid <em>responsiveness</em>. While a markedly dilated IVC (e.g., &gt;25mm with minimal collapsibility) can hint at intolerance, VExUS is the primary tool for comprehensively assessing venous congestion and fluid <em>tolerance</em>.
     </div>
   </div>
 
@@ -263,7 +263,7 @@
 
     <div class="question-card" id="q-card-2">
       <div class="q-number">Question 3 of 4</div>
-      <div class="q-text">Match the tool to its primary purpose. IVC evaluation is most useful for assessing fluid ___, while VExUS evaluation is most useful for assessing fluid ___.</div>
+      <div class="q-text">Match the tool to its primary purpose.<br><br>IVC evaluation is most useful for assessing fluid ___, while VExUS evaluation is most useful for assessing fluid ___.</div>
       <div class="options">
         <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m1_q3" data-answer-text="Tolerance … Responsiveness">
           <span class="opt-letter">A</span>Tolerance … Responsiveness
