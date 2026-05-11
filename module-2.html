@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2 — IVC Evaluation</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Redo choice panel — same as Module 1 */
+  .redo-panel {
+    display: none;
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+  .redo-panel h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .redo-panel p {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+  .redo-actions {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* Slide 2 — IVC measurement images grid */
+  .ivc-examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .ivc-example-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .ivc-example-title {
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .ivc-example-card img {
+    width: 100%; border-radius: 6px;
+    display: block; margin-bottom: 8px;
+  }
+  @media (max-width: 600px) {
+    .ivc-examples-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Slide 3 — vertical timeline of studies */
+  .timeline {
+    position: relative;
+    margin-top: 24px;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    box-sizing: content-box;
+    left: -25px; top: 22px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--surface);
+  }
+  .timeline-year {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .timeline-cite {
+    font-size: 12px; color: var(--muted);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .timeline-body {
+    font-size: 13.5px; color: var(--text);
+    line-height: 1.6;
+  }
+  .skip-btn-row {
+    text-align: right;
+    margin-bottom: 8px;
+  }
+  .skip-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .skip-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 Module 2 — IVC Evaluation</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<!-- SLIDE WRAPPER -->
+<div class="slide-wrapper">
+
+  <!-- ══════════════════ SLIDE 0 — Why IVC? ══════════════════ -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-tag">💧 IVC Evaluation</div>
+    <h1 class="slide-title">Why IVC?</h1>
+    <p class="slide-subtitle">A quick recap before we dive into the technique — what IVC tells us, and what it doesn't.</p>
+
+    <div class="def-card" style="border-color:rgba(13,148,136,0.7); border-width:2px; background:rgba(13,148,136,0.06); margin-bottom:20px;">
+      <div class="def-card-label teal">Recap from Module 1</div>
+      <div class="def-card-question">IVC primarily evaluates fluid <em style="color:var(--teal);">responsiveness</em></div>
+      <div class="def-card-note" style="font-size:14.5px; color:var(--text); margin-top:6px;">
+        It's our first-line bedside tool for the question: <em>will giving fluid increase cardiac output?</em>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 Why it works</div>
+      <p>IVC size and respiratory variation reflect right atrial pressure and venous return. A small, collapsing IVC suggests preload reserve — meaning the heart is likely on the steep part of the Frank-Starling curve, and a fluid bolus should increase cardiac output.</p>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin-top:20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:4px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">Up next</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6;">We'll cover <strong>how</strong> to measure IVC reliably, the cutoffs that guide fluid decisions, and the ASE 2025 update for estimating RA pressure.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 1 — How to measure IVC ══════════════════ -->
+  <div class="slide" id="slide-1">
+    <div class="slide-tag">🔬 Technique</div>
+    <h2 class="slide-title">How to Measure IVC</h2>
+    <p class="slide-subtitle">A reproducible measurement starts with the right probe, window, and use of M-mode.</p>
+
+    <!-- Top: probe + window text + image -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:center; margin-bottom:18px;">
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px 20px;">
+        <p style="font-size:14px; color:var(--text); line-height:1.7; margin:0;">
+          <strong style="color:var(--teal);">Probe:</strong> Cardiac (phased-array)<br>
+          <strong style="color:var(--teal);">Window:</strong> Subxiphoid<br>
+          <strong style="color:var(--teal);">Technique:</strong> Place slightly right of midline, then rock cephalad to bring the IVC into long-axis view as it enters the right atrium.
+        </p>
+      </div>
+      <div style="text-align:center;">
+        <img src="assets/img/IVC_HowToMeasure.png"
+             alt="Probe placement for IVC measurement"
+             style="max-width:100%; max-height:240px; border-radius:8px; border:1px solid var(--border);">
+      </div>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 Use M-mode</div>
+      <p>Once you have a stable long-axis view, drop M-mode through the IVC about <strong>1–2 cm from the RA junction</strong>. M-mode captures the maximum and minimum diameters across the respiratory cycle far more reliably than eyeballing the 2D loop.</p>
+    </div>
+
+    <!-- Example pairs: collapsed vs plethoric -->
+    <div class="ivc-examples-grid">
+      <div class="ivc-example-card" style="border-color:rgba(13,148,136,0.5);">
+        <div class="ivc-example-title" style="color:var(--teal);">Collapsed IVC</div>
+        <img src="assets/img/IVC_1.gif" alt="Collapsed IVC — 2D loop">
+        <img src="assets/img/IVC_1_m.jpg" alt="Collapsed IVC — M-mode">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:8px 0 0; text-align:center;">Small, highly variable diameter — suggests fluid responsiveness.</p>
+      </div>
+      <div class="ivc-example-card" style="border-color:rgba(217,119,6,0.5);">
+        <div class="ivc-example-title" style="color:var(--amber);">Plethoric IVC</div>
+        <img src="assets/img/IVC_2.gif" alt="Plethoric IVC — 2D loop">
+        <img src="assets/img/IVC_2_m.jpg" alt="Plethoric IVC — M-mode">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:8px 0 0; text-align:center;">Dilated, minimal variation — suggests high RA pressure / fluid intolerance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 2 — Brief History ══════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-tag">📚 Evidence Base</div>
+    <h2 class="slide-title">A Brief History of IVC for Fluid Assessment</h2>
+    <p class="slide-subtitle">Four studies that shaped how we use IVC at the bedside today.</p>
+
+    <div class="skip-btn-row">
+      <button class="skip-btn" onclick="nav.goTo(3)">Skip to conclusion →</button>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-year">2004 · Study ①</div>
+        <div class="timeline-title">IVC variation as a guide for fluid therapy</div>
+        <div class="timeline-cite">Barbier C, et al. Intensive Care Med 2004;30(9):1834-7</div>
+        <div class="timeline-body">
+          39 mechanically ventilated patients with septic shock.<br>
+          ΔIVC ≥ 12% → <strong>Positive Predictive Value 92%, Negative Predictive Value 93%</strong> for fluid responsiveness.<br>
+          <em style="color:var(--muted);">First major study establishing IVC variation as a predictor in ventilated patients.</em>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2012 · Study ②</div>
+        <div class="timeline-title">IVC variation in spontaneously breathing patients</div>
+        <div class="timeline-cite">Muller L, et al. Crit Care 2012;16(5):R188</div>
+        <div class="timeline-body">
+          40 spontaneously breathing patients with shock.<br>
+          ΔIVC ≥ 40% → <strong>Sensitivity 70%, Specificity 80%</strong> for fluid responsiveness.<br>
+          <em style="color:var(--muted);">Extended the concept beyond the ventilated ICU population.</em>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2024 · Study ③</div>
+        <div class="timeline-title">Echo-guided fluid management editorial</div>
+        <div class="timeline-cite">Intensive Care Med 2024;50:1137-42</div>
+        <div class="timeline-body">
+          Practical bedside rules synthesized from prior evidence:<br>
+          • <strong>Fill</strong> if IVC &lt; 1 cm (Sensitivity ~90%)<br>
+          • <strong>Don't fill</strong> if IVC &gt; 2.5 cm (Sensitivity 80–90%)<br>
+          <em style="color:var(--muted);">Based on data from mechanically ventilated patients (Intensive Care Med 2018;44:197-203).</em>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2025 · Study ④</div>
+        <div class="timeline-title">Meta-analysis on ΔIVC and fluid responsiveness</div>
+        <div class="timeline-cite">PLoS One 2025;20(5):e0310462</div>
+        <div class="timeline-body">
+          21 studies, sepsis population.<br>
+          <strong>Overall:</strong> Sensitivity 0.84 / Specificity 0.87<br>
+          <strong>Mechanically ventilated:</strong> cutoff ΔIVC 16.5% (range 10.2–28) → Sensitivity 0.79 / Specificity 0.82<br>
+          <strong>Spontaneously breathing:</strong> cutoff ΔIVC 35% (range 12.9–48) → Sensitivity 0.92 / Specificity 0.93<br>
+          <em style="color:var(--muted);">Ideal patient selection: tidal volume ≤ 8 mL/kg, PEEP ≤ 5 cmH₂O.</em>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:13px; color:var(--muted); font-style:italic; margin-top:18px; text-align:center;">
+      The four cutoffs on the next slide come from synthesizing these findings.
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 3 — Interpretation Conclusion ══════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-tag">🎯 Interpretation</div>
+    <h2 class="slide-title">IVC Cutoffs — The Bottom Line</h2>
+    <p class="slide-subtitle">Synthesizing the evidence into a practical bedside rule.</p>
+
+    <!-- Tier 1 — Small IVC -->
+    <div class="def-card" style="border-color:rgba(13,148,136,0.7); border-width:2px; background:rgba(13,148,136,0.06); margin-bottom:14px;">
+      <div class="def-card-label teal">IVC &lt; 1 cm</div>
+      <div class="def-card-question" style="font-size:20px;">
+        <strong style="color:var(--teal);">Fill</strong> &nbsp;—&nbsp; strongly supports fluid responsiveness
+      </div>
+      <div class="def-card-note" style="font-size:13.5px; color:var(--muted); margin-top:6px;">
+        Sensitivity ~90% — below this threshold, fluid is generally appropriate.
+      </div>
+    </div>
+
+    <!-- Tier 2 — Indeterminate IVC -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 22px; margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">IVC 1 – 2.5 cm (indeterminate)</div>
+      <div style="font-size:16px; color:var(--text); font-weight:600; margin-bottom:14px;">Assess collapsibility</div>
+
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px; align-items:center; padding:10px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--muted);">
+        <div>Patient type</div>
+        <div style="text-align:center;">Cutoff</div>
+        <div style="text-align:center;">Rule of thumb</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px; align-items:center; padding:12px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--text);">
+        <div>Spontaneously breathing</div>
+        <div style="text-align:center; font-weight:700; color:var(--teal);">≥ 35%</div>
+        <div style="text-align:center; color:var(--muted);">~ 1/3</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px; align-items:center; padding:12px 0; font-size:14px; color:var(--text);">
+        <div>Mechanically ventilated</div>
+        <div style="text-align:center; font-weight:700; color:var(--teal);">≥ 16.5%</div>
+        <div style="text-align:center; color:var(--muted);">~ 1/5</div>
+      </div>
+
+      <div style="font-size:13px; color:var(--muted); margin-top:10px; font-style:italic;">
+        Above the cutoff → likely fluid responsive.
+      </div>
+    </div>
+
+    <!-- Tier 3 — Large IVC -->
+    <div class="def-card" style="border-color:rgba(217,119,6,0.7); border-width:2px; background:rgba(217,119,6,0.06); margin-bottom:18px;">
+      <div class="def-card-label amber">IVC &gt; 2.5 cm</div>
+      <div class="def-card-question" style="font-size:20px;">
+        <strong style="color:var(--amber);">Do NOT fill</strong> &nbsp;—&nbsp; fluid unlikely to help
+      </div>
+      <div class="def-card-note" style="font-size:13.5px; color:var(--muted); margin-top:6px;">
+        Sensitivity 80–90% for non-responsiveness; further fluid risks worsening congestion.
+      </div>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:8px; text-align:center;">
+      In mechanically ventilated patients, ideal interpretation requires tidal volume ≤ 8 mL/kg and PEEP ≤ 5 cmH₂O.
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 4 — ASE 2025 RA pressure update ══════════════════ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-tag">📋 Guideline Update</div>
+    <h2 class="slide-title">ASE 2025 — Estimating RA Pressure from IVC</h2>
+    <p class="slide-subtitle">The American Society of Echocardiography has updated how we estimate right atrial pressure from IVC findings.</p>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 What changed</div>
+      <p style="margin-bottom:10px;">The classic ASE framework placed RA pressure into <strong>three categories</strong> based on IVC diameter (cutoff 2.1 cm) and collapsibility (cutoff 50%):</p>
+      <ul style="font-size:14px; color:var(--text); line-height:1.8; margin:6px 0 10px 18px; padding:0;">
+        <li><strong>Low</strong> — IVC ≤ 2.1 cm + collapsibility &gt; 50% → ~<strong>3 mmHg</strong> (range 0–5)</li>
+        <li><strong>Intermediate</strong> — one criterion met → ~<strong>8 mmHg</strong> (range 5–10)</li>
+        <li><strong>High</strong> — IVC &gt; 2.1 cm + collapsibility &lt; 50% → ~<strong>15 mmHg</strong> (range 10–20)</li>
+      </ul>
+      <p>The <strong>ASE 2025 update</strong> revises this approach to improve accuracy — particularly in indeterminate cases — by incorporating additional sonographic signs (see image below).</p>
+    </div>
+
+    <div style="text-align:center; margin:20px 0 6px;">
+      <img src="assets/img/IVCandRA_ASEguidelines2025.png"
+           alt="ASE 2025 algorithm for IVC-based RA pressure estimation"
+           style="max-width:100%; border-radius:10px; border:1px solid var(--border);">
+      <p style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:8px;">
+        ASE 2025 algorithm for IVC-based RA pressure estimation.
+      </p>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin-top:14px;">
+      <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:6px;">📌 No need to memorize</div>
+      <p style="font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 12px;">
+        The exact algorithm is too detailed for bedside recall — save this image as a reference and consult it when you need a precise RA pressure estimate.
+      </p>
+      <div style="background:rgba(13,148,136,0.10); border-left:3px solid var(--teal); border-radius:6px; padding:10px 14px;">
+        <p style="font-size:14px; color:var(--text); margin:0; line-height:1.5;">
+          <strong style="color:var(--teal);">For volume assessment</strong>, the cutoffs from the previous slide remain the practical bedside rule.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 5 — Quiz Q1 ══════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-0">
+      <div class="q-number">Question 1 of 4</div>
+      <div class="q-text">In a hypotensive patient, you measure the IVC at 0.6 cm with significant respiratory variation. According to the evidence-based rule, what is the next step?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="0" data-question-id="m2_q1" data-answer-text="Give fluid — IVC < 1 cm strongly suggests fluid responsiveness">
+          <span class="opt-letter">A</span>Give fluid — IVC &lt; 1 cm strongly suggests fluid responsiveness
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m2_q1" data-answer-text="Hold fluid — IVC is too small to be reliable">
+          <span class="opt-letter">B</span>Hold fluid — IVC is too small to be reliable
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m2_q1" data-answer-text="Start diuresis — small IVC indicates dehydration only">
+          <span class="opt-letter">C</span>Start diuresis — small IVC indicates dehydration only
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m2_q1" data-answer-text="Start vasopressors first — IVC is unreliable in hypotension">
+          <span class="opt-letter">D</span>Start vasopressors first — IVC is unreliable in hypotension
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-0">
+      ✅ <strong>Correct — A.</strong> When IVC is &lt; 1 cm, the predictive value for fluid responsiveness is high (≥90%). This is the threshold below which giving fluid is generally appropriate, assuming no contraindications.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 6 — Quiz Q2 ══════════════════ -->
+  <div class="slide" id="slide-6">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-1">
+      <div class="q-number">Question 2 of 4</div>
+      <div class="q-text">Above which IVC diameter should you generally <strong>NOT</strong> give a fluid bolus (based on the evidence-based cutoff)?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m2_q2" data-answer-text="1.5 cm">
+          <span class="opt-letter">A</span>1.5 cm
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m2_q2" data-answer-text="2.0 cm">
+          <span class="opt-letter">B</span>2.0 cm
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="m2_q2" data-answer-text="2.5 cm">
+          <span class="opt-letter">C</span>2.5 cm
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m2_q2" data-answer-text="3.0 cm">
+          <span class="opt-letter">D</span>3.0 cm
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-1">
+      ✅ <strong>Correct — C.</strong> An IVC &gt; 2.5 cm has a sensitivity of 80–90% for predicting that fluid will <em>not</em> increase cardiac output. Above this threshold, fluid is unlikely to help and may worsen congestion.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 7 — Quiz Q3 ══════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-2">
+      <div class="q-number">Question 3 of 4</div>
+      <div class="q-text">In a spontaneously breathing patient with IVC in the indeterminate range (1–2.5 cm), what collapsibility threshold suggests likely fluid responsiveness?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m2_q3" data-answer-text="≥ 16.5% (~1/5)">
+          <span class="opt-letter">A</span>≥ 16.5% (~1/5)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m2_q3" data-answer-text="≥ 20% (~1/4)">
+          <span class="opt-letter">B</span>≥ 20% (~1/4)
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="2" data-question-id="m2_q3" data-answer-text="≥ 35% (~1/3)">
+          <span class="opt-letter">C</span>≥ 35% (~1/3)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m2_q3" data-answer-text="≥ 50% (~1/2)">
+          <span class="opt-letter">D</span>≥ 50% (~1/2)
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-2">
+      ✅ <strong>Correct — C.</strong> In spontaneously breathing patients, ΔIVC ≥ 35% (about 1/3) is the best-supported threshold for predicting fluid responsiveness (Sensitivity 0.92, Specificity 0.93 in the 2025 meta-analysis).
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 8 — Quiz Q4 (application) ══════════════════ -->
+  <div class="slide" id="slide-8">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+    </div>
+
+    <div class="question-card" id="q-card-3">
+      <div class="q-number">Question 4 of 4</div>
+      <div class="q-text">A mechanically ventilated patient (tidal volume 7 mL/kg, PEEP 5 cmH₂O) is hypotensive. IVC distensibility index is 25%. What is the most appropriate interpretation?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="3" data-question-id="m2_q4" data-answer-text="Likely fluid responsive — distensibility exceeds the vented cutoff (~16.5%)">
+          <span class="opt-letter">A</span>Likely fluid responsive — distensibility exceeds the vented cutoff (~16.5%)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m2_q4" data-answer-text="Not fluid responsive — distensibility is below 35%">
+          <span class="opt-letter">B</span>Not fluid responsive — distensibility is below 35%
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m2_q4" data-answer-text="Uninterpretable — PEEP makes IVC unreliable at any level">
+          <span class="opt-letter">C</span>Uninterpretable — PEEP makes IVC unreliable at any level
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m2_q4" data-answer-text="Consider diuresis — high distensibility suggests congestion">
+          <span class="opt-letter">D</span>Consider diuresis — high distensibility suggests congestion
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-3">
+      ✅ <strong>Correct — A.</strong> In ventilated patients with low tidal volume and PEEP ≤ 5, an IVC distensibility ≥ 16.5% (about 1/5) predicts fluid responsiveness. At 25%, this patient comfortably clears that threshold and is likely to benefit from a bolus — assuming fluid <em>tolerance</em> (covered in Module 3) is also acceptable.
+    </div>
+
+    <!-- Redo panel — shown if score ≤ 50% after Q4 -->
+    <div class="redo-panel" id="redo-panel">
+      <div style="font-size:40px; margin-bottom:12px;">📉</div>
+      <h3>Score: <span id="redo-score"></span></h3>
+      <p>You scored ≤ 50%. Would you like to review the content slides, or retake the quiz now?</p>
+      <div class="redo-actions">
+        <button class="nav-btn ghost" id="btn-review">← Review Content</button>
+        <button class="nav-btn" id="btn-retake">Retake Quiz →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 9 — Summary ══════════════════ -->
+  <div class="slide" id="slide-9">
+    <div class="slide-tag summary-tag">📋 Module Summary</div>
+    <h2 class="slide-title">Key Concepts — Module 2</h2>
+    <p class="slide-subtitle">A quick-reference recap of the IVC evaluation rules.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <ul class="summary-list" style="margin:0;">
+        <li>IVC evaluation is most helpful for assessing fluid <strong style="color:var(--teal);">responsiveness</strong></li>
+        <li><strong>Fill</strong> if IVC &lt; 1 cm · <strong>Don't fill</strong> if IVC &gt; 2.5 cm</li>
+        <li>For IVC 1–2.5 cm, assess collapsibility:
+          <ul style="margin-top:6px;">
+            <li>Spontaneously breathing: <strong>≥ 35%</strong> (~1/3)</li>
+            <li>Mechanically ventilated: <strong>≥ 16.5%</strong> (~1/5)</li>
+          </ul>
+        </li>
+        <li>ASE 2025 updated guidelines for RA pressure estimation from IVC</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">⚠️ Key Pearl</div>
+      <p><strong>Pressure ≠ Volume.</strong> A dilated IVC reflects high RA pressure — but that pressure may come from RV dysfunction, tension pneumothorax, or tamponade, not volume overload. Rule these out before trusting IVC alone.</p>
+    </div>
+
+    <div style="margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:4px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">Coming up next</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6;">Module 3 will cover the <strong>VExUS protocol</strong> — assessing fluid <em>tolerance</em> through hepatic, portal, and renal vein Doppler.</p>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="completeModule()">Continue to Module 3 →</button>
+    </div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" id="btn-next" onclick="nav.next()">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/quiz.js"></script>
+<script>
+  var STORAGE_KEY = 'fa_m2_progress';
+
+  // ── Wire quiz buttons via event delegation ────────────────────────────
+  document.querySelector('.slide-wrapper').addEventListener('click', function (e) {
+    var btn = e.target.closest('.opt-btn');
+    if (!btn) return;
+    var qIdx      = parseInt(btn.dataset.qIdx, 10);
+    var isCorrect = btn.dataset.correct === 'true';
+    var qId       = btn.dataset.questionId;
+    var aText     = btn.dataset.answerText;
+    if (isNaN(qIdx)) return;
+    quiz.answerQ(qIdx, btn, isCorrect, qId, aText);
+  });
+
+  // ── Quiz init ─────────────────────────────────────────────────────────
+  quiz.init({
+    questionCount: 4,
+    moduleId:      'module_2',
+    storageKey:    STORAGE_KEY,
+    quizStart:     5,
+    onComplete: function (score, total) {
+      tracker.logEvent({
+        event_type:     'module_complete',
+        module_id:      'module_2',
+        question_id:    null,
+        answer:         null,
+        is_correct:     null,
+        score:          score,
+        attempt_number: 1,
+      });
+
+      if (score / total <= 0.5) {
+        nav.disableNext();
+        document.getElementById('redo-score').textContent = score + ' / ' + total;
+        quiz.showRedoChoice(
+          'redo-panel',
+          function () { quiz.resetQuiz(); nav.goTo(0); },
+          function () { nav.goTo(5); }
+        );
+      }
+    },
+  });
+
+  // ── Nav init ──────────────────────────────────────────────────────────
+  nav.init({
+    slides:     10,
+    quizStart:  5,
+    quizEnd:    8,
+    summaryIdx: 9,
+    storageKey: STORAGE_KEY,
+    onEnter: function (slideIdx) {
+      var quizSlideToQ = { 5: 0, 6: 1, 7: 2, 8: 3 };
+      if (slideIdx in quizSlideToQ && !quiz.isAnswered(quizSlideToQ[slideIdx])) {
+        nav.disableNext();
+      }
+      if (slideIdx === 9) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('nav-hint').textContent = '';
+      }
+    },
+  });
+
+  // ── Module complete handler (summary slide button) ────────────────────
+  function completeModule() {
+    nav.clearProgress();
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'module_2',
+      question_id:    null,
+      answer:         'summary_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'module-3.html';
+  }
+</script>
+</body>
+</html>

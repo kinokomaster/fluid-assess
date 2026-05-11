@@ -88,7 +88,59 @@ See [SPEC.md](SPEC.md) for what each piece does. See [CLAUDE.md](CLAUDE.md) for 
 
 ## Phase 5 — Content & polish (after pipeline is proven)
 
-- [ ] **5.1** Section-by-section content review of Module 1 (chat-driven, per the user's section-by-section process)
-- [ ] **5.2** Finalize consent paragraph wording (SPEC §12 open question)
-- [ ] **5.3** Decide whether to keep the 7-item confidence survey or trim (SPEC §12 open question)
-- [ ] *(V2+: Modules 2, 3, Summary test, 3 cases — separate planning round once v1 is shipped)*
+- [x] **5.1** Section-by-section content review of Module 1 (chat-driven, per the user's section-by-section process)
+- [ ] **5.2** Finalize consent paragraph wording (SPEC §12 open question) — *deferred to V2 content review*
+- [ ] **5.3** Decide whether to keep the 7-item confidence survey or trim (SPEC §12 open question) — *deferred; 7 items accepted for now*
+
+---
+
+## Phase 6 — Module 2: IVC Evaluation
+
+- [x] **6.1** Build `module-2.html` scaffold (clone M1 structure, storage key `fa_m2_progress`, 5 content slides + 4 quiz + summary)
+- [x] **6.2** Slide 1 — Why IVC? (recap M1; IVC → fluid responsiveness)
+- [x] **6.3** Slide 2 — How to measure IVC (cardiac probe, subxiphoid, M-mode, example gifs/M-mode images)
+- [x] **6.4** Slide 3 — Brief history (4 study cards in timeline; clickable "Skip to conclusion →" button)
+- [x] **6.5** Slide 4 — Interpretation conclusion (fill <1cm; don't fill >2.5cm; 1–2.5cm collapsibility cutoffs)
+- [x] **6.6** Slide 5 — ASE 2025 update on RA pressure estimation (reference image)
+- [x] **6.7** Knowledge check — 4 MCQs (Q1-Q3 cutoff recall, Q4 vented application); ≤50% Review/Retake
+- [x] **6.8** Summary slide — IVC for responsiveness; cutoffs recap; Pressure ≠ Volume pearl
+- [x] **6.9** Wire `module-1.html` `completeModule()` → navigate to `module-2.html`
+- [ ] **6.10** E2E test on desktop + mobile; verify events log with `module_id: 'module_2'`, `question_id: 'm2_q1'`–`'m2_q4'`
+
+---
+
+## Phase 7 — Module 3: VExUS Protocol
+
+- [ ] **7.1** Build `module-3.html` scaffold (storage key `fa_m3_progress`)
+- [ ] **7.2** Slide content — Why VExUS? (recap from M2)
+- [ ] **7.3** Slide content — Three vessels overview
+- [ ] **7.4** Slide content — Hepatic vein Doppler patterns
+- [ ] **7.5** Slide content — Portal vein Doppler patterns
+- [ ] **7.6** Slide content — Renal interlobar vein Doppler patterns
+- [ ] **7.7** Slide content — Grading 0–3 (IVC + 3 vessel patterns)
+- [ ] **7.8** Slide content — Clinical application (Grade ≥2 changes management)
+- [ ] **7.9** Knowledge check — 4 MCQs
+- [ ] **7.10** Summary slide
+- [ ] **7.11** Wire `module-2.html` `completeModule()` → `module-3.html`
+- [ ] **7.12** E2E test on desktop + mobile
+
+---
+
+## Phase 8 — Case Studies
+
+- [ ] **8.1** Build `cases.html` scaffold (storage key `fa_cases_progress`)
+- [ ] **8.2** Case 1 content — Urosepsis with hypotension → give fluid
+- [ ] **8.3** Case 2 content — HFpEF with oliguria (intubated) → diurese
+- [ ] **8.4** Case 3 content — ARDS on high PEEP, rising creatinine → trust VExUS over IVC
+- [ ] **8.5** Wire `module-3.html` → `cases.html` → `post-test.html`
+- [ ] **8.6** E2E test on desktop + mobile
+
+---
+
+## Phase 9 — V2 Integration & Polish
+
+- [ ] **9.1** Update `SPEC.md` §5 (Deferred): remove M2/M3/Cases; note Summary Test as *dropped*
+- [ ] **9.2** Update `SPEC.md` §6 user flow diagram for V2
+- [ ] **9.3** Update `SPEC.md` §8 event schema (new `module_id` and `question_id` values)
+- [ ] **9.4** Update `PROJECT.md` "Current State"
+- [ ] **9.5** Final E2E pass through full V2 flow — verify single `learner_id` across all events
