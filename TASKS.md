@@ -111,18 +111,22 @@ See [SPEC.md](SPEC.md) for what each piece does. See [CLAUDE.md](CLAUDE.md) for 
 
 ## Phase 7 — Module 3: VExUS Protocol
 
-- [ ] **7.1** Build `module-3.html` scaffold (storage key `fa_m3_progress`)
-- [ ] **7.2** Slide content — Why VExUS? (recap from M2)
-- [ ] **7.3** Slide content — Three vessels overview
-- [ ] **7.4** Slide content — Hepatic vein Doppler patterns
-- [ ] **7.5** Slide content — Portal vein Doppler patterns
-- [ ] **7.6** Slide content — Renal interlobar vein Doppler patterns
-- [ ] **7.7** Slide content — Grading 0–3 (IVC + 3 vessel patterns)
-- [ ] **7.8** Slide content — Clinical application (Grade ≥2 changes management)
-- [ ] **7.9** Knowledge check — 4 MCQs
-- [ ] **7.10** Summary slide
-- [ ] **7.11** Wire `module-2.html` `completeModule()` → `module-3.html`
-- [ ] **7.12** E2E test on desktop + mobile
+- [x] **7.1** Build `module-3.html` scaffold (storage key `fa_m3_progress`)
+- [x] **7.2** Slide 1 — Why VExUS? (recap from M2; VExUS → fluid tolerance)
+- [x] **7.3** Slide 2 — Three vessels overview (hepatic, portal, renal interlobar)
+- [x] **7.4** Slide 3 — S wave / D wave refresher (foundational Doppler concept)
+- [x] **7.5** Slide 4 — Hepatic vein Doppler (normal triphasic · S<D mild · S reversal severe)
+- [x] **7.6** Slide 5 — Portal vein Doppler (normal · mild 30–50% PI · severe ≥50% PI)
+- [x] **7.7** Slide 6 — Renal interlobar vein Doppler (continuous · biphasic · monophasic)
+- [x] **7.8** Slide 7 — VExUS Grading 0–3 with AKI HR data (Beaubien-Souligny 2020)
+- [x] **7.9** Slide 8 — Evidence base: original 2020 study vs. 2025 sepsis follow-up (population effects)
+- [x] **7.10** Slide 9 — mVExUS (modified VExUS without renal; Ultrasound J 2025;17:7)
+- [x] **7.11** Slide 10 — Clinical application (Grade ≥2 changes management; consider mVExUS)
+- [x] **7.12** Knowledge check — 4 MCQs (pattern recognition: hepatic mild/severe, portal severe, grading app)
+- [x] **7.13** Summary slide — tolerance · nuance vs CVP · portal+hepatic easier · renal optional
+- [x] **7.14** Build `review.html` — 3-module synthesis page (M1/M2/M3 recap + IVC×VExUS 2×2 matrix); M3 `completeModule()` → `review.html` → `cases.html`
+- [x] **7.15** Wire `module-2.html` `completeModule()` → `module-3.html` (done in scaffold)
+- [ ] **7.16** E2E test on desktop + mobile
 
 ---
 

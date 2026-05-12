@@ -37,12 +37,13 @@
 var QUESTIONS = [
   {
     id: 'kc_q1',
-    text: 'Which of the following IVC findings most strongly supports giving IV fluids in a spontaneously breathing patient?',
+    text: 'This M-mode tracing of the IVC was obtained in a spontaneously breathing patient with hypotension. The most appropriate interpretation is:',
+    image: 'assets/img/IVC_1_m.jpg',
     options: [
-      { text: 'IVC diameter 1.5 cm with minimal respiratory variation', correct: false },
-      { text: 'IVC diameter 0.8 cm with 40% respiratory variation',     correct: true  },
-      { text: 'IVC diameter 2.0 cm with 10% respiratory variation',     correct: false },
-      { text: 'IVC diameter 2.3 cm with 20% respiratory variation',     correct: false },
+      { text: 'Fluid responsive — small IVC',  correct: true  },
+      { text: 'Not fluid responsive — dilated IVC with minimal variation',     correct: false },
+      { text: 'Findings are uninterpretable',                                  correct: false },
+      { text: 'Suggestive of cardiac tamponade',                               correct: false },
     ],
   },
   {
@@ -78,12 +79,13 @@ var QUESTIONS = [
   },
   {
     id: 'kc_q5',
-    text: 'Severe VExUS (Grade 3) requires:',
+    text: 'This hepatic vein Doppler tracing is most consistent with:',
+    image: 'assets/img/hepatic_severe.png',
     options: [
-      { text: 'Dilated IVC only',                                                      correct: false },
-      { text: 'Abnormal Doppler in at least one organ',                                correct: false },
-      { text: 'Dilated IVC + severe flow abnormalities in ≥2 venous Doppler sites',   correct: true  },
-      { text: 'Portal vein pulsatility alone',                                         correct: false },
+      { text: 'Normal triphasic flow (S > D)',                  correct: false },
+      { text: 'Mild venous congestion (S < D)',                 correct: false },
+      { text: 'Severe venous congestion with S-wave reversal',  correct: true  },
+      { text: 'Normal portal vein pattern',                     correct: false },
     ],
   },
   {
@@ -149,6 +151,13 @@ QUESTIONS.forEach(function (q, idx) {
   card.innerHTML =
     '<div class="q-number">Question ' + (idx + 1) + ' of ' + TOTAL + '</div>' +
     '<div class="q-text">' + q.text + '</div>';
+  if (q.image) {
+    var qImg = document.createElement('img');
+    qImg.src = q.image;
+    qImg.alt = 'Question ' + (idx + 1) + ' image';
+    qImg.style.cssText = 'max-width:100%; max-height:240px; border-radius:8px; border:1px solid var(--border); display:block; margin:10px auto 16px;';
+    card.appendChild(qImg);
+  }
   card.appendChild(optionsContainer);
 
   var pips = document.createElement('div');

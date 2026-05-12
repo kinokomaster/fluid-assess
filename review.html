@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modules Review — IVC & VExUS</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* 3-column module recap — stacks on narrow screens */
+  .module-recap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 800px) {
+    .module-recap-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">🎯 Modules Review</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<div class="slide-wrapper">
+  <div class="slide active">
+    <div class="slide-tag">🧠 Synthesis</div>
+    <h1 class="slide-title">Putting It All Together</h1>
+    <p class="slide-subtitle">A quick recap of the three modules before we apply the framework to clinical cases.</p>
+
+    <!-- 3-column module recap -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:14px 0 10px;">
+      What you've learned
+    </p>
+
+    <div class="module-recap-grid">
+
+      <!-- Module 1 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:12px; padding:18px 20px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:4px;">Module 1</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">Volume Assessment</div>
+        <ul style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Volume assessment = <strong style="color:var(--teal);">responsiveness</strong> + <strong style="color:var(--amber);">tolerance</strong></li>
+          <li>A patient can be one but not the other</li>
+          <li>You need both questions answered to make a safe fluid decision</li>
+        </ul>
+      </div>
+
+      <!-- Module 2 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:12px; padding:18px 20px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:4px;">Module 2</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">IVC → Responsiveness</div>
+        <ul style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li><strong>Fill</strong> if IVC &lt; 1 cm; <strong>don't fill</strong> if &gt; 2.5 cm</li>
+          <li>IVC 1–2.5 cm → assess collapsibility (≥ 35% spontaneous, ≥ 16.5% ventilated)</li>
+          <li>Pressure ≠ volume — rule out RV failure, tamponade, PTX</li>
+        </ul>
+      </div>
+
+      <!-- Module 3 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--amber); border-radius:12px; padding:18px 20px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:4px;">Module 3</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">VExUS → Tolerance</div>
+        <ul style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Hepatic + portal + renal vein Doppler → Grade 0–3</li>
+          <li><strong>mVExUS</strong> (hepatic + portal only) for bedside use</li>
+          <li><strong>Grade ≥ 2 → consider diuresis</strong></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Two Questions featured block (responsiveness vs tolerance) -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:24px 0 10px;">
+      The two questions to answer
+    </p>
+
+    <div class="module-recap-grid" style="grid-template-columns:1fr 1fr;">
+
+      <div style="background:rgba(13,148,136,0.06); border:1px solid rgba(13,148,136,0.4); border-top:3px solid var(--teal); border-radius:12px; padding:18px 22px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">Question 1</div>
+        <div style="font-size:17px; font-weight:700; color:var(--text); margin-bottom:10px;">Is the patient fluid <em style="color:var(--teal);">responsive</em>?</div>
+        <p style="font-size:13.5px; color:var(--text); line-height:1.6; margin:0 0 12px;">
+          <em>Will giving fluid actually increase cardiac output?</em>
+        </p>
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.6px; padding-top:10px; border-top:1px solid var(--border); margin-bottom:6px;">Tool</div>
+        <div style="font-size:14px; color:var(--text); margin-bottom:8px;"><strong style="color:var(--teal);">IVC</strong> size + collapsibility</div>
+        <ul style="font-size:13px; color:var(--muted); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Small / collapsing → <strong style="color:var(--teal);">responsive</strong></li>
+          <li>Dilated / non-collapsing → <strong>not responsive</strong></li>
+        </ul>
+      </div>
+
+      <div style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:12px; padding:18px 22px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Question 2</div>
+        <div style="font-size:17px; font-weight:700; color:var(--text); margin-bottom:10px;">Is the patient fluid <em style="color:var(--amber);">tolerant</em>?</div>
+        <p style="font-size:13.5px; color:var(--text); line-height:1.6; margin:0 0 12px;">
+          <em>Can fluid be given without causing harm (organ congestion)?</em>
+        </p>
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.6px; padding-top:10px; border-top:1px solid var(--border); margin-bottom:6px;">Tool</div>
+        <div style="font-size:14px; color:var(--text); margin-bottom:8px;"><strong style="color:var(--amber);">VExUS</strong> (hepatic, portal, renal Doppler)</div>
+        <ul style="font-size:13px; color:var(--muted); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Grade 0–1 → <strong style="color:var(--amber);">tolerant</strong></li>
+          <li>Grade ≥ 2 → <strong>not tolerant</strong></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid var(--teal); border-radius:10px; padding:14px 18px; margin:14px 0 0;">
+      <p style="font-size:14px; color:var(--text); line-height:1.7; margin:0;">
+        <strong>These are two independent questions.</strong> A patient can be <span style="color:var(--teal); font-weight:600;">responsive</span> but <span style="color:var(--amber); font-weight:600;">not tolerant</span> — or vice versa. Both must be answered before deciding to give, hold, or remove fluid.
+      </p>
+    </div>
+
+    <!-- IVC caveats -->
+    <div style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.4); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px; margin-top:16px;">
+      <p style="font-size:13px; color:var(--amber); margin-bottom:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">⚠️ IVC Caveats — interpret with caution</p>
+      <ul style="font-size:14px; color:var(--text); line-height:1.8; margin:0 0 0 18px; padding:0;">
+        <li><strong>High PEEP (&gt; 5 cmH₂O):</strong> IVC distensibility becomes unreliable — the exaggerated respiratory swing no longer faithfully reflects preload responsiveness. Lean on VExUS or dynamic testing in this setting.</li>
+        <li><strong>Pressure ≠ Volume:</strong> A dilated IVC reflects high RA pressure, which can come from <strong>RV dysfunction</strong>, <strong>tension pneumothorax</strong>, or <strong>cardiac tamponade</strong> — not just volume overload. Rule these out before trusting IVC alone.</li>
+      </ul>
+    </div>
+
+    <!-- IVC × VExUS 2x2 matrix -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:24px 0 10px;">
+      The synthesis — IVC × VExUS decision matrix
+    </p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; overflow-x:auto;">
+      <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:8px;">
+
+        <!-- Header row -->
+        <div></div>
+        <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#10b981; margin-bottom:2px;">Fluid Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade 0–1</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#ef4444; margin-bottom:2px;">NOT Fluid Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade ≥ 2</div>
+        </div>
+
+        <!-- Row 1: Responsive -->
+        <div style="background:rgba(13,148,136,0.08); border:1px solid rgba(13,148,136,0.3); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--teal); margin-bottom:4px;">Fluid Responsive</div>
+          <div style="font-size:12.5px; color:var(--text); line-height:1.5;">IVC &lt; 1 cm</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.5; margin-top:2px;"><strong style="color:var(--text);">OR</strong> ΔIVC ≥ 35% (spontaneous)<br>/ ≥ 16.5% (ventilated)</div>
+        </div>
+        <div style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">✅</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Give fluid</div>
+        </div>
+        <div style="background:rgba(217,119,6,0.12); border:1px solid rgba(217,119,6,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">⚠️</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Avoid fluid<br>Consider pressors</div>
+        </div>
+
+        <!-- Row 2: NOT Responsive -->
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--muted); margin-bottom:4px;">NOT Fluid Responsive</div>
+          <div style="font-size:12.5px; color:var(--text); line-height:1.5;">IVC &gt; 2.5 cm</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.5; margin-top:2px;"><strong style="color:var(--text);">OR</strong> ΔIVC &lt; 35% (spontaneous)<br>/ &lt; 16.5% (ventilated)</div>
+        </div>
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">⏸️</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Hold fluid<br>Reassess</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">🚱</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Diurese<br>Decongest</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bridge to cases -->
+    <div style="background:linear-gradient(135deg, rgba(13,148,136,0.08), rgba(217,119,6,0.08)); border:2px solid var(--teal); border-radius:12px; padding:20px 24px; margin-top:22px; text-align:center;">
+      <p style="font-size:13px; color:var(--teal); margin-bottom:8px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🩺 Up next</p>
+      <p style="font-size:15px; color:var(--text); line-height:1.6; margin:0 0 16px;">
+        Three short clinical scenarios to apply this framework. Each case asks you to decide: <strong>fluid, hold, diurese, or pressors</strong>?
+      </p>
+      <button class="nav-btn" onclick="continueToCases()">Continue to Cases →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" style="visibility:hidden;">← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" style="visibility:hidden;">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  // Flush any queued events from the prior page in the background.
+  tracker.flushQueue();
+
+  function continueToCases() {
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'review',
+      question_id:    null,
+      answer:         'review_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'cases.html';
+  }
+</script>
+</body>
+</html>

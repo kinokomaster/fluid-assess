@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3 — VExUS Protocol</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Redo choice panel — same pattern as M1/M2 */
+  .redo-panel {
+    display: none;
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+  .redo-panel h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .redo-panel p {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+  .redo-actions {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* 3-column pattern card grid (Slides 4, 5, 6) — collapses to single column on narrow screens */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 700px) {
+    .pattern-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Image placeholder box (used until real Doppler images are added) */
+  .img-placeholder {
+    background: var(--card);
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    padding: 28px 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .img-placeholder strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    font-style: normal;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📊 Module 3 — VExUS Protocol</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<!-- SLIDE WRAPPER -->
+<div class="slide-wrapper">
+
+  <!-- ══════════════════ SLIDE 0 — Why VExUS? ══════════════════ -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-tag">🌊 VExUS Protocol</div>
+    <h1 class="slide-title">Why VExUS?</h1>
+    <p class="slide-subtitle">
+      Just as IVC tells us about fluid responsiveness, VExUS tells us about fluid tolerance — the other half of every volume decision.
+    </p>
+
+    <div class="def-card" style="border-color:rgba(217,119,6,0.7); border-width:2px; background:rgba(217,119,6,0.06); margin-bottom:20px;">
+      <div class="def-card-label amber">Recap from Modules 1 &amp; 2</div>
+      <div class="def-card-question">VExUS evaluates fluid <em style="color:var(--amber);">tolerance</em></div>
+      <div class="def-card-note" style="font-size:14.5px; color:var(--text); margin-top:6px;">
+        It answers: <em>can we give fluid (or do we need to remove it) without causing harm?</em> — by detecting <strong>venous congestion</strong> before it becomes clinically obvious.
+      </div>
+    </div>
+
+    <!-- Featured: What VExUS Means -->
+    <div style="background:linear-gradient(135deg, rgba(13,148,136,0.08), rgba(217,119,6,0.08)); border:2px solid var(--teal); border-radius:12px; padding:22px 26px; margin-top:18px;">
+      <p style="font-size:13px; color:var(--teal); margin-bottom:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🌊 What VExUS Means</p>
+      <p style="font-size:30px; font-weight:800; font-family:'DM Serif Display', serif; color:var(--text); line-height:1.2; margin-bottom:18px; letter-spacing:0.5px;">
+        <span style="color:var(--teal);">V</span>enous &middot;
+        <span style="color:var(--teal);">Ex</span>cess &middot;
+        <span style="color:var(--teal);">U</span>ltra<span style="color:var(--teal);">S</span>ound
+      </p>
+      <p style="font-size:15px; color:var(--text); line-height:1.7; margin:0;">
+        <strong>The core idea:</strong> the more congested the venous system, the more <strong style="color:var(--amber);">back-flow</strong> appears in the veins. Doppler waveforms capture this back-flow — and that's what we'll measure across three vessels in the next slides.
+      </p>
+    </div>
+
+    <div style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.4); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px; margin-top:16px;">
+      <p style="font-size:13px; color:var(--amber); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">🩻 Prerequisite: IVC &gt; 2 cm</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.7;">
+        The VExUS protocol is intended for patients with evidence of venous congestion — typically a <strong>dilated IVC (&gt; 2 cm)</strong>. In patients without IVC dilation, VExUS adds little, because there's no congestion to characterize.
+      </p>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--muted); font-style:italic; text-align:center; margin-top:20px;">
+      Next: the three vessels we'll examine — hepatic, portal, and renal interlobar.
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 1 — Three Vessels ══════════════════ -->
+  <div class="slide" id="slide-1">
+    <div class="slide-tag">🩻 Anatomy</div>
+    <h2 class="slide-title">The Three Vessels of VExUS</h2>
+    <p class="slide-subtitle">
+      Three veins downstream of the right atrium that tell us what venous congestion looks like — before clinical signs appear.
+    </p>
+
+    <p style="font-size:14.5px; color:var(--text); line-height:1.7; margin-bottom:20px;">
+      When right atrial pressure rises, it transmits backward into the systemic veins. Three vessels — chosen because they're accessible to bedside ultrasound and each tells a slightly different story — make up the VExUS protocol.
+    </p>
+
+    <!-- Three vessel cards in a 3-column grid -->
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-bottom:18px;">
+
+      <!-- ① Hepatic vein -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:10px; padding:18px;">
+        <div style="font-size:22px; font-weight:800; color:var(--teal); margin-bottom:4px;">①</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">Hepatic Vein</div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Where</strong>
+          A hepatic vein near its junction with the IVC
+        </div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Reflects</strong>
+          Pressure transmission from the right atrium during systole and diastole
+        </div>
+        <div style="font-size:12.5px; color:var(--muted);">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Why it matters</strong>
+          First to change as RA pressure rises
+        </div>
+      </div>
+
+      <!-- ② Portal vein -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:10px; padding:18px;">
+        <div style="font-size:22px; font-weight:800; color:var(--teal); margin-bottom:4px;">②</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">Portal Vein</div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Where</strong>
+          Portal vein at the porta hepatis (within the liver)
+        </div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Reflects</strong>
+          Sinusoidal congestion in the liver
+        </div>
+        <div style="font-size:12.5px; color:var(--muted);">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Why it matters</strong>
+          Becomes pulsatile as upstream congestion worsens
+        </div>
+      </div>
+
+      <!-- ③ Renal interlobar vein -->
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--amber); border-radius:10px; padding:18px;">
+        <div style="font-size:22px; font-weight:800; color:var(--amber); margin-bottom:4px;">③</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px;">Renal Interlobar Vein</div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Where</strong>
+          Interlobar vein at the corticomedullary junction (intrarenal)
+        </div>
+        <div style="font-size:12.5px; color:var(--muted); margin-bottom:8px;">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Reflects</strong>
+          Venous outflow obstruction in the kidney
+        </div>
+        <div style="font-size:12.5px; color:var(--muted);">
+          <strong style="color:var(--text); font-size:11px; text-transform:uppercase; letter-spacing:0.6px; display:block; margin-bottom:2px;">Why it matters</strong>
+          Closest to organ-level injury (AKI). Hardest to obtain.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 The logical order</div>
+      <p>The three vessels reflect a progression: <strong>hepatic vein changes appear first</strong>, then <strong>portal pulsatility</strong>, then <strong>renal vein abnormalities</strong>. As congestion worsens, more vessels show abnormal patterns — and that progression is what the VExUS grade captures.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 2 — S/D Wave Refresher ══════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-tag">📐 Doppler Basics</div>
+    <h2 class="slide-title">S Wave / D Wave Refresher</h2>
+    <p class="slide-subtitle">Two simple concepts that make hepatic vein interpretation make sense.</p>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 Both waves represent forward flow toward the right atrium</div>
+      <p style="margin-bottom:8px;">When you look at hepatic vein Doppler, you see two waves of forward flow per cardiac cycle:</p>
+      <ul style="font-size:14px; color:var(--text); line-height:1.8; margin:6px 0 0 18px; padding:0;">
+        <li><strong>S wave</strong> — forward flow during <strong>systole</strong> (RV contraction; tricuspid annulus moves toward the apex, pulling blood forward)</li>
+        <li><strong>D wave</strong> — forward flow during <strong>diastole</strong> (RV relaxes and passively fills)</li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin:20px 0 6px;">
+      <img src="assets/img/SDwaves.png"
+           alt="Hepatic vein Doppler waveform with S and D waves labeled relative to ECG"
+           style="max-width:100%; border-radius:10px; border:1px solid var(--border);">
+      <p style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:8px;">
+        Hepatic vein Doppler — S and D waves shown relative to the ECG.
+      </p>
+    </div>
+
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:24px 0 10px;">
+      Watch each wave in motion
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px;">
+      <div>
+        <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px;">S wave example</div>
+        <div style="position:relative; width:100%; padding-bottom:56.25%; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+          <iframe src="https://www.youtube-nocookie.com/embed/CqTE4s5ZSN0?start=10"
+                  title="S wave example"
+                  frameborder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px;">D wave example</div>
+        <div style="position:relative; width:100%; padding-bottom:56.25%; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+          <iframe src="https://www.youtube-nocookie.com/embed/CqTE4s5ZSN0?start=30"
+                  title="D wave example"
+                  frameborder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">📌 Why does the S wave shrink first?</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.7;">
+        The S wave depends on the tricuspid annulus moving freely toward the cardiac apex. As right atrial pressure rises, this motion is dampened — so the S wave shrinks. The D wave is more robust to pressure changes. The next slide shows the resulting progression: S &gt; D (normal) → S &lt; D (mild) → S-wave reversal (severe).
+      </p>
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); text-align:right; margin-top:14px; font-style:italic;">
+      Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a>
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 3 — Hepatic Vein Doppler ══════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-tag">📈 Hepatic Vein</div>
+    <h2 class="slide-title">Hepatic Vein Doppler</h2>
+    <p class="slide-subtitle">Three patterns to recognize — from normal physiology to severe congestion.</p>
+
+    <p style="font-size:14px; color:var(--text); line-height:1.7; margin-bottom:18px;">
+      Hepatic vein flow reflects right atrial pressure during both systole and diastole. As congestion worsens, the S wave progressively flattens, then reverses.
+    </p>
+
+    <!-- How to obtain section -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 22px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:10px;">🔬 How to obtain the hepatic vein Doppler</p>
+      <ol style="font-size:14px; color:var(--text); line-height:1.8; margin:0 0 14px 20px; padding:0;">
+        <li>Use a <strong>cardiac (phased-array)</strong> probe <em>or</em> an <strong>abdominal (curvilinear)</strong> probe</li>
+        <li>With a cardiac probe → <strong>subxiphoid</strong> window. With a curvilinear probe → <strong>right mid-axillary</strong> window</li>
+        <li>Identify a hepatic vein entering the IVC</li>
+        <li>Place the sample gate on the hepatic vein and apply <strong>pulsed-wave (PW) Doppler</strong></li>
+      </ol>
+
+      <div style="position:relative; width:100%; max-width:560px; margin:0 auto; padding-bottom:56.25%; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+        <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=130"
+                title="How to obtain hepatic vein Doppler"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+      <p style="font-size:12px; color:var(--muted); font-style:italic; margin:8px 0 0; text-align:center;">
+        In this video, a curvilinear (abdominal) probe is used from the right mid-axillary line.
+      </p>
+    </div>
+
+    <!-- Three pattern comparison -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:20px 0 10px;">
+      Three patterns
+    </p>
+
+    <div class="pattern-grid">
+
+      <div style="background:var(--card); border:1px solid rgba(16,185,129,0.4); border-top:3px solid #10b981; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#10b981; margin-bottom:6px;">Normal</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">S &gt; D</div>
+        <img src="assets/img/hepatic_normal.png" alt="Normal hepatic vein Doppler — S > D" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Normal RA pressure. S wave dominates.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Mild congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">S &lt; D</div>
+        <img src="assets/img/hepatic_mild.png" alt="Mild congestion hepatic vein Doppler — S < D" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">RA pressure mildly elevated; S wave attenuated.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(239,68,68,0.4); border-top:3px solid #ef4444; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:6px;">Severe congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">S reversal</div>
+        <img src="assets/img/hepatic_severe.png" alt="Severe congestion hepatic vein Doppler — S-wave reversal" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Markedly elevated RA pressure; S wave inverted below baseline.</p>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 What to look for</div>
+      <p>Compare the heights of the S and D waves at <strong>end-expiration</strong>. If S is the bigger one, you're normal. If D is bigger, the patient is starting to congest. If the S wave is flipped upside-down (below baseline), it's severe.</p>
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); text-align:right; margin-top:14px; font-style:italic;">
+      Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a>
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 4 — Portal Vein Doppler ══════════════════ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-tag">📈 Portal Vein</div>
+    <h2 class="slide-title">Portal Vein Doppler</h2>
+    <p class="slide-subtitle">Three pulsatility patterns — from normal continuous flow to severe pulsatility.</p>
+
+    <p style="font-size:14px; color:var(--text); line-height:1.7; margin-bottom:18px;">
+      Portal vein flow is normally <strong>near-continuous</strong> because the hepatic sinusoids dampen upstream pressure changes. As right atrial pressure rises and sinusoidal congestion develops, that dampening fails — and the portal vein starts to pulsate.
+    </p>
+
+    <!-- How to obtain section -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 22px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:10px;">🔬 How to obtain the portal vein Doppler</p>
+      <ol style="font-size:14px; color:var(--text); line-height:1.8; margin:0 0 14px 20px; padding:0;">
+        <li>Use an <strong>abdominal (curvilinear)</strong> probe</li>
+        <li>Approach from the <strong>right mid-axillary</strong> window</li>
+        <li>Starting from the hepatic vein view, <strong>tilt the probe slightly anterior (ventral)</strong></li>
+        <li>Identify a portal vein — adding <strong>color Doppler</strong> highlights flow into the liver</li>
+        <li>Place the sample gate on the portal vein and apply <strong>pulsed-wave (PW) Doppler</strong></li>
+      </ol>
+
+      <div style="position:relative; width:100%; max-width:560px; margin:0 auto; padding-bottom:56.25%; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+        <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=290"
+                title="How to obtain portal vein Doppler"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+      <p style="font-size:12px; color:var(--muted); font-style:italic; margin:8px 0 0; text-align:center;">
+        Same video as the hepatic vein section — portal vein approach starts at 4:50.
+      </p>
+    </div>
+
+    <!-- Three pattern comparison -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:20px 0 10px;">
+      Three patterns
+    </p>
+
+    <div class="pattern-grid">
+
+      <div style="background:var(--card); border:1px solid rgba(16,185,129,0.4); border-top:3px solid #10b981; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#10b981; margin-bottom:6px;">Normal</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">PI &lt; 30%</div>
+        <img src="assets/img/portal_normal.png" alt="Normal portal vein Doppler — near-continuous flow" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Near-continuous flow; hepatic sinusoids dampen pulsations.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Mild congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">PI 30 – 50%</div>
+        <img src="assets/img/portal_mild.png" alt="Mild congestion portal vein Doppler — mild pulsatility" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Pulsatility appears as sinusoidal dampening starts to fail.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(239,68,68,0.4); border-top:3px solid #ef4444; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:6px;">Severe congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">PI ≥ 50%</div>
+        <img src="assets/img/portal_severe.png" alt="Severe congestion portal vein Doppler — high pulsatility with flow reversal" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">High pulsatility; may show flow reversal at troughs.</p>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 Pulsatility Index (PI)</div>
+      <p>PI quantifies how much the portal vein velocity varies between peak and trough:</p>
+      <p style="font-size:14px; color:var(--text); text-align:center; margin:8px 0; font-family:'DM Sans', sans-serif;"><strong>PI = (V<sub>max</sub> − V<sub>min</sub>) ÷ V<sub>max</sub> × 100%</strong></p>
+      <p>In practice, eyeball it: a flat trace = normal; a clearly pulsatile trace = mild; a trace that drops to (or below) zero between peaks = severe.</p>
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); text-align:right; margin-top:14px; font-style:italic;">
+      Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a>
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 5 — Renal Vein Doppler ══════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-tag">📈 Renal Vein</div>
+    <h2 class="slide-title">Renal Interlobar Vein Doppler</h2>
+    <p class="slide-subtitle">Three patterns reflecting venous outflow obstruction in the kidney — from normal continuous flow to monophasic.</p>
+
+    <!-- Heads-up: this section is optional -->
+    <div style="background:rgba(217,119,6,0.08); border:1px solid rgba(217,119,6,0.4); border-left:3px solid var(--amber); border-radius:10px; padding:14px 18px; margin-bottom:18px;">
+      <p style="font-size:13px; color:var(--amber); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">📌 Heads-up — this section is optional</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6; margin:0;">
+        The renal interlobar vein is the hardest of the three to obtain reliably. If you find this view difficult, don't worry — on a later slide we'll cover <strong>mVExUS</strong>, a modified protocol that omits this vessel and may give comparable results.
+      </p>
+    </div>
+
+    <!-- How to obtain section -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 22px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:10px;">🔬 How to obtain the renal interlobar vein Doppler</p>
+      <ol style="font-size:14px; color:var(--text); line-height:1.8; margin:0 0 14px 20px; padding:0;">
+        <li>Use an <strong>abdominal (curvilinear)</strong> probe</li>
+        <li>Approach from the <strong>right or left mid-axillary</strong> window</li>
+        <li>Identify the kidney parenchyma</li>
+        <li>Apply <strong>color Doppler</strong> to find the intra-renal vessels</li>
+        <li>Place the sample gate on an intra-renal vessel and apply <strong>pulsed-wave (PW) Doppler</strong></li>
+      </ol>
+
+      <div style="position:relative; width:100%; max-width:560px; margin:0 auto; padding-bottom:56.25%; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+        <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=400"
+                title="How to obtain renal interlobar vein Doppler"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+      <p style="font-size:12px; color:var(--muted); font-style:italic; margin:8px 0 0; text-align:center;">
+        Same video as the prior sections — renal interlobar vein approach starts at 6:40.
+      </p>
+    </div>
+
+    <!-- Three pattern comparison -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:20px 0 10px;">
+      Three patterns
+    </p>
+
+    <div class="pattern-grid">
+
+      <div style="background:var(--card); border:1px solid rgba(16,185,129,0.4); border-top:3px solid #10b981; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#10b981; margin-bottom:6px;">Normal</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Continuous</div>
+        <img src="assets/img/renal_normal.png" alt="Normal renal interlobar vein Doppler — continuous flow" style="width:100%; border-radius:6px; margin-bottom:6px; display:block;">
+        <img src="assets/img/renal_normal_illust.png" alt="Illustration — continuous waveform" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Smooth, continuous flow — no separation between S and D.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Mild congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Discontinuous (biphasic)</div>
+        <img src="assets/img/renal_mild.png" alt="Mild congestion renal vein Doppler — biphasic flow" style="width:100%; border-radius:6px; margin-bottom:6px; display:block;">
+        <img src="assets/img/renal_mild_illust.png" alt="Illustration — biphasic waveform" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Distinct S and D components appear as flow becomes pulsatile.</p>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(239,68,68,0.4); border-top:3px solid #ef4444; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:6px;">Severe congestion</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Monophasic</div>
+        <img src="assets/img/renal_severe.png" alt="Severe congestion renal vein Doppler — monophasic flow" style="width:100%; border-radius:6px; margin-bottom:6px; display:block;">
+        <img src="assets/img/renal_severe_illust.png" alt="Illustration — monophasic waveform" style="width:100%; border-radius:6px; margin-bottom:8px; display:block;">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Only the D component remains; S wave absent.</p>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">💡 What to look for</div>
+      <p>Compare the waveform morphology — not amplitudes. <strong>Continuous</strong> (single smooth trace) is normal. <strong>Biphasic</strong> (two distinct humps per cardiac cycle) is mild. <strong>Monophasic</strong> (only one hump, the D component) is severe.</p>
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); text-align:right; margin-top:14px; font-style:italic;">
+      Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a>
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 6 — VExUS Grading ══════════════════ -->
+  <div class="slide" id="slide-6">
+    <div class="slide-tag">🏷️ Grading</div>
+    <h2 class="slide-title">VExUS Grading 0–3</h2>
+    <p class="slide-subtitle">Combining IVC dilation with the three vessel patterns into a single congestion grade.</p>
+
+    <p style="font-size:14px; color:var(--text); line-height:1.7; margin-bottom:18px;">
+      The VExUS grade summarizes congestion severity using two ingredients: (1) <strong>IVC dilation</strong> as the entry gate, and (2) the <strong>worst Doppler pattern</strong> among the three vessels. The grade then guides clinical decisions — with <strong>Grade ≥ 2</strong> typically prompting a change in management.
+    </p>
+
+    <div style="text-align:center; margin:8px 0 18px;">
+      <img src="assets/img/VExUSgrade2.jpg"
+           alt="VExUS grading table — IVC dilation plus hepatic, portal, and renal vein Doppler patterns mapped to Grades 0, 1, 2, and 3"
+           style="max-width:100%; border-radius:10px; border:1px solid var(--border);">
+      <p style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:8px;">
+        VExUS grading combines IVC dilation with the severity of each vessel's Doppler pattern.
+      </p>
+    </div>
+
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:20px 0 10px;">
+      Grades 0 – 3 with outcomes
+    </p>
+
+    <div class="pattern-grid" style="grid-template-columns:repeat(4, 1fr);">
+
+      <div style="background:var(--card); border:1px solid rgba(16,185,129,0.4); border-top:3px solid #10b981; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#10b981; margin-bottom:6px;">Grade 0</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">No congestion</div>
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 10px;">IVC &lt; 2 cm <strong>or</strong> all 3 vessels show normal patterns.</p>
+        <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.6px; padding-top:8px; border-top:1px solid var(--border);">
+          AKI HR<br><span style="font-size:14px; color:var(--text); font-weight:700; text-transform:none; letter-spacing:0;">Reference</span>
+        </div>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Grade 1</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Mild</div>
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 10px;">IVC ≥ 2 cm <strong>+</strong> at least one mildly abnormal vessel; no severe findings.</p>
+        <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.6px; padding-top:8px; border-top:1px solid var(--border);">
+          AKI HR<br><span style="font-size:14px; color:var(--text); font-weight:700; text-transform:none; letter-spacing:0;">1.25</span>
+        </div>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(234,88,12,0.4); border-top:3px solid #ea580c; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ea580c; margin-bottom:6px;">Grade 2</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Moderate</div>
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 10px;">IVC ≥ 2 cm <strong>+</strong> at least one vessel with a severe pattern.</p>
+        <div style="font-size:11px; color:#ea580c; text-transform:uppercase; letter-spacing:0.6px; padding-top:8px; border-top:1px solid var(--border);">
+          AKI HR<br><span style="font-size:14px; color:#ea580c; font-weight:700; text-transform:none; letter-spacing:0;">2.65</span>
+        </div>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(239,68,68,0.4); border-top:3px solid #ef4444; border-radius:10px; padding:14px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:6px;">Grade 3</div>
+        <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px;">Severe</div>
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 10px;">IVC ≥ 2 cm <strong>+</strong> ≥ 2 vessels with severe patterns.</p>
+        <div style="font-size:11px; color:#ef4444; text-transform:uppercase; letter-spacing:0.6px; padding-top:8px; border-top:1px solid var(--border);">
+          AKI HR<br><span style="font-size:14px; color:#ef4444; font-weight:700; text-transform:none; letter-spacing:0;">3.69</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); font-style:italic; margin:6px 0 18px; text-align:center;">
+      Hazard ratios for developing acute kidney injury (versus Grade 0), from the original VExUS validation study: Beaubien-Souligny W, et al. <em>Ultrasound J</em> 2020;12(1):16. Population: post-cardiac surgery patients on mechanical ventilation. See the next slide for limitations.
+    </p>
+
+    <div style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.4); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px; margin-top:18px;">
+      <p style="font-size:13px; color:var(--amber); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">🩺 Clinical takeaway</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.7; margin:0;">
+        <strong>Grade ≥ 2 suggests a potential need for diuresis</strong> — these patients have severe enough congestion that further fluid is likely to harm, and decongestive therapy may be warranted.
+      </p>
+    </div>
+
+    <div class="note-box" style="margin-top:16px;">
+      <div class="note-box-label">💡 Two principles</div>
+      <ol style="font-size:14px; color:var(--text); line-height:1.8; margin:6px 0 0 18px; padding:0;">
+        <li><strong>IVC &lt; 2 cm → Grade 0</strong>, regardless of vessel patterns. The protocol exits early; there's no congestion to grade.</li>
+        <li><strong>The worst vessel wins.</strong> A single severe finding bumps the patient up — you don't average across the three vessels.</li>
+      </ol>
+    </div>
+
+    <p style="font-size:12px; color:var(--muted); text-align:right; margin-top:14px; font-style:italic;">
+      Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a>
+    </p>
+  </div>
+
+  <!-- ══════════════════ SLIDE 7 — How Strong is the Evidence? ══════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-tag">📚 Evidence Base</div>
+    <h2 class="slide-title">How Strong is the Evidence?</h2>
+    <p class="slide-subtitle">The original VExUS validation was in a specific population — and follow-up studies in different populations have shown mixed results.</p>
+
+    <div class="pattern-grid" style="grid-template-columns:repeat(2, 1fr);">
+
+      <div style="background:var(--card); border:1px solid rgba(13,148,136,0.4); border-top:3px solid var(--teal); border-radius:10px; padding:18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:8px;">Original validation · 2020</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:10px;">VExUS predicts AKI after cardiac surgery</div>
+        <div style="font-size:12.5px; color:var(--muted); font-style:italic; margin-bottom:10px;">Beaubien-Souligny W, et al. <em>Ultrasound J</em> 2020;12(1):16.</div>
+        <ul style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Population: post-cardiac surgery, on mechanical ventilation</li>
+          <li>Grade 2 → <strong style="color:#ea580c;">HR 2.65</strong> for AKI vs. Grade 0</li>
+          <li>Grade 3 → <strong style="color:#ef4444;">HR 3.69</strong> for AKI vs. Grade 0</li>
+          <li>Established VExUS as a meaningful predictor of organ injury</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:8px;">Follow-up · 2025</div>
+        <div style="font-size:16px; font-weight:700; color:var(--text); margin-bottom:10px;">No association in septic ICU patients</div>
+        <div style="font-size:12.5px; color:var(--muted); font-style:italic; margin-bottom:10px;"><em>Ann Intensive Care</em> 2025;15(1):105.</div>
+        <ul style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0 0 0 16px; padding:0;">
+          <li>Population: septic patients in the ICU</li>
+          <li>VExUS grade <strong>not associated</strong> with AKI</li>
+          <li>VExUS grade <strong>not associated</strong> with mortality</li>
+          <li>Suggests the predictive value seen in cardiac surgery may not generalize</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="note-box" style="margin-top:18px;">
+      <div class="note-box-label">⚖️ What to take away</div>
+      <p>VExUS is best validated in <strong>cardiac / perioperative</strong> settings, where the original hazard ratios apply. Its role in <strong>sepsis</strong> is uncertain — current evidence does not support using VExUS grade to predict AKI or mortality in septic ICU patients. <strong>Always interpret VExUS findings in clinical context</strong> rather than in isolation.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 8 — mVExUS ══════════════════ -->
+  <div class="slide" id="slide-8">
+    <div class="slide-tag">🧪 Modified VExUS</div>
+    <h2 class="slide-title">mVExUS — A Bedside-Friendly Simplification</h2>
+    <p class="slide-subtitle"><strong>Modified VExUS (mVExUS)</strong> is a simplified protocol that drops the renal interlobar vein — easier to obtain, with comparable performance in detecting elevated RA pressure.</p>
+
+    <!-- Side-by-side comparison: Standard VExUS vs mVExUS -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:8px 0 10px;">
+      Standard vs. modified protocol
+    </p>
+
+    <div class="pattern-grid" style="grid-template-columns:1fr 1fr;">
+
+      <div style="background:var(--card); border:1px solid rgba(13,148,136,0.4); border-top:3px solid var(--teal); border-radius:12px; padding:18px 22px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">Standard</div>
+        <div style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:14px;">VExUS</div>
+        <ul style="list-style:none; padding:0; margin:0; font-size:14px; color:var(--text); line-height:2;">
+          <li>📏 <strong>IVC</strong> dilation (gate)</li>
+          <li>✅ Hepatic vein Doppler</li>
+          <li>✅ Portal vein Doppler</li>
+          <li>✅ Renal interlobar vein Doppler</li>
+        </ul>
+        <div style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:12px; padding-top:10px; border-top:1px solid var(--border);">
+          3 venous Doppler windows
+        </div>
+      </div>
+
+      <div style="background:var(--card); border:1px solid rgba(217,119,6,0.5); border-top:3px solid var(--amber); border-radius:12px; padding:18px 22px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">Modified</div>
+        <div style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:14px;">mVExUS</div>
+        <ul style="list-style:none; padding:0; margin:0; font-size:14px; color:var(--text); line-height:2;">
+          <li>📏 <strong>IVC</strong> dilation (gate)</li>
+          <li>✅ Hepatic vein Doppler</li>
+          <li>✅ Portal vein Doppler</li>
+          <li style="color:var(--muted); text-decoration:line-through;">Renal interlobar vein Doppler</li>
+        </ul>
+        <div style="font-size:12.5px; color:var(--muted); font-style:italic; margin-top:12px; padding-top:10px; border-top:1px solid var(--border);">
+          2 venous Doppler windows — renal omitted
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Why drop the renal vein? -->
+    <div class="note-box" style="margin-top:18px;">
+      <div class="note-box-label">💡 Why drop the renal vein?</div>
+      <ul style="font-size:14px; color:var(--text); line-height:1.8; margin:6px 0 0 18px; padding:0;">
+        <li>The renal interlobar vein is the <strong>hardest of the three</strong> to obtain reliably at the bedside.</li>
+        <li>Hepatic and portal vein patterns track closely with overall venous congestion.</li>
+        <li>Recent evidence suggests dropping the renal component does not meaningfully reduce diagnostic accuracy.</li>
+      </ul>
+    </div>
+
+    <!-- Evidence card -->
+    <div style="background:var(--card); border:1px solid rgba(13,148,136,0.4); border-top:3px solid var(--teal); border-radius:10px; padding:18px 22px; margin-top:16px;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:8px;">📚 Evidence · 2025</div>
+      <div style="font-size:15px; font-weight:700; color:var(--text); margin-bottom:6px;">mVExUS may be as effective as full VExUS in detecting elevated RA pressure</div>
+      <div style="font-size:12.5px; color:var(--muted); font-style:italic; margin-bottom:8px;"><em>The Ultrasound Journal</em> 2025;17:7</div>
+      <p style="font-size:13.5px; color:var(--text); line-height:1.7; margin:0;">
+        A direct comparison of mVExUS (hepatic + portal only) vs. full VExUS for identifying elevated right atrial pressure found <strong>comparable diagnostic performance</strong> — supporting the practical use of the simplified protocol.
+      </p>
+    </div>
+
+    <!-- Clinical bottom line -->
+    <div style="background:rgba(217,119,6,0.06); border:1px solid rgba(217,119,6,0.4); border-left:3px solid var(--amber); border-radius:10px; padding:16px 20px; margin-top:16px;">
+      <p style="font-size:13px; color:var(--amber); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">🩺 Clinical bottom line</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.7; margin:0;">
+        When the renal view is technically difficult or time is short, <strong>mVExUS (hepatic + portal) is a reasonable bedside substitute</strong>. Full VExUS (with renal) remains the validated reference for grading.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 9 — Clinical Application ══════════════════ -->
+  <div class="slide" id="slide-9">
+    <div class="slide-tag">🩺 Clinical Use</div>
+    <h2 class="slide-title">Putting VExUS to Work</h2>
+    <p class="slide-subtitle">Combining IVC and VExUS into a single bedside decision — and when each tool actually changes management.</p>
+
+    <!-- 1. Quick practical workflow -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:8px 0 10px;">
+      Practical workflow
+    </p>
+
+    <div class="pattern-grid" style="grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:18px;">
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:10px; padding:14px;">
+        <div style="font-size:20px; font-weight:800; color:var(--teal); margin-bottom:4px;">1</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.5;">Start with <strong>IVC</strong> — assess fluid responsiveness</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--teal); border-radius:10px; padding:14px;">
+        <div style="font-size:20px; font-weight:800; color:var(--teal); margin-bottom:4px;">2</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.5;">If IVC &gt; 2 cm → proceed to <strong>VExUS</strong> for tolerance</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:20px; font-weight:800; color:var(--amber); margin-bottom:4px;">3</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.5;">At the bedside, use <strong>mVExUS</strong> (hepatic + portal)</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-top:3px solid var(--amber); border-radius:10px; padding:14px;">
+        <div style="font-size:20px; font-weight:800; color:var(--amber); margin-bottom:4px;">4</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.5;">Synthesize → fluid, hold, diurese, or pressors</div>
+      </div>
+    </div>
+
+    <!-- 2. Decision matrix -->
+    <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin:24px 0 10px;">
+      Decision matrix — responsiveness × tolerance
+    </p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; overflow-x:auto;">
+      <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:8px;">
+
+        <!-- Header row -->
+        <div></div>
+        <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#10b981; margin-bottom:2px;">Fluid Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade 0–1</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#ef4444; margin-bottom:2px;">NOT Fluid Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade ≥ 2</div>
+        </div>
+
+        <!-- Row 1: Responsive -->
+        <div style="background:rgba(13,148,136,0.08); border:1px solid rgba(13,148,136,0.3); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--teal); margin-bottom:2px;">Fluid Responsive</div>
+          <div style="font-size:12.5px; color:var(--muted);">IVC small / collapsing</div>
+        </div>
+        <div style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">✅</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Give fluid</div>
+        </div>
+        <div style="background:rgba(217,119,6,0.12); border:1px solid rgba(217,119,6,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">⚠️</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Avoid fluid<br>Consider pressors</div>
+        </div>
+
+        <!-- Row 2: NOT Responsive -->
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--muted); margin-bottom:2px;">NOT Fluid Responsive</div>
+          <div style="font-size:12.5px; color:var(--muted);">IVC dilated, low collapsibility</div>
+        </div>
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">⏸️</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Hold fluid<br>Reassess</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">🚱</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">Diurese<br>Decongest</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. Key principles -->
+    <div class="note-box" style="margin-top:18px;">
+      <div class="note-box-label">💡 Two takeaways</div>
+      <ol style="font-size:14px; color:var(--text); line-height:1.8; margin:6px 0 0 18px; padding:0;">
+        <li><strong>IVC + VExUS together &gt; either alone.</strong> They answer different questions — fluid responsive <em>and</em> tolerant.</li>
+        <li><strong>Grade ≥ 2 → consider diuresis</strong>, particularly in cardiac / perioperative patients where the evidence is strongest.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 10 — Quiz Q1 (placeholder) ══════════════════ -->
+  <div class="slide" id="slide-10">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-0">
+      <div class="q-number">Question 1 of 4</div>
+      <div class="q-text">This hepatic vein Doppler waveform is most consistent with:</div>
+      <img src="assets/img/hepatic_mild.png"
+           alt="Hepatic vein Doppler waveform — quiz question 1"
+           style="max-width:100%; max-height:240px; border-radius:8px; border:1px solid var(--border); display:block; margin:10px auto 16px;">
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m3_q1" data-answer-text="Normal flow (S > D)">
+          <span class="opt-letter">A</span>Normal flow (S &gt; D)
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="0" data-question-id="m3_q1" data-answer-text="Mild congestion (S < D)">
+          <span class="opt-letter">B</span>Mild congestion (S &lt; D)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m3_q1" data-answer-text="Severe congestion (S-wave reversal)">
+          <span class="opt-letter">C</span>Severe congestion (S-wave reversal)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="m3_q1" data-answer-text="Pattern is uninterpretable">
+          <span class="opt-letter">D</span>Pattern is uninterpretable
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-0">
+      ✅ <strong>Correct — B.</strong> The D wave is taller than the S wave, indicating <em>mild</em> hepatic venous congestion. As right atrial pressure rises, the S wave is the first to shrink — so S &lt; D is the earliest abnormal pattern.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 11 — Quiz Q2 ══════════════════ -->
+  <div class="slide" id="slide-11">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-1">
+      <div class="q-number">Question 2 of 4</div>
+      <div class="q-text">This hepatic vein Doppler waveform shows:</div>
+      <img src="assets/img/hepatic_severe.png"
+           alt="Hepatic vein Doppler waveform — quiz question 2"
+           style="max-width:100%; max-height:240px; border-radius:8px; border:1px solid var(--border); display:block; margin:10px auto 16px;">
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m3_q2" data-answer-text="Normal triphasic flow (S > D)">
+          <span class="opt-letter">A</span>Normal triphasic flow (S &gt; D)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m3_q2" data-answer-text="Mild congestion (S < D)">
+          <span class="opt-letter">B</span>Mild congestion (S &lt; D)
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="m3_q2" data-answer-text="Severe congestion with S-wave reversal">
+          <span class="opt-letter">C</span>Severe congestion with S-wave reversal
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="m3_q2" data-answer-text="Tricuspid regurgitation artifact">
+          <span class="opt-letter">D</span>Tricuspid regurgitation artifact
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-1">
+      ✅ <strong>Correct — C.</strong> The S wave has flipped below the baseline — <em>S-wave reversal</em> — which signals severe venous congestion. At this point, the tricuspid annulus can no longer move freely toward the apex because RA pressure is markedly elevated.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 12 — Quiz Q3 ══════════════════ -->
+  <div class="slide" id="slide-12">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+      <div class="qpip"></div>
+    </div>
+
+    <div class="question-card" id="q-card-2">
+      <div class="q-number">Question 3 of 4</div>
+      <div class="q-text">This portal vein Doppler waveform is most consistent with:</div>
+      <img src="assets/img/portal_normal.png"
+           alt="Portal vein Doppler waveform — quiz question 3"
+           style="max-width:100%; max-height:240px; border-radius:8px; border:1px solid var(--border); display:block; margin:10px auto 16px;">
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="2" data-question-id="m3_q3" data-answer-text="Normal flow (PI < 30%)">
+          <span class="opt-letter">A</span>Normal flow (PI &lt; 30%)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m3_q3" data-answer-text="Mild congestion (PI 30–50%)">
+          <span class="opt-letter">B</span>Mild congestion (PI 30–50%)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m3_q3" data-answer-text="Severe congestion (PI ≥ 50%)">
+          <span class="opt-letter">C</span>Severe congestion (PI ≥ 50%)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="m3_q3" data-answer-text="This is actually hepatic vein flow">
+          <span class="opt-letter">D</span>This is actually hepatic vein flow
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-2">
+      ✅ <strong>Correct — A.</strong> The portal flow is smooth and near-continuous with minimal variation (PI &lt; 30%) — the normal pattern. The hepatic sinusoids dampen upstream pressure changes, producing this low-pulsatility trace.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 13 — Quiz Q4 ══════════════════ -->
+  <div class="slide" id="slide-13">
+    <div class="slide-tag quiz-tag">✏️ Knowledge Check</div>
+    <div class="quiz-progress">
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip done"></div>
+      <div class="qpip active"></div>
+    </div>
+
+    <div class="question-card" id="q-card-3">
+      <div class="q-number">Question 4 of 4</div>
+      <div class="q-text">A patient has IVC = 2.4 cm with minimal collapsibility. mVExUS shows severe pulsatility (PI &gt; 50%) in the <strong>portal vein</strong> AND S-wave reversal in the <strong>hepatic vein</strong>. What is the VExUS grade?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m3_q4" data-answer-text="Grade 0">
+          <span class="opt-letter">A</span>Grade 0
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m3_q4" data-answer-text="Grade 1">
+          <span class="opt-letter">B</span>Grade 1
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="m3_q4" data-answer-text="Grade 2">
+          <span class="opt-letter">C</span>Grade 2
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="3" data-question-id="m3_q4" data-answer-text="Grade 3">
+          <span class="opt-letter">D</span>Grade 3
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-3">
+      ✅ <strong>Correct — D.</strong> The IVC is dilated (&gt; 2 cm with minimal collapsibility — the gate is met), and <strong>two</strong> vessels show severe patterns (severe portal pulsatility + hepatic S-wave reversal). Per the grading scheme, IVC ≥ 2 cm + ≥ 2 severe findings = <strong>Grade 3 (severe congestion)</strong>. Consider diuresis.
+    </div>
+
+    <!-- Redo panel — shown if score ≤ 50% after Q4 -->
+    <div class="redo-panel" id="redo-panel">
+      <div style="font-size:40px; margin-bottom:12px;">📉</div>
+      <h3>Score: <span id="redo-score"></span></h3>
+      <p>You scored ≤ 50%. Would you like to review the content slides, or retake the quiz now?</p>
+      <div class="redo-actions">
+        <button class="nav-btn ghost" id="btn-review">← Review Content</button>
+        <button class="nav-btn" id="btn-retake">Retake Quiz →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 14 — Summary ══════════════════ -->
+  <div class="slide" id="slide-14">
+    <div class="slide-tag summary-tag">📋 Module Summary</div>
+    <h2 class="slide-title">Key Concepts — Module 3</h2>
+    <p class="slide-subtitle">A quick-reference recap of the VExUS protocol.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <ul class="summary-list" style="margin:0;">
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong style="color:var(--amber);">VExUS</strong> (<strong>V</strong>enous <strong>Ex</strong>cess <strong>U</strong>ltra<strong>S</strong>ound) assesses fluid <strong>tolerance</strong> — the more congestion, the more back-flow shows up on Doppler.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            Gives a more nuanced view of venous congestion than single metrics like CVP.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Hepatic and portal</strong> vein patterns are easier to obtain at the bedside; the renal interlobar vein is the hardest.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>mVExUS</strong> (hepatic + portal only) may be safely substituted when the renal view is difficult, with comparable performance for detecting elevated RA pressure.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            Grading combines IVC dilation (gate) with the worst vessel pattern. <strong>Grade ≥ 2 → consider diuresis.</strong>
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            Use <strong style="color:var(--teal);">IVC</strong> (responsiveness) and <strong style="color:var(--amber);">VExUS</strong> (tolerance) <strong>together</strong> for a complete volume decision.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">⚖️ Key Pearl</div>
+      <p><strong>Interpret VExUS in clinical context.</strong> The protocol is best validated in cardiac and perioperative populations (HR 2.65–3.69 for AKI in Grade 2–3). Its role in sepsis is uncertain — a 2025 follow-up study did not replicate the AKI/mortality association in septic ICU patients.</p>
+    </div>
+
+    <div style="margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px;">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:4px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px;">Coming up next</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6;">A brief <strong>3-module synthesis</strong>, then three <strong>case-based scenarios</strong> to put IVC + VExUS together in real clinical decisions.</p>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="completeModule()">Continue to Review →</button>
+    </div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" id="btn-next" onclick="nav.next()">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/quiz.js"></script>
+<script>
+  var STORAGE_KEY = 'fa_m3_progress';
+
+  // Send any events queued from the prior page in the background.
+  tracker.flushQueue();
+
+  // ── Wire quiz buttons via event delegation ────────────────────────────
+  document.querySelector('.slide-wrapper').addEventListener('click', function (e) {
+    var btn = e.target.closest('.opt-btn');
+    if (!btn) return;
+    var qIdx      = parseInt(btn.dataset.qIdx, 10);
+    var isCorrect = btn.dataset.correct === 'true';
+    var qId       = btn.dataset.questionId;
+    var aText     = btn.dataset.answerText;
+    if (isNaN(qIdx)) return;
+    quiz.answerQ(qIdx, btn, isCorrect, qId, aText);
+  });
+
+  // ── Quiz init ─────────────────────────────────────────────────────────
+  quiz.init({
+    questionCount: 4,
+    moduleId:      'module_3',
+    storageKey:    STORAGE_KEY,
+    quizStart:     10,
+    onComplete: function (score, total) {
+      tracker.logEvent({
+        event_type:     'module_complete',
+        module_id:      'module_3',
+        question_id:    null,
+        answer:         null,
+        is_correct:     null,
+        score:          score,
+        attempt_number: 1,
+      });
+
+      if (score / total <= 0.5) {
+        nav.disableNext();
+        document.getElementById('redo-score').textContent = score + ' / ' + total;
+        quiz.showRedoChoice(
+          'redo-panel',
+          function () { quiz.resetQuiz(); nav.goTo(0); },
+          function () { nav.goTo(10); }
+        );
+      }
+    },
+  });
+
+  // ── Nav init ──────────────────────────────────────────────────────────
+  nav.init({
+    slides:     15,
+    quizStart:  10,
+    quizEnd:    13,
+    summaryIdx: 14,
+    storageKey: STORAGE_KEY,
+    onEnter: function (slideIdx) {
+      var quizSlideToQ = { 10: 0, 11: 1, 12: 2, 13: 3 };
+      if (slideIdx in quizSlideToQ && !quiz.isAnswered(quizSlideToQ[slideIdx])) {
+        nav.disableNext();
+      }
+      if (slideIdx === 14) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('btn-prev').style.display = 'none';
+        document.getElementById('nav-hint').textContent = '';
+      }
+    },
+  });
+
+  // ── Module complete handler (summary slide button) ────────────────────
+  function completeModule() {
+    nav.clearProgress();
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'module_3',
+      question_id:    null,
+      answer:         'summary_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'review.html';
+  }
+</script>
+</body>
+</html>

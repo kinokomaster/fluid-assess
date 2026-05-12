@@ -211,10 +211,7 @@
   }
 
   function submitSurvey() {
-    var btn = document.getElementById('btn-next');
-    btn.disabled = true;
-    btn.textContent = 'Saving…';
-    document.getElementById('nav-hint').textContent = 'Sending your responses — feel free to switch tabs, but please don\'t close this window yet.';
+    document.getElementById('btn-next').disabled = true;
 
     answers.forEach(function (val, i) {
       tracker.queueEvent({
@@ -228,9 +225,9 @@
       });
     });
 
-    tracker.flushQueue(function () {
-      window.location.href = 'pre-test.html';
-    });
+    // Navigate immediately — pre-test will flush the queue in the background
+    // while the learner is reading the first question.
+    window.location.href = 'pre-test.html';
   }
 </script>
 </body>

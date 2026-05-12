@@ -22,8 +22,8 @@
       <div class="complete-icon">🎓</div>
       <h2>Thank You!</h2>
       <p>You've completed the IVC &amp; VExUS Volume Assessment module.</p>
-      <p style="margin-top:12px; color:var(--muted); font-size:15px;">
-        Your responses have been recorded anonymously and will be used to improve this module.
+      <p id="record-msg" style="margin-top:12px; color:var(--muted); font-size:15px;">
+        ⏳ Sending your responses — please keep this page open for a moment…
       </p>
       <div style="margin-top:28px;">
         <p style="font-size:15px; font-weight:600; color:var(--text); margin-bottom:12px;">
@@ -32,12 +32,19 @@
         <img src="assets/img/IVCandVExUS_OnePager.png"
              alt="IVC and VExUS One-Pager"
              style="width:100%; max-width:560px; border-radius:10px; border:1px solid var(--border); display:block; margin:0 auto 16px;">
-        <a href="assets/img/IVCandVExUS_OnePager.png"
-           download="IVCandVExUS_OnePager.png"
-           class="nav-btn"
-           style="display:inline-block; text-decoration:none; margin-top:4px;">
-          Download One-Pager
-        </a>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:4px;">
+          <a href="assets/img/IVCandVExUS_OnePager.png"
+             download="IVCandVExUS_OnePager.png"
+             class="nav-btn"
+             style="display:inline-block; text-decoration:none;">
+            Download One-Pager
+          </a>
+          <a href="reference.html"
+             class="nav-btn ghost"
+             style="display:inline-block; text-decoration:none;">
+            📚 View Comprehensive Reference
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -52,8 +59,9 @@
 
 <script src="assets/js/tracker.js"></script>
 <script>
-  tracker.flushQueue();
-  tracker.logEvent({
+  // Queue the session_end event so it flushes together with any pending
+  // confidence_post survey events from the prior page.
+  tracker.queueEvent({
     event_type:     'session_end',
     module_id:      'thank_you',
     question_id:    null,
@@ -61,6 +69,14 @@
     is_correct:     null,
     score:          null,
     attempt_number: 1,
+  });
+
+  // Flush all queued events sequentially; update the status message when done.
+  tracker.flushQueue(function () {
+    var el = document.getElementById('record-msg');
+    if (el) {
+      el.textContent = '✅ Your responses have been recorded anonymously. You may now close this window.';
+    }
   });
 </script>
 </body>

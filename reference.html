@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprehensive Reference — IVC & VExUS</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  html { scroll-behavior: smooth; }
+
+  .ref-wrap {
+    width: 100%;
+    max-width: 920px;
+    padding: 32px 24px 64px;
+    margin: 0 auto;
+  }
+
+  .ref-toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+  }
+  .ref-toc-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .ref-toc ol {
+    margin: 0; padding-left: 22px;
+    columns: 2; column-gap: 24px;
+  }
+  .ref-toc li {
+    font-size: 14px;
+    line-height: 1.9;
+    break-inside: avoid;
+  }
+  .ref-toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .ref-toc a:hover {
+    color: var(--teal);
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .ref-toc ol { columns: 1; }
+  }
+
+  .ref-section {
+    margin: 48px 0 0;
+    scroll-margin-top: 24px;
+  }
+  .ref-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--text);
+    margin-bottom: 6px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--teal);
+  }
+  .ref-section .ref-section-sub {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+  .ref-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 24px 0 10px;
+  }
+  .ref-section p {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .ref-section ul, .ref-section ol {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.8;
+    margin: 0 0 12px 22px;
+    padding: 0;
+  }
+
+  .ref-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 10px 0;
+  }
+
+  .ref-img-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) {
+    .ref-img-row { grid-template-columns: 1fr; }
+  }
+  .ref-img-row img {
+    width: 100%; border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .ref-img-row .ref-img-cap {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .ref-vid {
+    position: relative; width: 100%;
+    max-width: 560px;
+    margin: 12px auto;
+    padding-bottom: min(56.25%, 315px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .ref-vid iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+  .ref-vid-cap {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    margin: 6px 0 14px;
+  }
+
+  .ref-pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  @media (max-width: 700px) {
+    .ref-pattern-grid { grid-template-columns: 1fr; }
+  }
+  .ref-pattern-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .ref-pattern-card img {
+    width: 100%; border-radius: 6px;
+    display: block; margin-bottom: 6px;
+  }
+  .ref-pattern-card .ref-pattern-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
+  .ref-pattern-card .ref-pattern-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .ref-pattern-card .ref-pattern-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .ref-caveat {
+    background: rgba(217,119,6,0.06);
+    border: 1px solid rgba(217,119,6,0.4);
+    border-left: 3px solid var(--amber);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .ref-caveat-label {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  .ref-back {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">📚 Comprehensive Reference</div>
+  <div></div>
+  <div></div>
+</div>
+
+<div class="ref-wrap">
+
+  <h1 style="font-family:'DM Serif Display',serif; font-size:34px; color:var(--text); margin-bottom:8px;">IVC &amp; VExUS — Comprehensive Reference</h1>
+  <p style="font-size:15px; color:var(--muted); line-height:1.6; margin-bottom:24px;">
+    Everything covered across the three modules, organized by topic. Use the table of contents to jump to a section.
+  </p>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="ref-toc">
+    <div class="ref-toc-title">📑 Table of contents</div>
+    <ol>
+      <li><a href="#foundation">The Foundation — Two Questions</a></li>
+      <li><a href="#ivc-acquire">IVC — How to Obtain</a></li>
+      <li><a href="#ivc-interp">IVC — How to Interpret</a></li>
+      <li><a href="#ivc-rap">IVC — ASE 2025 RA Pressure Update</a></li>
+      <li><a href="#vexus-overview">VExUS — Three Vessels &amp; S/D Waves</a></li>
+      <li><a href="#vexus-hepatic">VExUS — Hepatic Vein</a></li>
+      <li><a href="#vexus-portal">VExUS — Portal Vein</a></li>
+      <li><a href="#vexus-renal">VExUS — Renal Interlobar Vein</a></li>
+      <li><a href="#vexus-grading">VExUS Grading 0–3</a></li>
+      <li><a href="#mvexus">mVExUS — Modified Protocol</a></li>
+      <li><a href="#application">Clinical Application — Decision Matrix</a></li>
+      <li><a href="#caveats">Caveats &amp; Limitations</a></li>
+    </ol>
+  </div>
+
+  <!-- ── 1. FOUNDATION ─────────────────────────────────────────────────────── -->
+  <section class="ref-section" id="foundation">
+    <h2>1. The Foundation — Two Questions</h2>
+    <div class="ref-section-sub">Module 1</div>
+    <p>Volume assessment requires answering two <strong>independent</strong> questions:</p>
+    <div class="ref-card" style="border-left:3px solid var(--teal);">
+      <strong style="color:var(--teal);">Question 1 — Is the patient fluid <em>responsive</em>?</strong>
+      <p style="margin:4px 0 0;">Will giving fluid actually increase cardiac output? → Answered by <strong>IVC</strong>.</p>
+    </div>
+    <div class="ref-card" style="border-left:3px solid var(--amber);">
+      <strong style="color:var(--amber);">Question 2 — Is the patient fluid <em>tolerant</em>?</strong>
+      <p style="margin:4px 0 0;">Can fluid be given without causing organ congestion? → Answered by <strong>VExUS</strong>.</p>
+    </div>
+    <p>A patient can be one but not the other. Both must be answered before deciding to give, hold, or remove fluid.</p>
+  </section>
+
+  <!-- ── 2. IVC — HOW TO OBTAIN ────────────────────────────────────────────── -->
+  <section class="ref-section" id="ivc-acquire">
+    <h2>2. IVC — How to Obtain</h2>
+    <div class="ref-section-sub">Module 2</div>
+    <ul>
+      <li><strong>Probe:</strong> Cardiac (phased-array)</li>
+      <li><strong>Window:</strong> Subxiphoid — slightly right of midline, rock cephalad</li>
+      <li>Identify the IVC as it enters the right atrium</li>
+      <li>Drop <strong>M-mode</strong> through the IVC ~1–2 cm from the RA junction to capture max/min diameters across the respiratory cycle</li>
+    </ul>
+
+    <img src="assets/img/IVC_HowToMeasure.png"
+         alt="Probe placement for IVC measurement"
+         style="max-width:100%; max-height:300px; border-radius:8px; border:1px solid var(--border); display:block; margin:14px auto;">
+
+    <h3>Examples</h3>
+    <div class="ref-img-row">
+      <div>
+        <img src="assets/img/IVC_1.gif" alt="Collapsed IVC — 2D loop">
+        <img src="assets/img/IVC_1_m.jpg" alt="Collapsed IVC — M-mode" style="margin-top:8px;">
+        <div class="ref-img-cap">Collapsed IVC — suggests fluid responsiveness</div>
+      </div>
+      <div>
+        <img src="assets/img/IVC_2.gif" alt="Plethoric IVC — 2D loop">
+        <img src="assets/img/IVC_2_m.jpg" alt="Plethoric IVC — M-mode" style="margin-top:8px;">
+        <div class="ref-img-cap">Plethoric IVC — suggests high RA pressure / fluid intolerance</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. IVC — HOW TO INTERPRET ─────────────────────────────────────────── -->
+  <section class="ref-section" id="ivc-interp">
+    <h2>3. IVC — How to Interpret</h2>
+    <div class="ref-section-sub">Module 2</div>
+    <p>The evidence-synthesized bedside rule:</p>
+    <ul>
+      <li><strong style="color:var(--teal);">Fill</strong> if IVC <strong>&lt; 1 cm</strong></li>
+      <li><strong style="color:var(--amber);">Don't fill</strong> if IVC <strong>&gt; 2.5 cm</strong></li>
+      <li>IVC <strong>1–2.5 cm</strong> → assess collapsibility (ΔIVC):
+        <ul>
+          <li>Spontaneously breathing: <strong>≥ 35%</strong> (≈ 1/3) → likely responsive</li>
+          <li>Mechanically ventilated: <strong>≥ 16.5%</strong> (≈ 1/5) → likely responsive</li>
+        </ul>
+      </li>
+    </ul>
+    <p style="font-size:13px; color:var(--muted); font-style:italic;">In mechanically ventilated patients, ideal interpretation requires tidal volume ≤ 8 mL/kg and PEEP ≤ 5 cmH₂O.</p>
+
+    <h3>Evidence base</h3>
+    <ul>
+      <li><strong>Barbier 2004</strong> (Intensive Care Med 30:1834-7) — Ventilated septic shock; ΔIVC ≥ 12% → Positive Predictive Value 92%, Negative Predictive Value 93%.</li>
+      <li><strong>Muller 2012</strong> (Crit Care 16:R188) — Spontaneously breathing shock; ΔIVC ≥ 40% → Sensitivity 70%, Specificity 80%.</li>
+      <li><strong>ICM Editorial 2024</strong> (Intensive Care Med 50:1137-42) — Practical bedside rules synthesized.</li>
+      <li><strong>Meta-analysis 2025</strong> (PLoS One 20(5):e0310462) — 21 studies, sepsis. Overall Sensitivity 0.84 / Specificity 0.87.</li>
+    </ul>
+  </section>
+
+  <!-- ── 4. IVC — ASE 2025 RA PRESSURE UPDATE ──────────────────────────────── -->
+  <section class="ref-section" id="ivc-rap">
+    <h2>4. IVC — ASE 2025 RA Pressure Update</h2>
+    <div class="ref-section-sub">Module 2</div>
+    <p>The classic ASE framework placed RA pressure into <strong>three categories</strong> using IVC diameter (cutoff 2.1 cm) and collapsibility (cutoff 50%):</p>
+    <ul>
+      <li><strong>Low</strong> — IVC ≤ 2.1 cm + collapsibility &gt; 50% → ~<strong>3 mmHg</strong> (range 0–5)</li>
+      <li><strong>Intermediate</strong> — one criterion met → ~<strong>8 mmHg</strong> (range 5–10)</li>
+      <li><strong>High</strong> — IVC &gt; 2.1 cm + collapsibility &lt; 50% → ~<strong>15 mmHg</strong> (range 10–20)</li>
+    </ul>
+    <p>The <strong>ASE 2025 update</strong> revises this approach to improve accuracy in indeterminate cases by incorporating additional sonographic signs. No need to memorize — save the image as a reference.</p>
+    <img src="assets/img/IVCandRA_ASEguidelines2025.png"
+         alt="ASE 2025 algorithm for IVC-based RA pressure estimation"
+         style="max-width:100%; border-radius:10px; border:1px solid var(--border); display:block; margin:14px auto;">
+    <p style="font-size:13.5px; color:var(--text);"><strong>For volume assessment, the cutoffs above (Section 3) remain the practical bedside rule.</strong></p>
+  </section>
+
+  <!-- ── 5. VEXUS — THREE VESSELS & S/D WAVES ──────────────────────────────── -->
+  <section class="ref-section" id="vexus-overview">
+    <h2>5. VExUS — Three Vessels &amp; S/D Waves</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <p><strong>VExUS</strong> = <strong>V</strong>enous <strong>Ex</strong>cess <strong>U</strong>ltra<strong>S</strong>ound. The more congested the venous system, the more <strong>back-flow</strong> appears in the veins. Doppler waveforms capture this back-flow across three vessels:</p>
+    <ul>
+      <li><strong>① Hepatic vein</strong> — pressure transmission from the RA during systole and diastole. First to change as RA pressure rises.</li>
+      <li><strong>② Portal vein</strong> — sinusoidal congestion in the liver. Becomes pulsatile as upstream congestion worsens.</li>
+      <li><strong>③ Renal interlobar vein</strong> — venous outflow obstruction in the kidney. Closest to organ injury (AKI). Hardest to obtain.</li>
+    </ul>
+    <p><strong>Prerequisite:</strong> VExUS is intended for patients with evidence of congestion — typically <strong>IVC &gt; 2 cm</strong>. In patients without IVC dilation, VExUS adds little.</p>
+
+    <h3>S wave / D wave refresher</h3>
+    <p>Both waves represent forward flow toward the right atrium:</p>
+    <ul>
+      <li><strong>S wave</strong> — forward flow during <strong>systole</strong> (RV contraction; tricuspid annulus moves toward apex)</li>
+      <li><strong>D wave</strong> — forward flow during <strong>diastole</strong> (RV relaxes and passively fills)</li>
+    </ul>
+    <p>As RA pressure rises, the <strong>S wave shrinks first</strong> (because the tricuspid annulus motion is dampened). The D wave is more robust.</p>
+    <img src="assets/img/SDwaves.png"
+         alt="Hepatic vein Doppler waveform with S and D waves labeled"
+         style="max-width:100%; border-radius:10px; border:1px solid var(--border); display:block; margin:14px auto;">
+
+    <div class="ref-img-row">
+      <div>
+        <div class="ref-vid">
+          <iframe src="https://www.youtube-nocookie.com/embed/CqTE4s5ZSN0?start=10" title="S wave example" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="ref-vid-cap">S wave — example clip</div>
+      </div>
+      <div>
+        <div class="ref-vid">
+          <iframe src="https://www.youtube-nocookie.com/embed/CqTE4s5ZSN0?start=30" title="D wave example" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="ref-vid-cap">D wave — example clip</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); text-align:right; font-style:italic;">Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a></p>
+  </section>
+
+  <!-- ── 6. HEPATIC VEIN ───────────────────────────────────────────────────── -->
+  <section class="ref-section" id="vexus-hepatic">
+    <h2>6. VExUS — Hepatic Vein</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <h3>How to obtain</h3>
+    <ol>
+      <li>Use a <strong>cardiac (phased-array)</strong> probe or an <strong>abdominal (curvilinear)</strong> probe</li>
+      <li>Cardiac probe → <strong>subxiphoid</strong> window. Curvilinear → <strong>right mid-axillary</strong></li>
+      <li>Identify a hepatic vein entering the IVC</li>
+      <li>Place the sample gate on the hepatic vein and apply <strong>pulsed-wave (PW) Doppler</strong></li>
+    </ol>
+    <div class="ref-vid">
+      <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=130" title="Hepatic vein Doppler technique" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="ref-vid-cap">Curvilinear probe approach from right mid-axillary (starts at 2:10)</div>
+
+    <h3>Three patterns</h3>
+    <div class="ref-pattern-grid">
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#10b981;">Normal</div>
+        <div class="ref-pattern-title">S &gt; D</div>
+        <img src="assets/img/hepatic_normal.png" alt="Normal hepatic vein Doppler">
+        <div class="ref-pattern-desc">Normal RA pressure; S wave dominates.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:var(--amber);">Mild congestion</div>
+        <div class="ref-pattern-title">S &lt; D</div>
+        <img src="assets/img/hepatic_mild.png" alt="Mild congestion hepatic vein Doppler">
+        <div class="ref-pattern-desc">S wave attenuated as RA pressure rises.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#ef4444;">Severe congestion</div>
+        <div class="ref-pattern-title">S reversal</div>
+        <img src="assets/img/hepatic_severe.png" alt="Severe congestion hepatic vein Doppler">
+        <div class="ref-pattern-desc">S wave inverted below baseline.</div>
+      </div>
+    </div>
+    <p style="font-size:13px;"><strong>How to read it:</strong> Compare S and D wave amplitudes at end-expiration.</p>
+    <p style="font-size:12px; color:var(--muted); text-align:right; font-style:italic;">Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a></p>
+  </section>
+
+  <!-- ── 7. PORTAL VEIN ────────────────────────────────────────────────────── -->
+  <section class="ref-section" id="vexus-portal">
+    <h2>7. VExUS — Portal Vein</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <h3>How to obtain</h3>
+    <ol>
+      <li>Use an <strong>abdominal (curvilinear)</strong> probe</li>
+      <li>Approach from the <strong>right mid-axillary</strong> window</li>
+      <li>Starting from the hepatic vein view, <strong>tilt the probe slightly anterior (ventral)</strong></li>
+      <li>Identify a portal vein — color Doppler highlights flow into the liver</li>
+      <li>Place the sample gate on the portal vein and apply <strong>PW Doppler</strong></li>
+    </ol>
+    <div class="ref-vid">
+      <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=290" title="Portal vein Doppler technique" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="ref-vid-cap">Portal vein approach starts at 4:50</div>
+
+    <h3>Three patterns — Pulsatility Index (PI)</h3>
+    <p style="font-size:14px;"><strong>PI = (V<sub>max</sub> − V<sub>min</sub>) ÷ V<sub>max</sub> × 100%</strong></p>
+    <div class="ref-pattern-grid">
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#10b981;">Normal</div>
+        <div class="ref-pattern-title">PI &lt; 30%</div>
+        <img src="assets/img/portal_normal.png" alt="Normal portal vein Doppler">
+        <div class="ref-pattern-desc">Near-continuous flow; sinusoids dampen pulsations.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:var(--amber);">Mild</div>
+        <div class="ref-pattern-title">PI 30–50%</div>
+        <img src="assets/img/portal_mild.png" alt="Mild congestion portal vein Doppler">
+        <div class="ref-pattern-desc">Pulsatility appears as dampening fails.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#ef4444;">Severe</div>
+        <div class="ref-pattern-title">PI ≥ 50%</div>
+        <img src="assets/img/portal_severe.png" alt="Severe congestion portal vein Doppler">
+        <div class="ref-pattern-desc">May show flow reversal at troughs.</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); text-align:right; font-style:italic;">Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a></p>
+  </section>
+
+  <!-- ── 8. RENAL INTERLOBAR VEIN ──────────────────────────────────────────── -->
+  <section class="ref-section" id="vexus-renal">
+    <h2>8. VExUS — Renal Interlobar Vein</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">📌 Optional vessel</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">The renal interlobar vein is the hardest of the three to obtain. <strong>mVExUS</strong> (Section 10) omits this vessel with comparable performance — consider it if the renal view is difficult.</p>
+    </div>
+
+    <h3>How to obtain</h3>
+    <ol>
+      <li>Use an <strong>abdominal (curvilinear)</strong> probe</li>
+      <li>Approach from the <strong>right or left mid-axillary</strong> window</li>
+      <li>Identify the kidney parenchyma</li>
+      <li>Apply <strong>color Doppler</strong> to find intra-renal vessels</li>
+      <li>Place the sample gate on an intra-renal vessel and apply <strong>PW Doppler</strong></li>
+    </ol>
+    <div class="ref-vid">
+      <iframe src="https://www.youtube-nocookie.com/embed/WrsrvingZGI?start=400" title="Renal interlobar vein Doppler technique" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="ref-vid-cap">Renal interlobar vein approach starts at 6:40</div>
+
+    <h3>Three patterns</h3>
+    <div class="ref-pattern-grid">
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#10b981;">Normal</div>
+        <div class="ref-pattern-title">Continuous</div>
+        <img src="assets/img/renal_normal.png" alt="Normal renal vein Doppler">
+        <img src="assets/img/renal_normal_illust.png" alt="Continuous waveform illustration" style="margin-top:6px;">
+        <div class="ref-pattern-desc">Smooth, continuous flow.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:var(--amber);">Mild</div>
+        <div class="ref-pattern-title">Biphasic</div>
+        <img src="assets/img/renal_mild.png" alt="Mild congestion renal vein Doppler">
+        <img src="assets/img/renal_mild_illust.png" alt="Biphasic waveform illustration" style="margin-top:6px;">
+        <div class="ref-pattern-desc">Distinct S and D components.</div>
+      </div>
+      <div class="ref-pattern-card">
+        <div class="ref-pattern-label" style="color:#ef4444;">Severe</div>
+        <div class="ref-pattern-title">Monophasic</div>
+        <img src="assets/img/renal_severe.png" alt="Severe congestion renal vein Doppler">
+        <img src="assets/img/renal_severe_illust.png" alt="Monophasic waveform illustration" style="margin-top:6px;">
+        <div class="ref-pattern-desc">Only the D component remains.</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--muted); text-align:right; font-style:italic;">Reference: <a href="https://nephropocus.com/" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none;">Nephropocus</a></p>
+  </section>
+
+  <!-- ── 9. VEXUS GRADING ──────────────────────────────────────────────────── -->
+  <section class="ref-section" id="vexus-grading">
+    <h2>9. VExUS Grading 0–3</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <p>Combines <strong>IVC dilation</strong> (gate) with the <strong>worst Doppler pattern</strong> among the three vessels:</p>
+    <img src="assets/img/VExUSgrade2.jpg"
+         alt="VExUS grading table"
+         style="max-width:100%; border-radius:10px; border:1px solid var(--border); display:block; margin:14px auto;">
+
+    <ul>
+      <li><strong>Grade 0 — No congestion:</strong> IVC &lt; 2 cm <em>or</em> all vessels normal</li>
+      <li><strong>Grade 1 — Mild:</strong> IVC ≥ 2 cm + at least one mildly abnormal vessel; no severe findings</li>
+      <li><strong>Grade 2 — Moderate:</strong> IVC ≥ 2 cm + at least one vessel with a severe pattern</li>
+      <li><strong>Grade 3 — Severe:</strong> IVC ≥ 2 cm + ≥ 2 vessels with severe patterns</li>
+    </ul>
+
+    <h3>Two principles</h3>
+    <ol>
+      <li><strong>IVC &lt; 2 cm → Grade 0</strong> regardless of vessel patterns.</li>
+      <li><strong>The worst vessel wins</strong> — single severe finding bumps the patient up.</li>
+    </ol>
+
+    <h3>Outcome data (Beaubien-Souligny 2020 — post-cardiac surgery, ventilated)</h3>
+    <ul>
+      <li>Grade 1 → AKI Hazard Ratio <strong>1.25</strong></li>
+      <li>Grade 2 → AKI Hazard Ratio <strong>2.65</strong></li>
+      <li>Grade 3 → AKI Hazard Ratio <strong>3.69</strong></li>
+    </ul>
+    <p style="font-size:13px; color:var(--text);"><strong>Clinical takeaway:</strong> Grade ≥ 2 suggests a potential need for diuresis.</p>
+
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">⚖️ Evidence caveat</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">Best validated in cardiac / perioperative settings. A 2025 follow-up study (<em>Ann Intensive Care</em> 2025;15:105) found <strong>no association</strong> with AKI or mortality in septic ICU patients. Interpret VExUS in clinical context — population matters.</p>
+    </div>
+  </section>
+
+  <!-- ── 10. MVEXUS ────────────────────────────────────────────────────────── -->
+  <section class="ref-section" id="mvexus">
+    <h2>10. mVExUS — Modified Protocol</h2>
+    <div class="ref-section-sub">Module 3</div>
+    <p><strong>Modified VExUS (mVExUS)</strong> drops the renal interlobar vein, leaving only <strong>hepatic + portal</strong>. Evidence (<em>Ultrasound Journal</em> 2025;17:7) suggests mVExUS performs comparably to full VExUS in detecting elevated RA pressure.</p>
+    <ul>
+      <li>2 venous Doppler windows instead of 3 — easier and faster at the bedside</li>
+      <li>Renal interlobar vein is the hardest of the three to obtain reliably</li>
+      <li>Full VExUS remains the validated reference for grading</li>
+    </ul>
+    <p><strong>When to use mVExUS:</strong> When the renal view is technically difficult or time is short.</p>
+  </section>
+
+  <!-- ── 11. CLINICAL APPLICATION ──────────────────────────────────────────── -->
+  <section class="ref-section" id="application">
+    <h2>11. Clinical Application — The Decision Matrix</h2>
+    <div class="ref-section-sub">Modules 1 &amp; 3 · Cases 1–3</div>
+
+    <h3>Practical workflow</h3>
+    <ol>
+      <li>Start with <strong>IVC</strong> — assess fluid responsiveness</li>
+      <li>If IVC &gt; 2 cm → proceed to <strong>VExUS</strong> to assess tolerance</li>
+      <li>At the bedside, use <strong>mVExUS</strong> (hepatic + portal)</li>
+      <li>Synthesize → fluid, hold, diurese, or pressors</li>
+    </ol>
+
+    <h3>Decision matrix — responsiveness × tolerance</h3>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; overflow-x:auto;">
+      <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:8px;">
+        <div></div>
+        <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#10b981;">Fluid Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade 0–1</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#ef4444;">NOT Tolerant</div>
+          <div style="font-size:12.5px; color:var(--muted);">VExUS Grade ≥ 2</div>
+        </div>
+
+        <div style="background:rgba(13,148,136,0.08); border:1px solid rgba(13,148,136,0.3); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--teal);">Fluid Responsive</div>
+          <div style="font-size:12.5px; color:var(--muted);">IVC &lt; 1 cm or ΔIVC above cutoff</div>
+        </div>
+        <div style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px;">✅</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text);">Give fluid</div>
+        </div>
+        <div style="background:rgba(217,119,6,0.12); border:1px solid rgba(217,119,6,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px;">⚠️</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text);">Avoid fluid · pressors</div>
+        </div>
+
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:12px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--muted);">NOT Responsive</div>
+          <div style="font-size:12.5px; color:var(--muted);">IVC &gt; 2.5 cm or ΔIVC below cutoff</div>
+        </div>
+        <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px;">⏸️</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text);">Hold · reassess</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.5); border-radius:8px; padding:14px; text-align:center;">
+          <div style="font-size:24px;">🚱</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text);">Diurese · decongest</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>When both static tools are ambiguous → dynamic testing</h3>
+    <p>If IVC is unreliable (e.g., high PEEP) and VExUS is only mildly abnormal (Grade 1), neither static tool gives a clean answer. A small <strong>fluid challenge (250–500 mL)</strong> with reassessment in 30–60 min reveals both responsiveness <em>and</em> tolerance — the patient's response is the most informative test.</p>
+  </section>
+
+  <!-- ── 12. CAVEATS ───────────────────────────────────────────────────────── -->
+  <section class="ref-section" id="caveats">
+    <h2>12. Caveats &amp; Limitations</h2>
+    <div class="ref-section-sub">Modules 2 &amp; 3</div>
+
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">⚠️ IVC is unreliable at high PEEP</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">IVC distensibility becomes unreliable when <strong>PEEP &gt; 5 cmH₂O</strong> — the exaggerated respiratory swing no longer reflects true preload responsiveness. Reliable interpretation also requires tidal volume ≤ 8 mL/kg. In high-PEEP settings, lean on VExUS or dynamic testing.</p>
+    </div>
+
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">⚠️ Pressure ≠ Volume</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">A dilated IVC reflects high RA pressure — which can come from <strong>RV dysfunction</strong>, <strong>tension pneumothorax</strong>, or <strong>cardiac tamponade</strong>, not just volume overload. Rule these out before trusting IVC alone.</p>
+    </div>
+
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">⚠️ VExUS evidence is population-dependent</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">Best validated in cardiac surgery / perioperative populations. A 2025 follow-up in septic ICU patients did not replicate the AKI/mortality association. Use VExUS as one input — not the sole driver — of management decisions.</p>
+    </div>
+
+    <div class="ref-caveat">
+      <div class="ref-caveat-label">⚠️ Grade 1 is ambiguous</div>
+      <p style="font-size:14px; line-height:1.6; margin:0;">Grade 1 (mild) findings alone don't mandate diuresis. When VExUS is borderline and IVC is unreliable, a small dynamic fluid challenge reveals the truth.</p>
+    </div>
+  </section>
+
+  <div class="ref-back">
+    <a href="thank-you.html" class="nav-btn ghost" style="text-decoration:none; display:inline-block;">← Back</a>
+  </div>
+
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script>
+  tracker.flushQueue();
+</script>
+</body>
+</html>

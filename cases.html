@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case-Based Practice — IVC & VExUS</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Patient banner pinned at top of case MCQ slides */
+  .patient-banner {
+    background: rgba(13,148,136,0.08);
+    border: 1px solid rgba(13,148,136,0.3);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .patient-banner strong {
+    color: var(--teal);
+  }
+
+  /* 2-col image grid for VExUS slide — stacks on narrow */
+  .case-vexus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 12px 0 16px;
+  }
+  @media (max-width: 700px) {
+    .case-vexus-grid { grid-template-columns: 1fr; }
+  }
+  .case-vessel-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .case-vessel-card img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="module-label">🩺 Case-Based Practice</div>
+  <div class="page-dots" id="page-dots"></div>
+  <div class="page-counter" id="page-counter"></div>
+</div>
+
+<!-- SLIDE WRAPPER -->
+<div class="slide-wrapper">
+
+  <!-- ══════════════════ SLIDE 0 — Case 1 clinical scenario ══════════════════ -->
+  <div class="slide active" id="slide-0">
+    <div class="slide-tag">🩺 Case 1</div>
+    <h1 class="slide-title">Urosepsis with Hypotension</h1>
+    <p class="slide-subtitle">Apply the IVC + VExUS framework to a real patient — step by step.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid var(--teal); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:10px;">📋 Clinical scenario</p>
+      <ul style="font-size:14.5px; color:var(--text); line-height:1.9; margin:0 0 0 18px; padding:0;">
+        <li><strong>62-year-old male</strong> admitted for <strong>urosepsis</strong></li>
+        <li>Vital signs: <strong>MAP 58 mmHg</strong>, <strong>HR 120</strong>, <strong>SpO₂ 98% on NC 2 L</strong></li>
+        <li>Lung exam: clear to auscultation bilaterally (CTAB)</li>
+        <li>Labs: <strong>Cr 1.0 → 1.3</strong>, <strong>lactate 3.4</strong></li>
+        <li>Has already received <strong>4 L</strong> of crystalloid in the past 24 hours</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">🧠 Clinical question</div>
+      <p>The patient is still hypotensive after 4 L of fluid, and the creatinine is climbing. <strong>Do you give more fluid? Start a vasopressor? Diurese?</strong> The IVC + VExUS framework will help us decide. Click <strong>Next</strong> to see the ultrasound findings.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 1 — Case 1 MCQ 1.1 (IVC reveal) ══════════════════ -->
+  <div class="slide" id="slide-1">
+    <div class="slide-tag quiz-tag">✏️ Case 1 · Step 1</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 1:</strong> 62M · Urosepsis · MAP 58 · HR 120 · Cr 1.0→1.3 · Lactate 3.4 · 4 L given
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">IVC Assessment</h2>
+
+    <div style="text-align:center; margin:14px 0 16px;">
+      <img src="assets/img/case1_ivc.jpg"
+           alt="Case 1 IVC ultrasound"
+           style="max-width:100%; max-height:340px; border-radius:10px; border:1px solid var(--border);">
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">Findings</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6; margin:0;">
+        Subxiphoid view, M-mode: <strong>IVC measures &lt; 1 cm</strong> with <strong>ΔIVC &gt; 35%</strong> across the respiratory cycle.
+      </p>
+    </div>
+
+    <div class="question-card" id="q-card-0">
+      <div class="q-number">Question 1.1</div>
+      <div class="q-text">Based on the IVC findings, is this patient likely fluid responsive?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="0" data-question-id="case1_q1" data-answer-text="Yes — fluid responsive">
+          <span class="opt-letter">A</span>Yes — fluid responsive
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="case1_q1" data-answer-text="No — not fluid responsive">
+          <span class="opt-letter">B</span>No — not fluid responsive
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="0" data-question-id="case1_q1" data-answer-text="Cannot determine from IVC alone">
+          <span class="opt-letter">C</span>Cannot determine from IVC alone
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-0">
+      ✅ <strong>Correct — A.</strong> Both criteria support fluid responsiveness:
+      <ul style="margin:6px 0 0 18px;">
+        <li><strong>IVC &lt; 1 cm</strong> — the "fill" rule (Module 2; sensitivity ~90%).</li>
+        <li><strong>ΔIVC &gt; 35%</strong> — meets the <em>spontaneously breathing</em> cutoff (Module 2).</li>
+      </ul>
+      A fluid bolus is likely to increase cardiac output. But responsiveness alone isn't enough — we also need to check tolerance.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 2 — Case 1 MCQ 1.2 (VExUS reveal) ══════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-tag quiz-tag">✏️ Case 1 · Step 2</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 1:</strong> 62M · Urosepsis · MAP 58 · HR 120 · Cr 1.0→1.3 · Lactate 3.4 · 4 L given
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">VExUS Assessment (mVExUS)</h2>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:14px;">Hepatic and portal vein Doppler — the bedside-friendly mVExUS combination.</p>
+
+    <div class="case-vexus-grid">
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--teal); margin-bottom:6px;">Hepatic vein</div>
+        <img src="assets/img/case1_hepatic.jpg" alt="Case 1 hepatic vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Normal triphasic flow (S &gt; D).</p>
+      </div>
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--teal); margin-bottom:6px;">Portal vein</div>
+        <img src="assets/img/case1_portal.jpg" alt="Case 1 portal vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Near-continuous flow (PI &lt; 30%).</p>
+      </div>
+    </div>
+
+    <div class="question-card" id="q-card-1">
+      <div class="q-number">Question 1.2</div>
+      <div class="q-text">Based on these mVExUS findings, what is the level of venous congestion?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="1" data-question-id="case1_q2" data-answer-text="No congestion (Grade 0)">
+          <span class="opt-letter">A</span>No congestion (Grade 0)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="case1_q2" data-answer-text="Mild congestion (Grade 1)">
+          <span class="opt-letter">B</span>Mild congestion (Grade 1)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="1" data-question-id="case1_q2" data-answer-text="Severe congestion (Grade 2 or 3)">
+          <span class="opt-letter">C</span>Severe congestion (Grade 2 or 3)
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-1">
+      ✅ <strong>Correct — A.</strong> Both vessels show normal patterns — hepatic vein is triphasic (S &gt; D), and the portal vein is near-continuous (PI &lt; 30%). This is <strong>mVExUS Grade 0</strong>: no congestion, fluid tolerant. Despite the 4 L already given, this patient still has room — fluid will not worsen organ congestion.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 3 — Case 1 MCQ 1.3 (synthesis + action) ══════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-tag quiz-tag">✏️ Case 1 · Step 3</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 1:</strong> 62M · Urosepsis · MAP 58 · HR 120 · Cr 1.0→1.3 · Lactate 3.4 · 4 L given
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">Synthesis — What's Next?</h2>
+
+    <!-- Summary of findings -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0 18px;">
+      <div style="background:rgba(13,148,136,0.08); border:1px solid rgba(13,148,136,0.4); border-top:3px solid var(--teal); border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">IVC findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          IVC &lt; 1 cm, ΔIVC &gt; 35%<br>
+          → <strong style="color:var(--teal);">Fluid responsive ✓</strong>
+        </div>
+      </div>
+      <div style="background:rgba(217,119,6,0.08); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">mVExUS findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          Hepatic normal, Portal normal<br>
+          → <strong style="color:var(--amber);">Fluid tolerant ✓</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card" id="q-card-2">
+      <div class="q-number">Question 1.3</div>
+      <div class="q-text">What is the most appropriate next step?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="true" data-q-idx="2" data-question-id="case1_q3" data-answer-text="Continue fluid resuscitation">
+          <span class="opt-letter">A</span>Continue fluid resuscitation
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="case1_q3" data-answer-text="Start vasopressors">
+          <span class="opt-letter">B</span>Start vasopressors
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="case1_q3" data-answer-text="Start diuresis">
+          <span class="opt-letter">C</span>Start diuresis
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="2" data-question-id="case1_q3" data-answer-text="Hold fluids and reassess in 2 hours">
+          <span class="opt-letter">D</span>Hold fluids and reassess in 2 hours
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-2">
+      ✅ <strong>Correct — A.</strong> This patient is in the <strong>Fluid Responsive AND Tolerant</strong> quadrant of the IVC × VExUS matrix — the safest scenario for empiric fluid resuscitation. The hypotension and rising creatinine reflect under-resuscitation rather than congestion. Continue fluid, and reassess IVC + VExUS as the picture evolves.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 4 — Case 1 take-home / debrief ══════════════════ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-tag summary-tag">✅ Case 1 Complete</div>
+    <h2 class="slide-title">Take-Home — Case 1</h2>
+    <p class="slide-subtitle">A "fluid responsive AND tolerant" patient — the green quadrant.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <ul class="summary-list" style="margin:0;">
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Hypotension after fluid resuscitation doesn't always mean "no more fluid."</strong> The clinical picture alone (rising Cr, 4 L given) might steer you wrong.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            A small, collapsing IVC + a clean mVExUS confirms the patient is <strong style="color:var(--teal);">responsive</strong> AND <strong style="color:var(--amber);">tolerant</strong> — fluid is the right call.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Lesson:</strong> IVC + VExUS reframes the "more fluid vs. pressors" question with objective bedside data.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="continueToCase2()">Continue to Case 2 →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 5 — Case 2 clinical scenario ══════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-tag">🩺 Case 2</div>
+    <h1 class="slide-title">HFpEF with Oliguria</h1>
+    <p class="slide-subtitle">Apply the IVC + VExUS framework to an intubated patient with congestion.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid var(--amber); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:10px;">📋 Clinical scenario</p>
+      <ul style="font-size:14.5px; color:var(--text); line-height:1.9; margin:0 0 0 18px; padding:0;">
+        <li><strong>70-year-old woman</strong> with <strong>HFpEF</strong> + <strong>pneumonia</strong></li>
+        <li>Vital signs: <strong>MAP 62 mmHg</strong>, <strong>HR 105</strong>, <strong>intubated</strong></li>
+        <li>Ventilator (PRVC): <strong>PEEP 5</strong>, <strong>TV 6 mL/kg</strong>, RR 16</li>
+        <li>JVP hard to assess; lung sounds: <strong>mild crackles</strong></li>
+        <li><strong>Oliguric</strong> overnight</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">🧠 Clinical question</div>
+      <p>The patient has borderline-low MAP and is oliguric — the instinct might be to <strong>give more fluid</strong>. But HFpEF, mild crackles, and difficult JVP suggest possible congestion. Is fluid the answer, or is she already wet? Click <strong>Next</strong> to see the ultrasound findings.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 6 — Case 2 MCQ 2.1 (IVC reveal) ══════════════════ -->
+  <div class="slide" id="slide-6">
+    <div class="slide-tag quiz-tag">✏️ Case 2 · Step 1</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 2:</strong> 70F · HFpEF + pneumonia · MAP 62 · HR 105 · Intubated (PEEP 5, TV 6 mL/kg) · Oliguric
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">IVC Assessment</h2>
+
+    <div style="text-align:center; margin:14px 0 16px;">
+      <img src="assets/img/case2_ivc.jpg"
+           alt="Case 2 IVC ultrasound"
+           style="max-width:100%; max-height:340px; border-radius:10px; border:1px solid var(--border);">
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">Findings</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6; margin:0;">
+        Subxiphoid view, M-mode: <strong>IVC measures &gt; 2.5 cm</strong> with <strong>distensibility &lt; 16.5%</strong>. The vent settings (PEEP 5, TV 6 mL/kg) meet the criteria for reliable IVC interpretation in mechanically ventilated patients.
+      </p>
+    </div>
+
+    <div class="question-card" id="q-card-3">
+      <div class="q-number">Question 2.1</div>
+      <div class="q-text">Based on the IVC findings, is this patient likely fluid responsive?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="case2_q1" data-answer-text="Yes — fluid responsive">
+          <span class="opt-letter">A</span>Yes — fluid responsive
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="3" data-question-id="case2_q1" data-answer-text="No — not fluid responsive">
+          <span class="opt-letter">B</span>No — not fluid responsive
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="3" data-question-id="case2_q1" data-answer-text="Cannot determine from IVC alone">
+          <span class="opt-letter">C</span>Cannot determine from IVC alone
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-3">
+      ✅ <strong>Correct — B.</strong> Both criteria argue against fluid responsiveness:
+      <ul style="margin:6px 0 0 18px;">
+        <li><strong>IVC &gt; 2.5 cm</strong> — the "don't fill" rule (Module 2; sensitivity 80–90% for non-responsiveness).</li>
+        <li><strong>Distensibility &lt; 16.5%</strong> — below the <em>mechanically ventilated</em> cutoff (Module 2).</li>
+      </ul>
+      A fluid bolus is unlikely to increase cardiac output. Her low MAP is not from under-resuscitation. Next, let's check tolerance — is she already congested?
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 7 — Case 2 MCQ 2.2 (VExUS reveal) ══════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-tag quiz-tag">✏️ Case 2 · Step 2</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 2:</strong> 70F · HFpEF + pneumonia · MAP 62 · HR 105 · Intubated (PEEP 5, TV 6 mL/kg) · Oliguric
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">VExUS Assessment (mVExUS)</h2>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:14px;">Hepatic and portal vein Doppler.</p>
+
+    <div class="case-vexus-grid">
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#ef4444; margin-bottom:6px;">Hepatic vein</div>
+        <img src="assets/img/case2_hepatic.jpg" alt="Case 2 hepatic vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">S-wave reversal — severe pattern.</p>
+      </div>
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#ef4444; margin-bottom:6px;">Portal vein</div>
+        <img src="assets/img/case2_portal.jpg" alt="Case 2 portal vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Severe pulsatility (PI ≥ 50%).</p>
+      </div>
+    </div>
+
+    <div class="question-card" id="q-card-4">
+      <div class="q-number">Question 2.2</div>
+      <div class="q-text">Based on these mVExUS findings, what is the level of venous congestion?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="4" data-question-id="case2_q2" data-answer-text="No congestion (Grade 0)">
+          <span class="opt-letter">A</span>No congestion (Grade 0)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="4" data-question-id="case2_q2" data-answer-text="Mild congestion (Grade 1)">
+          <span class="opt-letter">B</span>Mild congestion (Grade 1)
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="4" data-question-id="case2_q2" data-answer-text="Severe congestion (Grade 2 or 3)">
+          <span class="opt-letter">C</span>Severe congestion (Grade 2 or 3)
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-4">
+      ✅ <strong>Correct — C.</strong> Both vessels show severe patterns — hepatic S-wave reversal AND portal pulsatility ≥ 50%. With dilated IVC + 2 severe vessel findings, this is consistent with <strong>mVExUS Grade 3 (severe congestion)</strong>. More fluid will worsen organ congestion.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 8 — Case 2 MCQ 2.3 (synthesis + action) ══════════════════ -->
+  <div class="slide" id="slide-8">
+    <div class="slide-tag quiz-tag">✏️ Case 2 · Step 3</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 2:</strong> 70F · HFpEF + pneumonia · MAP 62 · HR 105 · Intubated (PEEP 5, TV 6 mL/kg) · Oliguric
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">Synthesis — What's Next?</h2>
+
+    <!-- Summary of findings -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0 18px;">
+      <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-top:3px solid var(--muted); border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin-bottom:6px;">IVC findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          IVC &gt; 2.5 cm, distensibility &lt; 16.5%<br>
+          → <strong>NOT fluid responsive ✗</strong>
+        </div>
+      </div>
+      <div style="background:rgba(239,68,68,0.10); border:1px solid rgba(239,68,68,0.4); border-top:3px solid #ef4444; border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:6px;">mVExUS findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          Hepatic S-reversal, Portal severe<br>
+          → <strong style="color:#ef4444;">NOT fluid tolerant ✗</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card" id="q-card-5">
+      <div class="q-number">Question 2.3</div>
+      <div class="q-text">What is the most appropriate next step?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="5" data-question-id="case2_q3" data-answer-text="Continue fluid resuscitation">
+          <span class="opt-letter">A</span>Continue fluid resuscitation
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="5" data-question-id="case2_q3" data-answer-text="Start vasopressors only">
+          <span class="opt-letter">B</span>Start vasopressors only
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="5" data-question-id="case2_q3" data-answer-text="Diurese / decongest">
+          <span class="opt-letter">C</span>Diurese / decongest
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="5" data-question-id="case2_q3" data-answer-text="Hold fluids and reassess in 2 hours">
+          <span class="opt-letter">D</span>Hold fluids and reassess in 2 hours
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-5">
+      ✅ <strong>Correct — C.</strong> This patient is in the <strong>NOT responsive + NOT tolerant</strong> quadrant — the red quadrant of the IVC × VExUS matrix. The oliguria is from <em>congestive AKI</em>, not under-perfusion. Diurese to relieve the venous congestion; pressor support may be added if MAP doesn't improve as decongestion progresses.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 9 — Case 2 take-home / debrief ══════════════════ -->
+  <div class="slide" id="slide-9">
+    <div class="slide-tag summary-tag">✅ Case 2 Complete</div>
+    <h2 class="slide-title">Take-Home — Case 2</h2>
+    <p class="slide-subtitle">A "NOT responsive, NOT tolerant" patient — the red quadrant.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <ul class="summary-list" style="margin:0;">
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Borderline-low MAP + oliguria doesn't always mean "more fluid."</strong> In HFpEF, the kidneys can be hypoperfused from <em>venous congestion</em>, not arterial hypoperfusion.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            A dilated, non-collapsing IVC + severe mVExUS pattern confirms the patient is <strong>not responsive</strong> AND <strong>not tolerant</strong> — diuresis is the right call.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Lesson:</strong> Vent settings matter. PEEP ≤ 5 and TV ≤ 8 mL/kg made the IVC findings reliable here.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="continueToCase3()">Continue to Case 3 →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 10 — Case 3 clinical scenario ══════════════════ -->
+  <div class="slide" id="slide-10">
+    <div class="slide-tag">🩺 Case 3</div>
+    <h1 class="slide-title">ARDS on High PEEP</h1>
+    <p class="slide-subtitle">Apply the framework when one of your tools has hit its limits.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid #ef4444; border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#ef4444; margin-bottom:10px;">📋 Clinical scenario</p>
+      <ul style="font-size:14.5px; color:var(--text); line-height:1.9; margin:0 0 0 18px; padding:0;">
+        <li><strong>50-year-old male</strong> with <strong>ARDS</strong> on mechanical ventilation</li>
+        <li>On low-dose norepinephrine: <strong>MAP 60–62</strong>, <strong>HR 105</strong>, intubated</li>
+        <li>Ventilator (PRVC): <strong>PEEP 10</strong>, <strong>TV 6 mL/kg</strong>, RR 24</li>
+        <li>Labs: <strong>rising creatinine</strong>; urine output borderline (~0.4 mL/kg/hr)</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <div class="note-box-label">🧠 Clinical question</div>
+      <p>Patient is on pressors with a borderline MAP, the kidneys are starting to suffer, and the vent settings are aggressive. Should we give fluid, push pressors, or diurese? Before deciding, note one thing: <strong>PEEP 10 is above the Module 2 threshold for reliable IVC interpretation.</strong> Click <strong>Next</strong> — pay attention to which tool we can trust here.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 11 — Case 3 MCQ 3.1 (IVC reveal — reliability check) ══════════════════ -->
+  <div class="slide" id="slide-11">
+    <div class="slide-tag quiz-tag">✏️ Case 3 · Step 1</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 3:</strong> 50M · ARDS · MAP 60–62 on norepi · HR 105 · Intubated (<strong style="color:#ef4444;">PEEP 10</strong>, TV 6 mL/kg) · Rising Cr
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">IVC Assessment</h2>
+
+    <div style="text-align:center; margin:14px 0 16px;">
+      <img src="assets/img/case3_ivc.jpg"
+           alt="Case 3 IVC ultrasound"
+           style="max-width:100%; max-height:340px; border-radius:10px; border:1px solid var(--border);">
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:18px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--teal); margin-bottom:6px;">Findings</p>
+      <p style="font-size:14px; color:var(--text); line-height:1.6; margin:0;">
+        Subxiphoid view, M-mode: <strong>IVC measures ~2.0 cm</strong> with <strong>distensibility ~12%</strong>.
+      </p>
+    </div>
+
+    <div class="question-card" id="q-card-6">
+      <div class="q-number">Question 3.1</div>
+      <div class="q-text">Based on the IVC findings at <strong>PEEP 10</strong>, what is the most appropriate interpretation?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="6" data-question-id="case3_q1" data-answer-text="Fluid responsive — distensibility suggests preload reserve">
+          <span class="opt-letter">A</span>Fluid responsive — distensibility suggests preload reserve
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="6" data-question-id="case3_q1" data-answer-text="NOT fluid responsive — distensibility is below the 16.5% cutoff">
+          <span class="opt-letter">B</span>NOT fluid responsive — distensibility is below the 16.5% cutoff
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="6" data-question-id="case3_q1" data-answer-text="IVC is unreliable at PEEP > 5 — defer to VExUS">
+          <span class="opt-letter">C</span>IVC is unreliable at PEEP &gt; 5 — defer to VExUS
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="6" data-question-id="case3_q1" data-answer-text="Cannot interpret because patient is on vasopressors">
+          <span class="opt-letter">D</span>Cannot interpret because patient is on vasopressors
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-6">
+      ✅ <strong>Correct — C.</strong> <strong>PEEP 10 is above the 5 cmH₂O threshold</strong> for reliable IVC interpretation (Module 2: ideal patient selection requires PEEP ≤ 5). At higher PEEP, the inspiratory swing in IVC diameter is exaggerated by the larger intrathoracic pressure changes and no longer faithfully reflects preload responsiveness. The 12% distensibility can't be trusted here. Fortunately, <strong>VExUS works at any PEEP</strong> — Doppler patterns reflect actual venous pressures regardless of vent settings.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 12 — Case 3 MCQ 3.2 (VExUS reveal) ══════════════════ -->
+  <div class="slide" id="slide-12">
+    <div class="slide-tag quiz-tag">✏️ Case 3 · Step 2</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 3:</strong> 50M · ARDS · MAP 60–62 on norepi · HR 105 · Intubated (<strong style="color:#ef4444;">PEEP 10</strong>, TV 6 mL/kg) · Rising Cr
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">VExUS Assessment (mVExUS)</h2>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:14px;">Hepatic and portal vein Doppler.</p>
+
+    <div class="case-vexus-grid">
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--amber); margin-bottom:6px;">Hepatic vein</div>
+        <img src="assets/img/case3_hepatic.jpg" alt="Case 3 hepatic vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">S &lt; D — mild congestion.</p>
+      </div>
+      <div class="case-vessel-card">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--amber); margin-bottom:6px;">Portal vein</div>
+        <img src="assets/img/case3_portal.jpg" alt="Case 3 portal vein Doppler">
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.5; margin:0;">Mild pulsatility (~30%).</p>
+      </div>
+    </div>
+
+    <div class="question-card" id="q-card-7">
+      <div class="q-number">Question 3.2</div>
+      <div class="q-text">Given IVC ≥ 2 cm plus mildly abnormal findings in both vessels (no severe patterns), what is the VExUS grade?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="7" data-question-id="case3_q2" data-answer-text="No congestion (Grade 0)">
+          <span class="opt-letter">A</span>No congestion (Grade 0)
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="7" data-question-id="case3_q2" data-answer-text="Mild congestion (Grade 1)">
+          <span class="opt-letter">B</span>Mild congestion (Grade 1)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="7" data-question-id="case3_q2" data-answer-text="Moderate congestion (Grade 2)">
+          <span class="opt-letter">C</span>Moderate congestion (Grade 2)
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="7" data-question-id="case3_q2" data-answer-text="Severe congestion (Grade 3)">
+          <span class="opt-letter">D</span>Severe congestion (Grade 3)
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-7">
+      ✅ <strong>Correct — B.</strong> The IVC is dilated (gate met) and there are <strong>mild findings</strong> in both vessels (hepatic S &lt; D, portal pulsatility ~30%) but <strong>no severe findings</strong>. Per the grading scheme — IVC ≥ 2 cm + at least one mildly abnormal vessel <em>and no severe</em> = <strong>Grade 1 (mild congestion)</strong>. This is the ambiguous "borderline" zone clinically.
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 13 — Case 3 MCQ 3.3 (synthesis + action) ══════════════════ -->
+  <div class="slide" id="slide-13">
+    <div class="slide-tag quiz-tag">✏️ Case 3 · Step 3</div>
+
+    <div class="patient-banner">
+      <strong>🩺 Case 3:</strong> 50M · ARDS · MAP 60–62 on norepi · HR 105 · Intubated (<strong style="color:#ef4444;">PEEP 10</strong>, TV 6 mL/kg) · Rising Cr
+    </div>
+
+    <h2 class="slide-title" style="font-size:24px;">Synthesis — What's Next?</h2>
+
+    <!-- Summary of findings -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0 18px;">
+      <div style="background:rgba(148,163,184,0.12); border:1px solid rgba(148,163,184,0.4); border-top:3px solid var(--muted); border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin-bottom:6px;">IVC findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          Unreliable at PEEP 10<br>
+          → <strong>Responsiveness: unclear</strong>
+        </div>
+      </div>
+      <div style="background:rgba(217,119,6,0.10); border:1px solid rgba(217,119,6,0.4); border-top:3px solid var(--amber); border-radius:10px; padding:14px 18px;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--amber); margin-bottom:6px;">mVExUS findings</div>
+        <div style="font-size:14px; color:var(--text); line-height:1.6;">
+          Grade 1 (mild congestion)<br>
+          → <strong style="color:var(--amber);">Tolerance: borderline</strong>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-left:3px solid var(--teal); border-radius:10px; padding:14px 18px; margin-bottom:18px;">
+      <p style="font-size:13.5px; color:var(--text); line-height:1.6; margin:0;">
+        <strong>Both static tools are ambiguous</strong> — IVC can't be trusted, and VExUS is only mildly abnormal. Neither gives a definitive answer.
+      </p>
+    </div>
+
+    <div class="question-card" id="q-card-8">
+      <div class="q-number">Question 3.3</div>
+      <div class="q-text">What is the most appropriate next step?</div>
+      <div class="options">
+        <button class="opt-btn" data-correct="false" data-q-idx="8" data-question-id="case3_q3" data-answer-text="Continue fluid resuscitation aggressively">
+          <span class="opt-letter">A</span>Continue fluid resuscitation aggressively
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="8" data-question-id="case3_q3" data-answer-text="Initiate diuresis with pressor support">
+          <span class="opt-letter">B</span>Initiate diuresis with pressor support
+        </button>
+        <button class="opt-btn" data-correct="true" data-q-idx="8" data-question-id="case3_q3" data-answer-text="Dynamic test: small fluid bolus (250–500 mL) and reassess in 30–60 min">
+          <span class="opt-letter">C</span>Dynamic test: small fluid bolus (250–500 mL) and reassess in 30–60 min
+        </button>
+        <button class="opt-btn" data-correct="false" data-q-idx="8" data-question-id="case3_q3" data-answer-text="Hold fluids and reassess in 2 hours">
+          <span class="opt-letter">D</span>Hold fluids and reassess in 2 hours
+        </button>
+      </div>
+    </div>
+    <div class="feedback-box" id="fb-8">
+      ✅ <strong>Correct — C.</strong> Static tools don't give a clear answer here. <strong>Dynamic testing</strong> — a small fluid challenge with reassessment — fills the gap and reveals both responsiveness <em>and</em> tolerance at once:
+      <ul style="margin:6px 0 0 18px;">
+        <li>MAP improves + urine output picks up + VExUS unchanged → <strong>responsive AND tolerant</strong> → continue fluids cautiously</li>
+        <li>VExUS worsens to Grade ≥ 2 without MAP improvement → <strong>at the tolerance ceiling</strong> → pivot to diuresis</li>
+        <li>No change in MAP or VExUS → <strong>not responsive</strong> → titrate pressors</li>
+      </ul>
+      A small (not large) bolus keeps the test safe in this borderline scenario. In ARDS, conservative fluid management remains the overarching principle (FACTT trial).
+    </div>
+  </div>
+
+  <!-- ══════════════════ SLIDE 14 — Case 3 take-home / debrief ══════════════════ -->
+  <div class="slide" id="slide-14">
+    <div class="slide-tag summary-tag">✅ Case 3 Complete</div>
+    <h2 class="slide-title">Take-Home — Case 3</h2>
+    <p class="slide-subtitle">When static tools are ambiguous, test dynamically.</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:18px;">
+      <ul class="summary-list" style="margin:0;">
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>IVC interpretation has prerequisites</strong>: tidal volume ≤ 8 mL/kg <em>and</em> PEEP ≤ 5 cmH₂O. At PEEP 10, IVC distensibility can't be trusted.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>VExUS works at any PEEP</strong> — but Grade 1 (mild) findings sit in an ambiguous "borderline" zone clinically. They don't mandate diuresis on their own.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>When static tools are ambiguous, a dynamic fluid challenge</strong> (250–500 mL with reassessment in 30–60 min) reveals responsiveness <em>and</em> tolerance simultaneously. The patient's response is the most informative test.
+          </div>
+        </li>
+        <li>
+          <div style="flex:1; min-width:0;">
+            <strong>Lesson:</strong> Static tools (IVC, VExUS) + dynamic testing together give the complete picture, especially in complex cases. In ARDS, keep the test small — conservative fluid management remains the principle (FACTT).
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top:16px; text-align:center;">
+      <button class="nav-btn" onclick="completeCases()">Continue to Post-Test →</button>
+    </div>
+  </div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="nav-btn ghost" id="btn-prev" onclick="nav.back()" disabled>← Back</button>
+  <span class="nav-hint" id="nav-hint"></span>
+  <button class="nav-btn" id="btn-next" onclick="nav.next()">Next →</button>
+</div>
+
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/quiz.js"></script>
+<script>
+  var STORAGE_KEY = 'fa_cases_progress';
+
+  // Flush any events queued from the prior page in the background.
+  tracker.flushQueue();
+
+  // ── Wire MCQ option buttons via event delegation ──────────────────────
+  document.querySelector('.slide-wrapper').addEventListener('click', function (e) {
+    var btn = e.target.closest('.opt-btn');
+    if (!btn) return;
+    var qIdx      = parseInt(btn.dataset.qIdx, 10);
+    var isCorrect = btn.dataset.correct === 'true';
+    var qId       = btn.dataset.questionId;
+    var aText     = btn.dataset.answerText;
+    if (isNaN(qIdx)) return;
+    quiz.answerQ(qIdx, btn, isCorrect, qId, aText);
+  });
+
+  // ── Quiz init ─────────────────────────────────────────────────────────
+  // Unified across all 3 cases. Per-case granularity comes from question_id (case1_q1 / case2_q1 / case3_q1 / ...).
+  quiz.init({
+    questionCount: 9,
+    moduleId:      'cases',
+    storageKey:    STORAGE_KEY,
+    quizStart:     1,
+    onComplete: function (score, total) {
+      // No-op — per-case completions are logged on take-home button clicks.
+    },
+  });
+
+  // ── Nav init ──────────────────────────────────────────────────────────
+  // MCQ slides: 1, 2, 3 (Case 1) · 6, 7, 8 (Case 2) · 11, 12, 13 (Case 3). Take-home: 4, 9, 14.
+  nav.init({
+    slides:     15,
+    quizStart:  1,
+    quizEnd:    13,
+    summaryIdx: 14,
+    storageKey: STORAGE_KEY,
+    onEnter: function (slideIdx) {
+      var quizSlideToQ = { 1: 0, 2: 1, 3: 2, 6: 3, 7: 4, 8: 5, 11: 6, 12: 7, 13: 8 };
+      if (slideIdx in quizSlideToQ && !quiz.isAnswered(quizSlideToQ[slideIdx])) {
+        nav.disableNext();
+      }
+      // Hide nav-bar buttons on take-home slides — learners advance via the in-slide "Continue" button.
+      if (slideIdx === 4 || slideIdx === 9 || slideIdx === 14) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('btn-prev').style.display = 'none';
+        document.getElementById('nav-hint').textContent = '';
+      } else {
+        document.getElementById('btn-next').style.display = '';
+        document.getElementById('btn-prev').style.display = '';
+      }
+    },
+  });
+
+  // ── Case 1 → Case 2 transition ────────────────────────────────────────
+  function continueToCase2() {
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'case_1',
+      question_id:    null,
+      answer:         'case1_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    nav.next();
+  }
+
+  // ── Case 2 → Case 3 transition ────────────────────────────────────────
+  function continueToCase3() {
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'case_2',
+      question_id:    null,
+      answer:         'case2_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    nav.next();
+  }
+
+  // ── Cases complete handler (final take-home → post-test) ──────────────
+  function completeCases() {
+    nav.clearProgress();
+    tracker.logEvent({
+      event_type:     'module_complete',
+      module_id:      'case_3',
+      question_id:    null,
+      answer:         'case3_dismissed',
+      is_correct:     null,
+      score:          null,
+      attempt_number: 1,
+    });
+    window.location.href = 'post-test.html';
+  }
+</script>
+</body>
+</html>
