@@ -186,11 +186,6 @@ doneSlide.innerHTML = [
     '<div class="complete-icon">🎉</div>',
     '<h2>Post-Test Complete</h2>',
     '<p>Great work. Your responses have been recorded.</p>',
-    '<p style="margin-top:8px;">',
-      '<button class="nav-btn" onclick="window.location.href=\'confidence-post.html\'">',
-        'Continue →',
-      '</button>',
-    '</p>',
   '</div>',
 ].join('');
 wrapper.appendChild(doneSlide);
@@ -274,6 +269,13 @@ nav.init({
       document.getElementById('btn-next').style.display = 'none';
       document.getElementById('btn-prev').style.display = 'none';
       document.getElementById('nav-hint').textContent = '';
+      var navBar = document.querySelector('.nav-bar');
+      navBar.style.justifyContent = 'center';
+      var continueBtn = document.createElement('button');
+      continueBtn.className = 'nav-btn';
+      continueBtn.textContent = 'Continue →';
+      continueBtn.onclick = function () { window.location.href = 'confidence-post.html'; };
+      navBar.appendChild(continueBtn);
     }
   },
 });
