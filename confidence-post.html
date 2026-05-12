@@ -206,7 +206,11 @@
   }
 
   function submitSurvey() {
-    document.getElementById('btn-next').disabled = true;
+    var btn = document.getElementById('btn-next');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+    document.getElementById('nav-hint').textContent =
+      'Sending your responses — feel free to switch tabs, but please don\'t close this window yet.';
 
     answers.forEach(function (val, i) {
       tracker.queueEvent({
@@ -220,9 +224,9 @@
       });
     });
 
-    // Navigate immediately — thank-you will flush the queue in the background
-    // while the learner reads the completion message and the one-pager.
-    window.location.href = 'thank-you.html';
+    tracker.flushQueue(function () {
+      window.location.href = 'thank-you.html';
+    });
   }
 </script>
 </body>
