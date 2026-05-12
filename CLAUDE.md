@@ -3,7 +3,7 @@
 ## What this is
 Web-based IVC/VExUS volume-assessment learning module for internal medicine learners. Embedded as an iframe in a Google Site; anonymous learning events logged to a Google Sheet via Apps Script.
 
-Source-of-truth files: [SPEC.md](SPEC.md) (what we're building) · [TASKS.md](TASKS.md) (work list) · [PROJECT.md](PROJECT.md) (original vision) · [DESIGN.md](DESIGN.md) (design system) · [reference/](reference/) (source content, read-only)
+Source-of-truth files: [SPEC.md](docs/SPEC.md) (what we're building) · [TASKS.md](docs/TASKS.md) (work list) · [PROJECT.md](docs/PROJECT.md) (original vision) · [DESIGN.md](docs/DESIGN.md) (design system) · [reference/](reference/) (source content, read-only)
 
 ## Local development
 - Vanilla HTML/CSS/JS — no build step
@@ -15,7 +15,7 @@ Source-of-truth files: [SPEC.md](SPEC.md) (what we're building) · [TASKS.md](TA
 - Learner ID format: `LRN-XXXXXX` (6 uppercase alphanumeric). Generated once, stored in `localStorage.fluidassess_learner_id`.
 - CSS variables live in [assets/css/styles.css](assets/css/styles.css). Never hardcode hex values.
 - Images go in [assets/img/](assets/img/). Base64 inline embeds are deprecated (only the read-only reference file keeps them).
-- One concept per page — cognitive-load rule from PROJECT.md.
+- One concept per page — cognitive-load rule from docs/PROJECT.md.
 
 ## Gotchas
 - **iframe storage partitioning:** Safari/iOS may give a different `learner_id` per browser/device. Accepted limitation — do not engineer around it.
@@ -25,4 +25,4 @@ Source-of-truth files: [SPEC.md](SPEC.md) (what we're building) · [TASKS.md](TA
 
 ## Process
 - Content discussion happens section-by-section in chat. Commit per section after user approval.
-- Do not write new modules or pages without an entry in [TASKS.md](TASKS.md).
+- Do not write new modules or pages without an entry in [TASKS.md](docs/TASKS.md).
