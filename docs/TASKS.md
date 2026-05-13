@@ -132,11 +132,11 @@ See [SPEC.md](SPEC.md) for what each piece does. See [CLAUDE.md](CLAUDE.md) for 
 
 ## Phase 8 — Case Studies
 
-- [ ] **8.1** Build `cases.html` scaffold (storage key `fa_cases_progress`)
-- [ ] **8.2** Case 1 content — Urosepsis with hypotension → give fluid
-- [ ] **8.3** Case 2 content — HFpEF with oliguria (intubated) → diurese
-- [ ] **8.4** Case 3 content — ARDS on high PEEP, rising creatinine → trust VExUS over IVC
-- [ ] **8.5** Wire `module-3.html` → `cases.html` → `post-test.html`
+- [x] **8.1** Build `cases.html` scaffold (storage key `fa_cases_progress`)
+- [x] **8.2** Case 1 content — Urosepsis with hypotension → give fluid
+- [x] **8.3** Case 2 content — HFpEF with oliguria (intubated) → diurese
+- [x] **8.4** Case 3 content — ARDS on high PEEP, rising creatinine → trust VExUS over IVC
+- [x] **8.5** Wire `module-3.html` → `cases.html` → `post-test.html`
 - [ ] **8.6** E2E test on desktop + mobile
 
 ---
