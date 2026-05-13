@@ -148,3 +148,14 @@ See [SPEC.md](SPEC.md) for what each piece does. See [CLAUDE.md](CLAUDE.md) for 
 - [ ] **9.3** Update `SPEC.md` §8 event schema (new `module_id` and `question_id` values)
 - [ ] **9.4** Update `PROJECT.md` "Current State"
 - [ ] **9.5** Final E2E pass through full V2 flow — verify single `learner_id` across all events
+
+---
+
+## Phase 10 — Mentor Feedback Revisions
+
+- [ ] **10.1** M2 Slide 3 (timeline) — Add brief note to each study card explaining how fluid responsiveness was confirmed (esophageal Doppler, echo/LVOT VTI, thermodilution, etc.)
+- [ ] **10.2** M2 Slide 4 (cutoffs) — Make the optimal ventilator settings caveat (tidal volume ≤8 mL/kg, PEEP ≤5 cmH₂O) more visually prominent
+- [ ] **10.3** M3 Slide 2 (three vessels) — Review and clarify directional language ("upstream" vs. "downstream" from RA) for anatomical accuracy
+- [ ] **10.4** M3 Slide 8 (evidence base) — Expand on why VExUS may be less generalizable in septic/distributive shock (different vascular physiology vs. cardiac/peri-op populations)
+- [ ] **10.5** M2 (IVC caveats) — Add pulmonary hypertension and tricuspid regurgitation as additional confounders for IVC interpretation; appear in M2 summary pearl and review.html caveat box
+- [ ] **10.6** Cases — Add the IVC × VExUS 2×2 decision matrix (from review.html) to the case take-home slides for repeat visualization
